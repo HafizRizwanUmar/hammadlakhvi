@@ -175,8 +175,22 @@ function HomePage({ setActive }) {
         <div style={{ maxWidth: 900, margin: "0 auto", padding: "60px 24px", textAlign: "center", position: "relative", animation: "fadeUp 1s ease" }}>
           {/* Gold crescent */}
           <div style={{ fontSize: 48, marginBottom: 16, animation: "shimmer 3s infinite" }}>☽</div>
-          <div style={{ fontFamily: "'Noto Nastaliq Urdu', serif", fontSize: "clamp(18px,3vw,26px)", color: COLORS.goldLight, marginBottom: 16, direction: "rtl", lineHeight: 2 }}>
+          <div style={{ fontFamily: "'Noto Nastaliq Urdu', serif", fontSize: "clamp(18px,3vw,26px)", color: COLORS.goldLight, marginBottom: 20, direction: "rtl", lineHeight: 2 }}>
             بسم اللہ الرحمن الرحیم
+          </div>
+          {/* Profile Picture */}
+          <div style={{ marginBottom: 24, display: "flex", justifyContent: "center" }}>
+            <div style={{
+              width: 160, height: 160, borderRadius: "50%",
+              border: `4px solid ${COLORS.goldLight}`,
+              boxShadow: `0 0 0 8px rgba(184,151,42,0.15), 0 8px 40px rgba(0,0,0,0.4)`,
+              overflow: "hidden", flexShrink: 0,
+            }}>
+              <img src="/profile.jpg" alt="Dr. Muhammad Hammad Lakhvi"
+                style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }}
+                onError={e => { e.target.style.display = "none"; e.target.parentElement.style.background = `${COLORS.green}`; e.target.parentElement.innerHTML += `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:60px;">👤</div>`; }}
+              />
+            </div>
           </div>
           <h1 style={{ fontFamily: "'Amiri', serif", fontSize: "clamp(36px,6vw,72px)", color: COLORS.cream, fontWeight: 700, lineHeight: 1.1, marginBottom: 16, letterSpacing: "0.02em" }}>
             Dr. Muhammad<br />Hammad Lakhvi
@@ -546,50 +560,189 @@ function CommunityPage() {
 }
 
 function BiographyPage() {
+  const sections = [
+    {
+      title: "نام و نسب", icon: "🌳", en: "Lineage & Family",
+      urduContent: `محمد حماد بن محی الدین بن محمد علی بن محی الدین عبدالرحمن بن محمد بن محمد بن بارک اللہ بن محمد امین — سلسلہ نسب کے اعتبار سے علوی ہیں۔ حضرت علیؓ کی غیر فاطمی اولاد حضرت امام محمد بن حنفیہ کے توسط سے آپ کا شجرہ نسب حضرت علیؓ سے جاملتا ہے۔
+
+برصغیر پاک و ہند کا معروف خاندان لکھوی دین کی اشاعت و تبلیغ میں ان کا ایک طویل سفر ہے جو 300 سال سے زیادہ کے عرصہ پر محیط ہے۔ آپ کے آباؤ اجداد میں سے حافظ محمد بن بارک اللہ لکھوی مولانا مولوی میاں نذیر حسین دہلوی کے شاگرد تھے جنہوں نے پنجابی نظم کی صورت میں 30 سے زیادہ کتابیں لکھیں جن میں سے نہایت مشہور "احوال الآخرۃ" اور قرآن کی تفسیر "تفسیر محمدی" ہے۔ ابواب الصرف کے نام سے سب سے پہلی کتاب لکھنے کا اعزاز بھی حافظ محمد بن بارک اللہ لکھوی کو حاصل ہے۔
+
+آپ کے پڑدادا مولانا محی الدین عبدالرحمن جنت البقیع میں مدفون ہیں۔ آپ کے والد محی الدین لکھوی ایک عالم دین ہونے کے ساتھ ساتھ پاکستان کی پہلی اسمبلی میں منتخب ہوئے اور کئی بار پاکستان کی پارلیمنٹ میں منتخب ہوئے انہوں نے جنرل ضیاء الحق کی صدارت و تحریک پاکستان میں نمایاں کردار ادا کیا۔`,
+      enContent: "Dr. Lakhvi belongs to the renowned Lakhvi scholarly dynasty with over 300 years of service to Islamic education across the subcontinent. His lineage traces to Hazrat Ali (RA) through Imam Muhammad ibn Hanafiyyah. His ancestors include students of Mian Nazeer Hussain Dehlvi who authored 30+ books in Punjabi verse."
+    },
+    {
+      title: "پیدائش و جائے پیدائش", icon: "📍", en: "Birth",
+      urduContent: `ڈاکٹر محمد حماد لکھوی 9 ستمبر 1965 دیپالپور کے نواح میں واقعہ ایک گاؤں قلعہ تاراسنگھ میں پیدا ہوئے۔`,
+      enContent: "Born on 9 September 1965 in the village of Qila Tara Singh, near Dipalpur, Punjab, Pakistan."
+    },
+    {
+      title: "تعلیمی مراحل", icon: "🎓", en: "Education",
+      urduContent: `آپ نے ناظرہ قرآن الہ آباد کی جامع مسجد سے پڑھا۔ سکول کی ابتدائی تعلیم اپنے گاؤں سے حاصل کی۔
+
+• میٹرک دیپالپور ہائی سکول سے 1982 میں کیا
+• الف ایس سی 1984 میں گورنمنٹ کالج دیپالپور سے کی
+• بی اے کا امتحان 1986 میں پنجاب یونیورسٹی سے پاس کیا
+• ایم اے اسلامیات 1988 میں پنجاب یونیورسٹی سے کیا اور پہلی پوزیشن اور گولڈ میڈل حاصل کیا
+• ایم اے عربی پنجاب یونیورسٹی ہی سے فرسٹ ڈویژن کے ساتھ 1990 میں کیا
+• پی ایچ ڈی 2001 میں مکمل ہوئی جس کے مقالے کا موضوع تھا "حریت فرد کا اسلامی تصور"
+• ایل ایل بی کا امتحان 2008 میں پنجاب یونیورسٹی لاء کالج سے پاس کیا
+• پوسٹ ڈاکٹریٹ کی ڈگری آپ نے گورنمنٹ آف پاکستان کے سکالرشپ سے 2007 میں یونیورسٹی آف گلاسگو اسکاٹ لینڈ برطانیہ سے حاصل کی`,
+      enContent: "His academic credentials include: Matric (1982), FSc (1984), BA Punjab University (1986), MA Islamiyat with Gold Medal — 1st Position (1988), MA Arabic First Division (1990), Ph.D. on 'Islamic Concept of Individual Freedom' (2001), LLB Law (2008), and Post-Doctorate from University of Glasgow, UK (2007) on a Government of Pakistan scholarship."
+    },
+    {
+      title: "الاجازہ فی الحدیث", icon: "📜", en: "Ijazah in Hadith",
+      urduContent: `میٹرک کے بعد کچھ عرصہ جامعہ ابی بکر کراچی میں زیر تعلیم رہے۔ جامعہ محمدیہ اوکاڑہ میں لطور ناظم دفتر خدمات انجام دیتے رہے تو اسی دوران درس نظامی کی کتب کا مطالعہ بھی کیا۔ شیخ الحدیث مولانا عبدالحلیم سے جذوی طور پر حدیث کی کتابیں پڑھیں۔ اختتام بخاری کے موقع پر شیخ الجامعہ نے آپ کو سند اور (الاجازہ فی الحدیث) بھی مرحمت فرمائی۔`,
+      enContent: "After Matric, he spent time at Jamia Abi Bakr Karachi and served at Jamia Muhammadiyyah Okara. He studied Hadith sciences under Sheikh al-Hadith Maulana Abdul Haleem and received formal Ijazah (certification) in Hadith upon completion of Bukhari."
+    },
+    {
+      title: "تدریسی مراحل", icon: "🏛️", en: "Academic Career",
+      urduContent: `بطور لیکچرار آپ گورنمنٹ کالج ٹوبہ ٹیک سنگھ میں 1990 میں تعینات ہوئے — تھوڑے عرصے بعد دسمبر 1990 میں آپ کی پی ٹو کی ٹرانسفر ہوگئی اس کے بعد اپریل 1991 میں گورنمنٹ کالج اوکاڑہ میں منتقل ہوگئے۔
+
+1996 سے 2005 تک پنجاب یونیورسٹی کے ادارہ علوم اسلامیہ میں بطور لیکچرار رہے اور اس دوران پی ایچ ڈی، ایم فل اور ایم اے کے طالب علموں کی تحقیقی کام کی سرپرستی بھی کی۔
+
+2005 سے 2010 تک آپ اسی ادارہ میں بطور اسسٹنٹ پروفیسر فائزہوئے اور اپنی ذمہ داری سر انجام دیتے رہے۔
+2010 سے 2014 تک یہاں ہی آپ اسوسیٹ پروفیسر رہے۔
+2014 سے 2019 تک آپ وہاں بطور پروفیسر اپنی ذمہ داریاں ادا کرتے رہے۔
+سال 2019 میں آپ ادارہ علوم اسلامیہ ہی میں ڈین مقرر ہوئے اور اب تک اسی عہدے پر فائز اپنی ذمہ داریاں نخوبی سرانجام دے رہے ہیں۔
+
+آپ نے 1990 سے اب تک مضامین پڑھائے جن میں پی ایچ ڈی / ایم فل لیول پر اسلامی نظریہ، منتخب متن کا تنقیدی مطالعہ، جدید مغربی ادب میں اسلام کا مطالعہ، اسلامی تاریخ، اسلامی تحقیق کا طریقہ کار، بلیوگرافی اور ماسٹر / ایم اے لیول پر تفسیر القرآن، اسلامی تاریخ، اسلام اور فلسفہ، حدیث و علوم حدیث، عربی شامل ہیں۔`,
+      enContent: "Began as Lecturer at Government College Toba Tek Singh (1990), then Okara (1991). Joined Punjab University Institute of Islamic Studies (1996) progressing to Assistant Professor (2005), Associate Professor (2010), Professor (2014), and Dean (2019–retirement). Taught at PhD, MPhil, and MA levels across Islamic studies subjects."
+    },
+    {
+      title: "تعلیمی عہدے", icon: "🎖️", en: "Academic Positions",
+      urduContent: `• ڈین، فیکلٹی ادارہ علوم اسلامیہ، پنجاب یونیورسٹی لاہور
+• ممبر متحدہ علماء بورڈ پنجاب
+• وائس چیئرمین پیغام ٹی وی
+• پروفیسر، ادارہ علوم اسلامیہ لاہور یونیورسٹی
+• ایڈیٹر "القلم" (ادارہ علوم اسلامیہ کا اینچی ای سی سے تسلیم شدہ ریسرچ جرنل) 2008–2019
+• کنٹرولر امتحانات ادارہ علوم اسلامیہ، پنجاب یونیورسٹی لاہور
+• ممبر بورڈ آف اسٹڈیز ادارہ علوم اسلامیہ، پنجاب یونیورسٹی لاہور
+• ممبر بورڈ آف فیکلٹی، فیکلٹی شعبہ علوم اسلامیہ اینڈ اورئنٹل لرننگ، پنجاب یونیورسٹی لاہور (1999–2005)
+• ممبر ڈاکٹورل پروگرام کمیٹی، شعبہ علوم اسلامیہ، پنجاب یونیورسٹی
+• ممبر اکیڈمک اسوسی ایشن، پنجاب یونیورسٹی لاہور
+• ممبر اتحاد بین المسلمین کمیٹی حکومت پنجاب (2009 سے آج تک)
+• ممبر پنجاب قرآن بورڈ، حکومت پنجاب (2011 سے آج تک)
+• اسلامیات کے موضوع کے ماہر (سبجیکٹ ایکسپرٹ) فیڈرل پبلک سروس کمیشن، حکومت — پاکستان، لاہور کیمپس (2005، 2008، 2009 تک)
+• اسلامیات کے مضمون کے ماہر (سبجیکٹ ایکسپرٹ) پنجاب پبلک سروس کمیشن، حکومت پنجاب (2010 سے آج تک)`,
+      enContent: "Dean, Faculty of Islamic Studies, Punjab University; Vice Chairman Pegham TV; Editor 'Al-Qalam' Journal (2008–2019); Controller of Examinations; Member of multiple Punjab government committees on Islamic affairs."
+    },
+    {
+      title: "دینی و تبلیغی خدمات و سرگرمیاں", icon: "🕌", en: "Religious & Dawah Services",
+      urduContent: `بتوفیق الٰہی آپ کی پوری زندگی دین کی تبلیغ و اشاعت میں صرف ہوئی۔ بچپن ہی میں والد محترم کے تبلیغی دوروں میں آپ اور کثر آپ کے باقی بھائی ان کے ساتھ جایا کرتے تھے جوانی کی دہلیز پر قدم رکھتے ہی والد محترم کے ساتھ لطور خادم اور معاون بھی سفر تبلیغ دین کے لیے کیے۔
+
+گاؤں میں آپ مولانا محی الدین لکھوی رحمتہ اللہ علیہ کی غیر موجودگی میں 1990 سے جامعہ محمدیہ اوکاڑہ میں مستقل خطبہ دیناشروع کیا۔ 2005 میں برطانیہ چلے گئے اور وہاں ایک انگریزی مسجد میں انگریزی زبان میں خطبہ دیتے رہے۔ 2009 سے تاحال مسجد المبارک لاہور میں آپ خطبہ و امامت نماز جمعہ کے فرائض سرانجام دے رہے ہیں۔
+
+"اسلامی تہذیب و تمدن اور تہذیبوں کی عصری صورت حال" پر گورنر ہاؤس لاہور میں سال 2006 میں گور نر پنجاب کو بریفنگ دی۔
+
+سال 2008 سے 2019 تک ادارہ علوم اسلامیہ کے اینچی ای سی سے تسلیم شدہ جرنل کے ایڈیٹر ہونے کی ذمہ داری بھی ادا کی۔
+
+تبلیغ دین کے لیے کئی وفدہ بیرون ملک بھی جاتے رہتے ہیں۔ ملک کے اندر مختلف مدارس اور دیگر تعلیمی اداروں میں آپ کے دروس و خطبات منعقد ہوتے رہتے ہیں۔
+
+2015 سے اب تک ہر ہفتے پیغام ٹی وی پر آپ کا تفسیر القرآن کا درس جاری ہے جس سے دنیا بھر میں لوگ مستفید ہو رہے ہیں۔`,
+      enContent: "Since 2009 leads Friday Khutbah at Masjid Al-Mubarak Lahore. Weekly Tafseer Al-Quran on Pegham TV since 2015 with worldwide viewership. Has delivered Islamic lectures at 17+ international conferences and appeared as expert on PTV, Geo, Dunya, Peace TV, ATV, and other channels."
+    },
+    {
+      title: "مشہور ٹی وی پروگرامز", icon: "📺", en: "Notable TV Programs",
+      urduContent: `• تفسیر القرآن پیغام ٹی وی
+• اسلام اور الحاد پیس ٹی وی
+• دعا مومن کا ہتھیار پیس ٹی وی
+• حدیث جبرئیل پیس ٹی وی
+• روشنی لاہور نیوز
+• پیام صبح دنیانیوز
+• پیام پاکستان پیغام ٹی وی
+• زکوۃ پیس ٹی وی`,
+      enContent: "Regular appearances on Pegham TV, Peace TV, Lahore News, Dunya News including programs on Tafseer al-Quran, Islam & Atheism, Dua, Hadith Jibril, Zakat, and morning transmissions."
+    },
+    {
+      title: "بین الاقوامی کانفرنسز", icon: "🌐", en: "International Conferences",
+      urduContent: `آپ نے 17 سے زائد ملکی و غیر ملکی بین الاقوامی کانفرنسوں میں شرکت کی اور کئی ایک میں اپنے فکر انگیز مقالے پیش کیے۔`,
+      enContent: "Participated in 17+ national and international conferences, presenting scholarly papers at venues including International Islamic University Kuala Lumpur (2006) and McGill University Canada (2008)."
+    },
+    {
+      title: "کتب و شائع شدہ آرٹیکلز", icon: "📚", en: "Books & Publications",
+      urduContent: `کتب:
+• حریت فرد کا اسلامی تصور (مقالہ پی ایچ ڈی)
+• رابطہ عالم اسلامی کی دینی خدمات (مقالہ ایم اے)
+• آبادی اور ترقی (کتابچہ مکتبہ دار السلام)
+
+اہم انگریزی مقالات:
+• A Glimpse in the History of Nationalism in Muslim World — Al-Adhwa, P.U. LHR (2014)
+• Faith in Predestination and its Philosophy — An Islamic Perspective — Al-Adhwa, P.U. LHR (2010)
+• A Critical Study of Women Protection Bill 2006 in the light of Quran and Sunnah — BZU Multan (2010)
+• The Concept of Peace and Security in Islam — McGill University Canada (Book Chapter, 2008)
+• The Holy Prophet (SAW) as a Messenger of Peace — Al-Adhwa, P.U. LHR (2008)
+• Islam and Fertility Regulations — WASET e-Journal, France (2010)
+• Psychological Aspects of Harassment at Workplace, Social Effects & Islamic Remedies — Pakistan Journal of Islamic Philosophy (2022)
+• The Economic Terminologies of Shah Waliullah — International Journal of Special Education (2022)
+• Introduction, History, Dangers and Challenges of Cyber Crimes — Al-Qalam P.U. LHR (2020)
+
+کل 47+ قومی و بین الاقوامی تحقیقی مقالات شائع ہو چکے ہیں۔`,
+      enContent: "Author of 3 books and 47+ peer-reviewed research articles published in national and international journals including Al-Adhwa (Punjab University), Al-Qalam, Pakistan Journal of Islamic Research (BZU Multan), WASET France, and chapter contributions to McGill University publication."
+    },
+    {
+      title: "اساتذہ", icon: "🌟", en: "Notable Teachers",
+      urduContent: `• مولانا ناعمین الدین
+• مولانا ناجی الدین
+• شیخ الحدیث مولانا عبدالحلیم
+• ڈاکٹر شبیر احمد
+• ڈاکٹر حمید اللہ
+• حافظ محمد اختر
+• پروفیسر ڈاکٹر جمیلہ شوکت
+• ممتاز احمد سالک`,
+      enContent: "Studied under distinguished scholars including Sheikh al-Hadith Maulana Abdul Haleem (Ijazah in Hadith), Dr. Shubbir Ahmed, Dr. Hameedullah, and Professor Dr. Jameela Shaukat."
+    },
+  ];
+
   return (
     <div style={{ padding: "100px 24px 80px", background: COLORS.cream, minHeight: "100vh" }}>
-      <div style={{ maxWidth: 920, margin: "0 auto" }}>
+      <div style={{ maxWidth: 960, margin: "0 auto" }}>
         <SectionHeader title="Biography" urdu="سوانح حیات" />
 
-        {/* Header card */}
+        {/* Header card with photo */}
         <div style={{ background: `linear-gradient(135deg,${COLORS.darkGreen},${COLORS.green})`, padding: "40px", borderRadius: 2, marginBottom: 40, color: COLORS.cream }}>
-          <h2 style={{ fontFamily: "'Amiri', serif", fontSize: 32, color: COLORS.goldLight, marginBottom: 8 }}>Dr. Muhammad Hammad Lakhvi</h2>
-          <div className="urdu" style={{ fontSize: 18, color: "rgba(250,246,239,0.85)", marginBottom: 16 }}>پروفیسر ڈاکٹر محمد حماد لکھوی حفظہ اللہ</div>
-          <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
-            {["Born: 9 September 1965, Dipalpur", "Post-Doctorate, University of Glasgow, UK", "Ph.D. Islamic Studies, Punjab University", "LLB Law, Punjab University"].map(b => (
-              <span key={b} style={{ background: "rgba(184,151,42,0.2)", border: `1px solid ${COLORS.gold}`, color: COLORS.goldLight, padding: "4px 12px", fontSize: 12, borderRadius: 2 }}>{b}</span>
-            ))}
+          <div style={{ display: "flex", gap: 32, alignItems: "center", flexWrap: "wrap" }}>
+            {/* Profile Picture */}
+            <div style={{
+              width: 140, height: 140, borderRadius: "50%",
+              border: `3px solid ${COLORS.goldLight}`,
+              boxShadow: `0 0 0 6px rgba(184,151,42,0.2)`,
+              overflow: "hidden", flexShrink: 0,
+              background: COLORS.green,
+            }}>
+              <img src="/profile.jpg" alt="Dr. Muhammad Hammad Lakhvi"
+                style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }}
+                onError={e => { e.target.style.display = "none"; e.target.parentElement.innerHTML = `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:56px;">👤</div>`; }}
+              />
+            </div>
+            <div style={{ flex: 1, minWidth: 200 }}>
+              <h2 style={{ fontFamily: "'Amiri', serif", fontSize: 32, color: COLORS.goldLight, marginBottom: 4 }}>Dr. Muhammad Hammad Lakhvi</h2>
+              <div className="urdu" style={{ fontSize: 20, color: "rgba(250,246,239,0.9)", marginBottom: 16, lineHeight: 2 }}>پروفیسر ڈاکٹر محمد حماد لکھوی حفظہ اللہ</div>
+              <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                {["پیدائش: 9 ستمبر 1965، دیپالپور", "پوسٹ ڈاکٹریٹ — یونیورسٹی آف گلاسگو، یو کے", "پی ایچ ڈی اسلامی علوم — پنجاب یونیورسٹی", "ایل ایل بی قانون — پنجاب یونیورسٹی"].map(b => (
+                  <span key={b} className="urdu" style={{ background: "rgba(184,151,42,0.2)", border: `1px solid ${COLORS.gold}`, color: COLORS.goldLight, padding: "4px 12px", fontSize: 13, borderRadius: 2, lineHeight: 2 }}>{b}</span>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
-        {[
-          {
-            title: "Family Heritage", urdu: "خاندانی پس منظر", icon: "🌳",
-            content: "Dr. Lakhvi belongs to the renowned Lakhvi family of the Indian subcontinent — a scholarly dynasty with over 300 years of service to Islamic education and propagation. His lineage traces back to Hazrat Ali (RA) through Imam Muhammad ibn Hanafiyyah. His ancestors include prominent scholars who were students of Mian Nazeer Hussain Dehlvi and authored over 30 books in Punjabi verse, including the celebrated 'Ahwal al-Akhirah' and 'Tafseer Muhammadi'. His grandfather taught Hadith at Masjid Nabawi in Madinah."
-          },
-          {
-            title: "Education", urdu: "تعلیمی مراحل", icon: "🎓",
-            content: "His education spans from traditional Islamic sciences to Western academic institutions. He completed Matric (1982), FSc (1984), BA (1986), MA Islamiyat with Gold Medal — 1st Position (1988), MA Arabic (1990), Ph.D. (2001) on 'Islamic Concept of Individual Freedom', LLB Law (2008), and Post-Doctorate from the University of Glasgow, Scotland, UK (2007) on a Government of Pakistan scholarship."
-          },
-          {
-            title: "Academic Career", urdu: "تدریسی مراحل", icon: "🏛️",
-            content: "He served as Lecturer at Government College Toba Tek Singh (1990), then Government College Okara (1991). From 1996 he joined the Institute of Islamic Studies, University of the Punjab as Lecturer, progressing through Assistant Professor (2005), Associate Professor (2010), Professor (2014), Director (2024), and Dean (2019–2025). He retired on 8 December 2025 after 35 years of distinguished academic service."
-          },
-          {
-            title: "Religious Service", urdu: "دینی خدمات", icon: "🕌",
-            content: "Since 2009, Dr. Lakhvi leads Friday Khutbah and Imamat at Masjid Al-Mubarak, Lahore. He has been Vice Chairman of Pegham TV since 2018 and delivers weekly Tafseer Al-Quran broadcasts reaching audiences worldwide. He has served as a religious expert on PTV, Geo News, Dunya News, Peace TV, ATV, and other channels. He has traveled internationally numerous times for tableegh and delivered keynotes at 17+ international Islamic conferences."
-          },
-        ].map((s, i) => (
-          <div key={s.title} style={{ marginBottom: 32, background: COLORS.white, border: `1px solid ${COLORS.border}`, borderRadius: 2, overflow: "hidden", animation: `fadeUp 0.6s ease ${i * 0.1}s both` }}>
-            <div style={{ background: `${COLORS.green}11`, padding: "16px 24px", borderBottom: `1px solid ${COLORS.border}`, display: "flex", gap: 12, alignItems: "center" }}>
-              <span style={{ fontSize: 24 }}>{s.icon}</span>
+        {/* Bio Sections */}
+        {sections.map((s, i) => (
+          <div key={s.title} style={{ marginBottom: 28, background: COLORS.white, border: `1px solid ${COLORS.border}`, borderRadius: 2, overflow: "hidden", animation: `fadeUp 0.6s ease ${i * 0.07}s both` }}>
+            <div style={{ background: `${COLORS.green}11`, padding: "14px 24px", borderBottom: `1px solid ${COLORS.border}`, display: "flex", gap: 12, alignItems: "center" }}>
+              <span style={{ fontSize: 22 }}>{s.icon}</span>
               <div>
-                <h3 style={{ fontFamily: "'Amiri', serif", fontSize: 20, color: COLORS.darkGreen }}>{s.title}</h3>
-                <div className="urdu" style={{ fontSize: 14, color: COLORS.gold }}>{s.urdu}</div>
+                <div style={{ display: "flex", gap: 12, alignItems: "baseline", flexWrap: "wrap" }}>
+                  <h3 className="urdu" style={{ fontFamily: "'Noto Nastaliq Urdu', serif", fontSize: 18, color: COLORS.darkGreen, lineHeight: 2 }}>{s.title}</h3>
+                  <span style={{ fontSize: 12, color: COLORS.textLight, letterSpacing: "0.08em", textTransform: "uppercase" }}>{s.en}</span>
+                </div>
               </div>
             </div>
             <div style={{ padding: "24px" }}>
-              <p style={{ fontSize: 14, lineHeight: 1.9, color: COLORS.text }}>{s.content}</p>
+              <div className="urdu" style={{ fontSize: 15, lineHeight: 2.4, color: COLORS.text, marginBottom: 16, whiteSpace: "pre-line" }}>{s.urduContent}</div>
+              <div style={{ borderTop: `1px dashed ${COLORS.border}`, paddingTop: 12, marginTop: 4 }}>
+                <p style={{ fontSize: 12, lineHeight: 1.8, color: COLORS.textLight, fontStyle: "italic" }}>{s.enContent}</p>
+              </div>
             </div>
           </div>
         ))}
@@ -597,8 +750,12 @@ function BiographyPage() {
         {/* Awards */}
         <div style={{ background: `${COLORS.gold}11`, border: `2px solid ${COLORS.gold}`, padding: "28px", borderRadius: 2, textAlign: "center" }}>
           <div style={{ fontSize: 36, marginBottom: 8 }}>🥇</div>
-          <div style={{ fontFamily: "'Amiri', serif", fontSize: 22, color: COLORS.darkGreen, marginBottom: 8 }}>Gold Medal — Punjab University</div>
-          <p style={{ color: COLORS.textLight, fontSize: 14 }}>1st Position in MA Islamic Studies · University of the Punjab, Lahore</p>
+          <div className="urdu" style={{ fontFamily: "'Noto Nastaliq Urdu', serif", fontSize: 22, color: COLORS.darkGreen, marginBottom: 4, lineHeight: 2 }}>گولڈ میڈل — پنجاب یونیورسٹی</div>
+          <div style={{ fontFamily: "'Amiri', serif", fontSize: 18, color: COLORS.darkGreen, marginBottom: 8 }}>Gold Medal — Punjab University</div>
+          <p style={{ color: COLORS.textLight, fontSize: 14 }}>1st Position in MA Islamic Studies · ایم اے اسلامیات میں اول پوزیشن</p>
+          <div style={{ marginTop: 16 }} className="urdu">
+            <p style={{ fontSize: 18, color: COLORS.green, lineHeight: 2.2 }}>ماشاء اللہ لا قوۃ الا باللہ ۔۔۔ اللہ تعالی ایمان و سلامتی والی لمبی زندگی دیں اور اپنے دین کے بہت سے کام لیں آپ کبھی نہ تھکیں ۔ آمین</p>
+          </div>
         </div>
       </div>
     </div>
