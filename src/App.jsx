@@ -139,6 +139,26 @@ const LECTURE_SERIES = [
       { id: "5RuqA4c_8GQ", title: "آخرت — حشر و نشر", ep: "Ep. 4" },
     ],
   },
+  {
+    id: "walidayn",
+    title: "والدین کی ذمہ داریاں",
+    en: "Walidayn Ki Zimaydaarian",
+    channel: "Official Channel",
+    thumbnail: "/thumbnail.jpg",
+    description: "A comprehensive 9-part series on the responsibilities of parents in Islam, covering spiritual, educational, and social dimensions.",
+    count: 9,
+    videos: [
+      { id: "x04g-Hg8POo", title: "Walidayn Ki Zimaydaarian - Part 1", ep: "Part 1" },
+      { id: "iJo7_Cvdlbs", title: "Walidayn Ki Zimaydaarian - Part 2", ep: "Part 2" },
+      { id: "Je-KTWMYmpo", title: "Walidayn Ki Zimaydaarian - Part 3", ep: "Part 3" },
+      { id: "d4cRFz7OvBI", title: "Walidayn Ki Zimaydaarian - Part 4", ep: "Part 4" },
+      { id: "naDC7UYChZg", title: "Walidayn Ki Zimaydaarian - Part 5", ep: "Part 5" },
+      { id: "IFj7NOIQMyE", title: "Walidayn Ki Zimaydaarian - Part 6", ep: "Part 6" },
+      { id: "U-9VVg-ngFc", title: "Walidayn Ki Zimaydaarian - Part 7", ep: "Part 7" },
+      { id: "PUWNhcOILUU", title: "Walidayn Ki Zimaydaarian - Part 8", ep: "Part 8" },
+      { id: "OECVk9qvY-A", title: "Walidayn Ki Zimaydaarian - Part 9", ep: "Part 9" },
+    ],
+  },
 ];
 
 const ARTICLES = [
@@ -297,7 +317,7 @@ function HomePage({ setActive }) {
             <div style={{ width: 80, height: 2, background: COLORS.gold, marginBottom: 18 }} />
 
             <p style={{ fontFamily: "'Libre Baskerville',serif", fontSize: "clamp(12px,1.4vw,15px)", color: "rgba(250,246,239,0.85)", marginBottom: 8, lineHeight: 1.8 }}>
-              Former Dean & Professor, Institute of Islamic Studies<br />University of the Punjab, Lahore
+              President Faith Foundation, Former Dean & Professor, Institute of Islamic Studies<br />University of the Punjab, Lahore
             </p>
             <div className="urdu" style={{ fontSize: "clamp(14px,1.5vw,17px)", color: "rgba(250,246,239,0.8)", marginBottom: 22, lineHeight: 2 }}>
               نائب امیر مرکزی جمیعت اہلحدیث پاکستان
