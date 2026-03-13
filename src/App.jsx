@@ -144,7 +144,7 @@ const LECTURE_SERIES = [
     title: "والدین کی ذمہ داریاں",
     en: "Walidayn Ki Zimaydaarian",
     channel: "Official Channel",
-    thumbnail: "/thumbnail.jpg",
+    thumbnail: "/thumbnail1.jpg",
     description: "A comprehensive 9-part series on the responsibilities of parents in Islam, covering spiritual, educational, and social dimensions.",
     count: 9,
     videos: [
