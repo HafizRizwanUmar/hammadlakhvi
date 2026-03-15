@@ -1532,7 +1532,11 @@ function Footer({ setActive }) {
         </div>
         <div style={{ borderTop: "1px solid rgba(184,151,42,0.2)", paddingTop: 24, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
           <div className="urdu" style={{ fontSize: 14, color: "rgba(250,246,239,0.4)" }}>بسم اللہ الرحمن الرحیم</div>
-          <div style={{ fontSize: 12, color: "rgba(250,246,239,0.4)" }}>© 2026 Dr. Muhammad Hammad Lakhvi · All rights reserved</div>
+          <div style={{ fontSize: 12, color: "rgba(250,246,239,0.4)" }}>
+            © 2026 Dr. Muhammad Hammad Lakhvi · All rights reserved
+            <span style={{ margin: "0 10px", opacity: 0.5 }}>|</span>
+            Developed by <a href="https://minderfly.com" target="_blank" rel="noreferrer" style={{ color: COLORS.goldLight, textDecoration: "none", fontWeight: 600 }}>Minderfly.com</a>
+          </div>
         </div>
       </div>
     </footer>
