@@ -78,67 +78,34 @@ const LONG_VIDEOS = [
 
 const LECTURE_SERIES = [
   {
-    id: "tafseer",
-    title: "تفسیر القرآن",
-    en: "Tafseer Al-Quran",
-    channel: "Pegham TV",
-    thumbnail: "/series-tafseer.jpg",
-    description: "Weekly Tafseer of the Holy Quran. Verse-by-verse explanation covering linguistic, jurisprudential and contemporary perspectives.",
-    count: 6,
+    id: "khulasa-quran-2026",
+    title: "خلاصہ مضامین قرآن | رمضان ۲۰۲۶",
+    en: "Khulasa e Mazameen e Quran | Ramadan 2026",
+    channel: "Official Channel",
+    thumbnail: "https://img.youtube.com/vi/5zZPlHzkFnc/maxresdefault.jpg",
+    description: "🎙️ Dr Muhammad Hammad Bin Mohiyudin Lakhvi (حفظہ اللہ). A comprehensive summary of Quranic themes and messages discussed during Ramadan 2026.",
+    count: 20,
     videos: [
-      { id: "5RuqA4c_8GQ", title: "تفسیر سورۃ الفاتحہ", ep: "Ep. 1" },
-      { id: "yDa1JTOf0xA", title: "تفسیر سورۃ البقرہ — آغاز", ep: "Ep. 2" },
-      { id: "nmBwd3MkPSY", title: "تفسیر سورۃ البقرہ — آیات 1–20", ep: "Ep. 3" },
-      { id: "HBbQMQkz3GE", title: "تفسیر سورۃ البقرہ — آیات 21–40", ep: "Ep. 4" },
-      { id: "S5PkGChDv9U", title: "تفسیر سورۃ آل عمران", ep: "Ep. 5" },
-      { id: "Xk4uGYkbBFg", title: "تفسیر سورۃ النساء", ep: "Ep. 6" },
-    ],
-  },
-  {
-    id: "hadith",
-    title: "حدیث و علوم حدیث",
-    en: "Hadith Sciences",
-    channel: "Peace TV",
-    thumbnail: "/series-hadith.jpg",
-    description: "In-depth study of Hadith sciences including methodology, authentication, and commentary on major Hadith collections.",
-    count: 5,
-    videos: [
-      { id: "5RuqA4c_8GQ", title: "علوم حدیث — تعارف", ep: "Ep. 1" },
-      { id: "yDa1JTOf0xA", title: "حدیث جبرئیل — مکمل تشریح", ep: "Ep. 2" },
-      { id: "nmBwd3MkPSY", title: "صحیح بخاری — اہمیت و مقام", ep: "Ep. 3" },
-      { id: "HBbQMQkz3GE", title: "حدیث کی اقسام و درجات", ep: "Ep. 4" },
-      { id: "S5PkGChDv9U", title: "رجال الحدیث — تعارف", ep: "Ep. 5" },
-    ],
-  },
-  {
-    id: "islahiat",
-    title: "اصلاحی دروس",
-    en: "Spiritual Reform Lectures",
-    channel: "Pegham TV",
-    thumbnail: "/series-islahiat.jpg",
-    description: "Lectures on spiritual reform, character building, and practical Islamic guidance for the contemporary Muslim.",
-    count: 5,
-    videos: [
-      { id: "S5PkGChDv9U", title: "توبہ اور رجوع الی اللہ", ep: "Ep. 1" },
-      { id: "Xk4uGYkbBFg", title: "صبر اور شکر — ایمان کی بنیاد", ep: "Ep. 2" },
-      { id: "5RuqA4c_8GQ", title: "دعا — مومن کا ہتھیار", ep: "Ep. 3" },
-      { id: "yDa1JTOf0xA", title: "ذکر اللہ کی فضیلت", ep: "Ep. 4" },
-      { id: "nmBwd3MkPSY", title: "اخلاق اور تزکیہ نفس", ep: "Ep. 5" },
-    ],
-  },
-  {
-    id: "aqeedah",
-    title: "عقیدہ اسلامیہ",
-    en: "Islamic Creed & Theology",
-    channel: "Lahore News",
-    thumbnail: "/series-aqeedah.jpg",
-    description: "Systematic study of Islamic theology — Tawheed, Prophethood, Angels, Divine Books, Day of Judgment, and Divine Decree.",
-    count: 4,
-    videos: [
-      { id: "HBbQMQkz3GE", title: "توحید — بنیادی تصور", ep: "Ep. 1" },
-      { id: "S5PkGChDv9U", title: "ختم نبوت — دلائل و براہین", ep: "Ep. 2" },
-      { id: "Xk4uGYkbBFg", title: "تقدیر کا فلسفہ", ep: "Ep. 3" },
-      { id: "5RuqA4c_8GQ", title: "آخرت — حشر و نشر", ep: "Ep. 4" },
+      { id: "5zZPlHzkFnc", title: "Day 1 | Para 1 | الم", ep: "Day 1" },
+      { id: "v0d0EqHMizQ", title: "Day 2 | Para 2 | سیقول", ep: "Day 2" },
+      { id: "K2sEgEBQJlU", title: "Day 3 | Para 3 | تلک الرسل", ep: "Day 3" },
+      { id: "WmgFaw2xFUU", title: "Day 4 | Para 4 | لن تنالوا البر", ep: "Day 4" },
+      { id: "ybebuUNURbE", title: "Day 5 | Para 5 Complete & Para 6 First half", ep: "Day 5" },
+      { id: "OTF9Ksj9m38", title: "Day 6 | Para 6 Second half & Para 7 Complete", ep: "Day 6" },
+      { id: "L-i3XxTxMzc", title: "Day 7 | Para 8 Complete & Para 9 First half", ep: "Day 7" },
+      { id: "_VmYWv0PZ2w", title: "Day 8 | Para 9 Second half & Para 10 complete", ep: "Day 8" },
+      { id: "pu_jjCc1WpI", title: "Day 9 | Para 11 complete & Para 12 first half", ep: "Day 9" },
+      { id: "YwfdAS-uNkY", title: "Day 10 | Para 12 second half & Para 13 complete", ep: "Day 10" },
+      { id: "SP_vI_MlHAM", title: "Day 11 | Para 14 | ربما", ep: "Day 11" },
+      { id: "lQgCo0OwGOM", title: "Day 12 | Para 15 | سبحان الذی اسریٰ", ep: "Day 12" },
+      { id: "IC4ZlULRMgA", title: "Day 13 | Para 16 | قال الم", ep: "Day 13" },
+      { id: "b27gKt-lipg", title: "Day 14 | Para 17 | اقترب للناس", ep: "Day 14" },
+      { id: "ESd-u0xHBII", title: "Day 15 | Para 18 | قد افلح", ep: "Day 15" },
+      { id: "DKz0LeQgGlE", title: "Day 16 | Para 19 | وقال الذین", ep: "Day 16" },
+      { id: "M_mU9XazSdI", title: "Day 17 | Para 20 | امن خلق", ep: "Day 17" },
+      { id: "LKcoxiKxHxU", title: "Day 18 | Para 21 | اتل ما اوحی", ep: "Day 18" },
+      { id: "BjEug95IqjE", title: "Day 19 | Para 22 | ومن یقنت", ep: "Day 19" },
+      { id: "x5PU32kZk7M", title: "Day 20 | Para 23 | ومالی", ep: "Day 20" },
     ],
   },
   {
@@ -146,7 +113,7 @@ const LECTURE_SERIES = [
     title: "والدین کی ذمہ داریاں",
     en: "Walidayn Ki Zimaydaarian",
     channel: "Official Channel",
-    thumbnail: "/thumbnail1.jpg",
+    thumbnail: "https://img.youtube.com/vi/x04g-Hg8POo/maxresdefault.jpg",
     description: "A comprehensive 9-part series on the responsibilities of parents in Islam, covering spiritual, educational, and social dimensions.",
     count: 9,
     videos: [
@@ -713,9 +680,20 @@ function LecturesPage({ onVideoClick }) {
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <BackBtn onClick={() => setActiveSeries(null)} label="← Back to Series" />
           <div style={{ background: `linear-gradient(135deg,${COLORS.darkGreen},${COLORS.green})`, borderRadius: 2, overflow: "hidden", marginBottom: 40, display: "flex", flexWrap: "wrap" }}>
-            <div style={{ width: 280, minHeight: 180, flexShrink: 0, background: COLORS.darkGreen, position: "relative", overflow: "hidden" }}>
-              <img src={s.thumbnail} alt={s.title} style={{ width: "100%", height: "100%", minHeight: 180, objectFit: "cover", display: "block" }}
-                onError={e => { e.target.style.display = "none"; e.target.parentElement.innerHTML = `<div style="width:100%;min-height:180px;display:flex;align-items:center;justify-content:center;font-size:60px">📚</div>`; }} />
+            <div style={{ width: 320, aspectRatio: "16/9", flexShrink: 0, background: "#000", position: "relative", overflow: "hidden" }}>
+              <img 
+                src={s.thumbnail || (s.videos && s.videos[0] ? `https://img.youtube.com/vi/${s.videos[0].id}/hqdefault.jpg` : "/default-series.jpg")} 
+                alt={s.title} 
+                style={{ width: "100%", height: "100%", objectFit: "contain", display: "block" }}
+                onError={e => { 
+                  if (s.videos && s.videos[0] && !e.target.src.includes(s.videos[0].id)) {
+                    e.target.src = `https://img.youtube.com/vi/${s.videos[0].id}/hqdefault.jpg`;
+                  } else {
+                    e.target.style.display = "none"; 
+                    e.target.parentElement.innerHTML = `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:60px">📚</div>`; 
+                  }
+                }} 
+              />
             </div>
             <div style={{ flex: 1, padding: "32px 36px", minWidth: 200 }}>
               <div style={{ fontSize: 11, color: COLORS.gold, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 8 }}>{s.channel}</div>
@@ -768,10 +746,20 @@ function LecturesPage({ onVideoClick }) {
               {LECTURE_SERIES.map((s, i) => (
                 <div key={s.id} className="series-card" onClick={() => setActiveSeries(s.id)}
                   style={{ background: COLORS.white, border: `1px solid ${COLORS.border}`, borderRadius: 2, overflow: "hidden", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", animation: `fadeUp 0.5s ease ${i * 0.1}s both` }}>
-                  <div style={{ position: "relative", height: 185, background: COLORS.darkGreen, overflow: "hidden" }}>
-                    <img src={s.thumbnail} alt={s.title}
-                      style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-                      onError={e => { e.target.style.display = "none"; e.target.parentElement.innerHTML = `<div style="width:100%;height:185px;display:flex;align-items:center;justify-content:center;background:${COLORS.darkGreen};font-size:56px">📚</div>`; }} />
+                  <div style={{ position: "relative", aspectRatio: "16/9", background: "#000", overflow: "hidden" }}>
+                    <img 
+                      src={s.thumbnail || (s.videos && s.videos[0] ? `https://img.youtube.com/vi/${s.videos[0].id}/hqdefault.jpg` : "/default-series.jpg")} 
+                      alt={s.title}
+                      style={{ width: "100%", height: "100%", objectFit: "contain", display: "block" }}
+                      onError={e => { 
+                        if (s.videos && s.videos[0] && !e.target.src.includes(s.videos[0].id)) {
+                          e.target.src = `https://img.youtube.com/vi/${s.videos[0].id}/hqdefault.jpg`;
+                        } else {
+                          e.target.style.display = "none"; 
+                          e.target.parentElement.innerHTML = `<div style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:${COLORS.darkGreen};color:${COLORS.goldLight}"><div style="font-size:48px">📚</div><div style="font-size:10px;margin-top:8px;text-transform:uppercase;letter-spacing:0.1em">Series Placeholder</div></div>`; 
+                        }
+                      }} 
+                    />
                     <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.32)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                       <div style={{ width: 52, height: 52, borderRadius: "50%", background: "rgba(184,151,42,0.92)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                         <span style={{ fontSize: 20, marginLeft: 3 }}>▶</span>
