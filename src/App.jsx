@@ -46,6 +46,17 @@ const globalStyle = `
     .hero-creds { justify-content: center !important; }
     .hero-btns { justify-content: center !important; }
   }
+  .series-detail-header { display: flex; flex-wrap: wrap; background: linear-gradient(135deg, ${COLORS.darkGreen}, ${COLORS.green}); border-radius: 2px; overflow: hidden; margin-bottom: 40px; }
+  .series-detail-thumb-container { width: 320px; aspect-ratio: 16/9; flex-shrink: 0; background: #000; position: relative; overflow: hidden; }
+  .series-detail-info { flex: 1; padding: 32px 36px; min-width: 250px; }
+  @media (max-width: 768px) {
+    .series-detail-header { margin-bottom: 24px; }
+    .series-detail-thumb-container { width: 100% !important; }
+    .series-detail-info { padding: 24px 20px !important; }
+    .series-detail-info .urdu { font-size: 22px !important; text-align: center !important; }
+    .series-detail-info h3, .series-detail-info p, .series-detail-info div { text-align: center !important; }
+    .series-detail-info .series-meta { justify-content: center !important; }
+  }
 `;
 
 const NAV_ITEMS = [
@@ -679,8 +690,8 @@ function LecturesPage({ onVideoClick }) {
       <div style={{ padding: "100px 24px 80px", background: COLORS.cream, minHeight: "100vh" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <BackBtn onClick={() => setActiveSeries(null)} label="← Back to Series" />
-          <div style={{ background: `linear-gradient(135deg,${COLORS.darkGreen},${COLORS.green})`, borderRadius: 2, overflow: "hidden", marginBottom: 40, display: "flex", flexWrap: "wrap" }}>
-            <div style={{ width: 320, aspectRatio: "16/9", flexShrink: 0, background: "#000", position: "relative", overflow: "hidden" }}>
+          <div className="series-detail-header">
+            <div className="series-detail-thumb-container">
               <img 
                 src={s.thumbnail || (s.videos && s.videos[0] ? `https://img.youtube.com/vi/${s.videos[0].id}/hqdefault.jpg` : "/default-series.jpg")} 
                 alt={s.title} 
@@ -695,12 +706,15 @@ function LecturesPage({ onVideoClick }) {
                 }} 
               />
             </div>
-            <div style={{ flex: 1, padding: "32px 36px", minWidth: 200 }}>
-              <div style={{ fontSize: 11, color: COLORS.gold, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 8 }}>{s.channel}</div>
+            <div className="series-detail-info">
+              <div className="series-meta" style={{ display: "flex", gap: 10, fontSize: 11, color: "rgba(250,246,239,0.6)", letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 8 }}>
+                <span>{s.channel}</span>
+                <span>•</span>
+                <span style={{ color: COLORS.goldLight }}>{s.count} Episodes</span>
+              </div>
               <div className="urdu" style={{ fontSize: 26, color: COLORS.goldLight, lineHeight: 1.8, marginBottom: 4 }}>{s.title}</div>
               <div style={{ fontFamily: "'Amiri',serif", fontSize: 20, color: COLORS.cream, marginBottom: 12 }}>{s.en}</div>
               <p style={{ color: "rgba(250,246,239,0.75)", fontSize: 13, lineHeight: 1.8, marginBottom: 16 }}>{s.description}</p>
-              <span style={{ background: "rgba(184,151,42,0.2)", border: `1px solid ${COLORS.gold}`, color: COLORS.goldLight, padding: "4px 14px", fontSize: 12, borderRadius: 2 }}>{s.count} Episodes</span>
             </div>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(340px,1fr))", gap: 24 }}>
