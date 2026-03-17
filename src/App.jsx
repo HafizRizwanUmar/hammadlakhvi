@@ -165,6 +165,25 @@ const FATWAS = [
 // ── EVENTS DATA — now with detail pages ──────────────────────────────────────
 const EVENTS_DATA = [
   {
+    id: "retirement",
+    date: "December 2025",
+    title: "Retirement Gatherings — Dr. Muhammad Hammad Lakhvi",
+    type: "Special",
+    recurring: false,
+    icon: "📜",
+    location: "Various Locations, Lahore",
+    description: "Over the days surrounding his retirement, students, colleagues, alumni, friends, and well-wishers arranged different gatherings to express their respect, love, and gratitude for Dr. Muhammad Hammad Lakhvi. Each occasion reflected the impact of a lifetime devoted to teaching, scholarship, and service.",
+    details: [
+      "Farewell ceremonies and academic tributes",
+      "Heartfelt moments in the mosque and warm dinners",
+      "Remembrance of affection, prayers, and honour",
+      "Compilation of cherished moments"
+    ],
+    videoId: "CwISoX32rE0",
+    images: [],
+    color: "#B19025",
+  },
+  {
     id: "ev1",
     date: "Every Friday",
     title: "Friday Khutbah — Masjid Al-Mubarak Lahore",
@@ -1005,6 +1024,13 @@ function EventDetailPage({ event, onBack }) {
             </div>
           </div>
         </div>
+
+        {/* Video Embed */}
+        {event.videoId && (
+          <div style={{ marginBottom: 40, borderRadius: 2, overflow: "hidden", boxShadow: "0 12px 32px rgba(0,0,0,0.15)", border: `1px solid ${COLORS.border}` }}>
+            <YouTubeEmbed videoId={event.videoId} title={event.title} />
+          </div>
+        )}
 
         {/* Details */}
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, marginBottom: 36 }}>
