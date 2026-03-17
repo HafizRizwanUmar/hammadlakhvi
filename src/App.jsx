@@ -93,7 +93,7 @@ const LECTURE_SERIES = [
     title: "خلاصہ مضامین قرآن | رمضان ۲۰۲۶",
     en: "Khulasa e Mazameen e Quran | Ramadan 2026",
     channel: "Official Channel",
-    thumbnail: "https://img.youtube.com/vi/5zZPlHzkFnc/maxresdefault.jpg",
+    thumbnail: "/t1.jpg",
     description: "🎙️ Dr Muhammad Hammad Bin Mohiyudin Lakhvi (حفظہ اللہ). A comprehensive summary of Quranic themes and messages discussed during Ramadan 2026.",
     count: 20,
     videos: [
@@ -124,7 +124,7 @@ const LECTURE_SERIES = [
     title: "والدین کی ذمہ داریاں",
     en: "Walidayn Ki Zimaydaarian",
     channel: "Official Channel",
-    thumbnail: "https://img.youtube.com/vi/x04g-Hg8POo/maxresdefault.jpg",
+    thumbnail: "/t2.jpg",
     description: "A comprehensive 9-part series on the responsibilities of parents in Islam, covering spiritual, educational, and social dimensions.",
     count: 9,
     videos: [
@@ -1349,8 +1349,8 @@ function BiographyPage() {
       urduContent: `
      • مولانا محی الدین لکھوی رحمہ اللہ 
       • مولانا معین الدین لکھوی رحمہ اللہ
-• شیخ الحدیث مولانا عبد الحلیم
-• ڈاکٹر شبیر احمد عثمانی
+• شیخ الحدیث مولانا عبد الحلیم رحمہ اللّٰہ
+• شبیر احمد منصوری
 • ڈاکٹر حمید اللہ
 • حافظ محمود اختر ڈولہ
 • پروفیسر ڈاکٹر جمیلہ شوکت
