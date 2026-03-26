@@ -247,6 +247,7 @@ export const TV_PROGRAMS_DATA = [
     channelColor: "#C8102E",
     description: "Morning spiritual program offering daily Islamic guidance, Quranic verses, and motivational insights to start the day with faith and purpose.",
     useYearlyFormat: true, // Special flag for this program
+    thumbnail: "/payam2019.jpeg",
     videos: [],
   },
   {

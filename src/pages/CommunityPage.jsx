@@ -61,7 +61,11 @@ export default function CommunityPage({ onProgramClick }) {
               <div key={p.id} className="tv-program-card" onClick={() => onProgramClick(p.slug || p.id)}
                 style={{ background: COLORS.white, border: `1px solid ${COLORS.border}`, padding: "22px 20px", borderRadius: 2, borderTop: `3px solid ${p.channelColor}`, cursor: "pointer", animation: `fadeUp 0.5s ease ${i * 0.07}s both` }}>
                 <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
-                  <span style={{ fontSize: 28 }}>{p.icon}</span>
+                  {p.thumbnail ? (
+                    <img src={p.thumbnail} alt={p.name} style={{ width: 44, height: 44, borderRadius: 2, objectFit: "cover" }} />
+                  ) : (
+                    <span style={{ fontSize: 28 }}>{p.icon}</span>
+                  )}
                   <div style={{ flex: 1 }}>
                     <div className="urdu" style={{ fontSize: 16, color: COLORS.darkGreen, fontWeight: 700, lineHeight: 2 }}>{p.name}</div>
                     <div style={{ fontSize: 11, color: COLORS.textLight, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 8 }}>{p.channel}</div>
