@@ -35,17 +35,24 @@ export default function HomePage({ setActive, onProgramClick }) {
               <img src="/profile.jpg" alt="Dr. Muhammad Hammad Lakhvi" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center" }}
                 onError={e => { e.target.style.display = "none"; e.target.parentElement.innerHTML = `<div style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:${COLORS.darkGreen}"><div style="font-size:80px">👤</div></div>`; }} />
               <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, background: "linear-gradient(to top,rgba(26,58,42,0.9) 0%,transparent 100%)", padding: "28px 16px 14px", textAlign: "center" }}>
-                <div className="urdu" style={{ fontSize: 14, color: COLORS.goldLight }}>حفظہ اللہ</div>
+
               </div>
             </div>
           </div>
           <div className="hero-text" style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 0 }}>
             <div style={{ fontSize: 36, marginBottom: 10, animation: "shimmer 3s infinite" }}>☽</div>
-            <div style={{ fontFamily: "'Noto Nastaliq Urdu',serif", fontSize: "clamp(15px,2.2vw,22px)", color: COLORS.goldLight, marginBottom: 16, direction: "rtl", lineHeight: 2, width: "100%", textAlign: "right" }}>بسم اللہ الرحمن الرحیم</div>
+            <div style={{ fontFamily: "'Noto Nastaliq Urdu',serif", fontSize: "clamp(15px,2.2vw,22px)", color: COLORS.goldLight, marginBottom: 16, direction: "rtl", lineHeight: 2, width: "100%", textAlign: "right" }}>بسم اللّٰہ الرحمن الرحیم</div>
             <h1 style={{ fontFamily: "'Amiri',serif", fontSize: "clamp(30px,4.5vw,62px)", color: COLORS.cream, fontWeight: 700, lineHeight: 1.1, marginBottom: 8 }}>Dr. Muhammad<br />Hammad Lakhvi</h1>
-            <div className="urdu" style={{ fontSize: "clamp(14px,1.8vw,20px)", color: COLORS.goldLight, marginBottom: 14, lineHeight: 2 }}>پروفیسر ڈاکٹر محمد حماد لکھوی حفظہ اللہ</div>
+            <div className="urdu" style={{ fontSize: "clamp(14px,1.8vw,20px)", color: COLORS.goldLight, marginBottom: 14, lineHeight: 2 }}>پروفیسر ڈاکٹر محمد حماد لکھوی حفظہ اللّٰہ</div>
             <div style={{ width: 80, height: 2, background: COLORS.gold, marginBottom: 18 }} />
-            <p style={{ fontFamily: "'Libre Baskerville',serif", fontSize: "clamp(12px,1.4vw,15px)", color: "rgba(250,246,239,0.85)", marginBottom: 8, lineHeight: 1.8 }}>President Faith Foundation, Former Dean & Professor, Institute of Islamic Studies<br />University of the Punjab, Lahore</p>
+            <div className="urdu" style={{ fontSize: 13, color: "rgba(250,246,239,0.9)", marginBottom: 10, lineHeight: 1.8, textAlign: "right", width: "100%" }}>
+                • صدر فیتھ فاؤنڈیشن &nbsp; • سابق ڈین کلیہ علوم اسلامیہ جامعہ پنجاب <br />
+                • ڈائریکٹر ادارہ علوم اسلامیہ جامعہ پنجاب لاہور پاکستان
+            </div>
+            <p style={{ fontFamily: "'Libre Baskerville',serif", fontSize: "clamp(11px,1.3vw,14px)", color: "rgba(250,246,239,0.75)", marginBottom: 12, lineHeight: 1.6 }}>
+                President Faith Foundation · Former Dean, Faculty of Islamic Studies <br />
+                Director, Institute of Islamic Studies, University of the Punjab
+            </p>
             <div className="hero-creds" style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 28 }}>
               {["Post-Doc — Glasgow UK", "Ph.D. Islamic Studies", "LLB Law", "MA Islamiyat — Gold Medal"].map(c => (
                 <span key={c} style={{ background: "rgba(184,151,42,0.18)", border: `1px solid ${COLORS.gold}`, color: COLORS.goldLight, padding: "5px 13px", borderRadius: 2, fontSize: 11, letterSpacing: "0.04em", fontFamily: "'Libre Baskerville',serif" }}>{c}</span>

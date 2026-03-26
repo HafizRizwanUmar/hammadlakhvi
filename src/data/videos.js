@@ -21,7 +21,7 @@ export const LECTURE_SERIES = [
     en: "Khulasa e Mazameen e Quran | Ramadan 2026",
     channel: "Official Channel",
     thumbnail: "/t1.jpg",
-    description: "🎙️ Dr Muhammad Hammad Bin Mohiyudin Lakhvi (حفظہ اللہ). A comprehensive summary of Quranic themes and messages discussed during Ramadan 2026.",
+    description: "🎙️ Dr Muhammad Hammad Bin Mohiyudin Lakhvi (حفظہ اللّٰہ). A comprehensive summary of Quranic themes and messages discussed during Ramadan 2026.",
     count: 20,
     videos: [
       { id: "5zZPlHzkFnc", title: "Day 1 | Para 1 | الم", ep: "Day 1" },
@@ -79,7 +79,7 @@ export const PAYAM_SUBAH_YEARS = [
       {
         month: "April 2019",
         date: "April 9, 2019",
-        topic: "اللہ کی راہ پر راضی رہنا",
+        topic: "اللّٰہ کی راہ پر راضی رہنا",
         dunyanewsUrl: "https://video.dunyanews.tv/index.php/en/pv/peyam-e-subh/5192/ep-21516/All/2019-04-09?page=61#.Ym5eJNrMLIU",
         youtubeId: "Mo-wfqoMiGE",
       },

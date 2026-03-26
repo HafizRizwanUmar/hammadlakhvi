@@ -32,7 +32,7 @@ export default function NavBar({ active, setPage }) {
         <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px", display: "flex", alignItems: "center", justifyContent: "space-between", height: 64 }}>
           <button onClick={() => navigate("home")} style={{ background: "none", border: "none", cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
             <span style={{ fontFamily: "'Amiri',serif", fontSize: 18, color: COLORS.goldLight, letterSpacing: "0.05em", lineHeight: 1.2 }}>Dr. Muhammad Hammad Lakhvi</span>
-            <span style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 10, color: COLORS.cream, opacity: 0.7, letterSpacing: "0.15em", textTransform: "uppercase" }}>Islamic Scholar · Professor Emeritus</span>
+            <span style={{ fontFamily: "'Libre Baskerville',serif", fontSize: 10, color: COLORS.goldLight, opacity: 0.9, letterSpacing: "0.15em", textTransform: "uppercase" }}>Scholar · Professor · President Faith Foundation</span>
           </button>
           <div className="nav-desktop" style={{ display: "flex", gap: 2 }}>
             {NAV_ITEMS.map(n => (
