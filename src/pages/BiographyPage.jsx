@@ -2,20 +2,150 @@ import { COLORS } from "../constants";
 import { SectionHeader } from "../components/UI";
 
 const BIO_SECTIONS = [
-  { title: "نام و نسب", icon: "🌳", en: "Lineage & Family", urduContent: `محمد حماد بن محی الدین بن محمد علی بن محی الدین عبد الرحمن بن محمد بن بارک اللہ بن محمد امین۔\n\nسلسلہ نسب کے اعتبار سے علوی ہیں — حضرت علی ؓ کی غیر فاطمی اولاد حضرت امام محمد بن حنفیہ کے توسط سے آپ کا شجرہ نسب حضرت علیؓ سے جا ملتا ہے۔`, enContent: "Lineage of Dr. Lakhvi traces to Hazrat Ali (RA) through Imam Muhammad ibn Hanafiyyah — he is of the Alawi family from the non-Fatimi branch." },
-  { title: "پیدائش و جائے پیدائش", icon: "📍", en: "Birth", urduContent: `ڈاکٹر محمد حماد لکھوی 9 دسمبر 1965 دیپالپور کے نواح میں واقع ایک گاؤں قلعہ تارا سنگھ میں پیدا ہوئے۔`, enContent: "Born 9 December 1965 in Qila Tara Singh, near Dipalpur, Punjab, Pakistan." },
-  { title: "خاندانی پس منظر", icon: "🏡", en: "Family Background", urduContent: `برصغیر پاک و ہند کا معروف خاندان لکھوی — دین کی اشاعت و تبلیغ میں ان کا ایک طویل سفر ہے جو 300 سال سے زیادہ کے عرصے پر محیط ہے۔\n\nآپ کے آباؤ اجداد میں سے حافظ محمد بن بارک اللہ لکھوی میاں نذیر حسین دہلوی کے شاگرد تھے جنہوں نے پنجابی نظم کی صورت میں 30 سے زیادہ کتابیں لکھیں جن میں سے نہایت مشہور "احوال الآخرۃ" اور قرآن کی تفسیر "تفسیر محمدی" ہے۔\n\nمرزا قادیانی کو فاسق و کاذب قرار دینے کی اولیت میں لکھوی بزرگ بھی شامل ہیں۔ آپ کے پڑدادا محی الدین بن عبد الرحمن جنت بقیع میں مدفون ہیں۔ آپ کے دادا مسجد نبوی میں حدیث کے استاد تھے۔`, enContent: "The Lakhvi family has served Islam for over 300 years. Ancestors include students of Mian Nazeer Hussain Dehlawi, early refuters of Mirza Qadiani, and a grandfather who taught Hadith in Masjid Nabawi. Father elected to Pakistan's first assembly." },
-  { title: "تعلیمی مراحل", icon: "🎓", en: "Education", urduContent: `• میٹرک — دیپالپور ہائی سکول — 1982\n• ایف ایس سی — گورنمنٹ کالج دیپالپور — 1984\n• بی اے — پنجاب یونیورسٹی — 1986\n• ایم اے اسلامیات — پنجاب یونیورسٹی — 1988 (پہلی پوزیشن اور گولڈ میڈل)\n• ایم اے عربی — پنجاب یونیورسٹی — 1990 (فرسٹ ڈویژن)\n• پی ایچ ڈی — 2001 (موضوع: حریت فرد کا اسلامی تصور)\n• ایل ایل بی — پنجاب یونیورسٹی لاء کالج — 2008\n• پوسٹ ڈاکٹریٹ — یونیورسٹی آف گلاسگو، اسکاٹ لینڈ، برطانیہ — 2007`, enContent: "Matric 1982, FSc 1984, BA 1986, MA Islamiyat 1st Position & Gold Medal 1988, MA Arabic 1990, Ph.D. 2001, LLB 2008, Post-Doctorate University of Glasgow UK 2007." },
-  { title: "الاجازہ فی الحدیث", icon: "📜", en: "Ijazah in Hadith", urduContent: `شیخ الحدیث مولانا عبد الحلیم سے جزوی طور پر حدیث کی کتابیں پڑھیں۔ اختتام بخاری کے موقع پر شیخ الجامعہ نے آپ کو سند اور (الاجازہ فی الحدیث) مرحمت فرمائی۔`, enContent: "Received formal Ijazah in Hadith from Sheikh al-Hadith Maulana Abdul Haleem upon the completion of Sahih al-Bukhari." },
-  { title: "تدریسی مراحل", icon: "🏛️", en: "Academic Career", urduContent: `• 1996–2005 — پنجاب یونیورسٹی ادارہ علوم اسلامیہ — بطور لیکچرار\n• 2005–2010 — اسسٹنٹ پروفیسر\n• 2010–2014 — اسوسیٹ پروفیسر\n• 2014–2019 — پروفیسر\n• 2019 تا حال — ڈین، فیکلٹی ادارہ علوم اسلامیہ، جامعہ پنجاب`, enContent: "35+ years of academic service. Lecturer 1990, joined Punjab University IIS 1996, rose to Dean (2019–present)." },
-  { title: "تعلیمی عہدے", icon: "🎖️", en: "Academic & Institutional Positions", urduContent: `• ڈین، فیکلٹی ادارہ علوم اسلامیہ، پنجاب یونیورسٹی لاہور\n• ممبر متحدہ علماء بورڈ پنجاب\n• وائس چیئرمین پیغام ٹی وی\n• ایڈیٹر "القلم" (ایچ ای سی تسلیم شدہ ریسرچ جرنل) — 2008–2019\n• ممبر پنجاب قرآن بورڈ، حکومت پنجاب (2011 تا حال)\n• اسلامیات سبجیکٹ ایکسپرٹ — فیڈرل پبلک سروس کمیشن\n• مذہبی ماہر — پی ٹی وی، اے ٹی وی، لاہور نیوز، پیغام ٹی وی، جیو نیوز، دنیا نیوز`, enContent: "Dean IIS Punjab University, Vice Chairman Pegham TV, Editor Al-Qalam Journal 2008–2019, Member Punjab Quran Board, Expert at FPSC and PPSC." },
-  { title: "بین الاقوامی کانفرنسز", icon: "🌍", en: "International Conferences", urduContent: `آپ نے 17 سے زائد ملکی و غیر ملکی بین الاقوامی کانفرنسوں میں شرکت کی اور کئی ایک میں اپنے فکر انگیز مقالے پیش کیے۔`, enContent: "Participated in 17+ national and international conferences, presenting research papers worldwide." },
-  { title: "دینی و تبلیغی خدمات", icon: "🕌", en: "Religious & Dawah Services", urduContent: `2015 سے اب تک ہر ہفتے پیغام ٹی وی پر آپ کا تفسیر القرآن کا درس جاری ہے۔ 2009 سے تاحال مسجد المبارک لاہور میں آپ خطبہ و امامت نماز جمعہ کے فرائض سر انجام دے رہے ہیں۔`, enContent: "Friday Khutbah at Masjid Al-Mubarak since 2009, weekly Tafseer on Pegham TV since 2015." },
-  { title: "مشہور ٹی وی پروگرامز", icon: "📺", en: "Famous TV Programs", urduContent: `• تفسیر القرآن — پیغام ٹی وی\n• اسلام اور الحاد — پیس ٹی وی\n• دعا مومن کا ہتھیار — پیس ٹی وی\n• حدیث جبرئیل — پیس ٹی وی\n• روشنی — لاہور نیوز\n• پیام صبح — دنیا نیوز`, enContent: "Tafseer Al-Quran (Pegham TV), Islam & Atheism (Peace TV), Dua Momin Ka Hathiyar, Hadith Jibril, Roshni, Payam Subah (Dunya News)." },
-  { title: "ایوارڈز", icon: "🥇", en: "Awards & Distinctions", urduContent: `آپ نے ایم اے میں پہلی پوزیشن لے کر گولڈ میڈل حاصل کیا — پنجاب یونیورسٹی لاہور۔`, enContent: "Gold Medal — 1st Position in MA Islamiyat, University of the Punjab, Lahore." },
-  { title: "اساتذہ", icon: "🌟", en: "Notable Teachers", urduContent: `• مولانا محی الدین لکھوی رحمہ اللہ\n• مولانا معین الدین لکھوی رحمہ اللہ\n• شیخ الحدیث مولانا عبد الحلیم رحمہ اللّٰہ\n• ڈاکٹر حمید اللہ\n• پروفیسر ڈاکٹر جمیلہ شوکت\n• ڈاکٹر ممتاز احمد سالک`, enContent: "Studied under Sheikh al-Hadith Maulana Abdul Haleem (Ijazah), Dr. Hameedullah, Prof. Dr. Jameela Shaukat, and others." },
-  { title: "کتب", icon: "📚", en: "Books Published", urduContent: `• حریت فرد کا اسلامی تصور (مقالہ پی ایچ ڈی)\n• رابطہ عالم اسلامی کی دینی خدمات (مقالہ ایم اے)\n• آبادی اور ترقی (کتابچہ — مکتبہ دار السلام)`, enContent: "3 major books: PhD thesis on individual freedom in Islam, MA thesis on Rabita al-Alam al-Islami, and a booklet on population and development." },
+  { 
+    title: "نام و نسب ", 
+    icon: "🌳", 
+    en: "Name & Lineage", 
+    urduContent: `محمد حماد بن محی الدین بن محمد علی بن محی الدین عبد الرحمن بن محمد بن بارک اللہ بن محمد امین۔سلسلہ نسب کے اعتبار سے علوی ہیں حضرت علی ؓ کی غیر فاطمی اولاد حضرت امام محمد بن حنفیہ کے توسط سے آپ کا شجرہ نسب حضرت علی ؓ سے جا ملتا ہے۔`, 
+    enContent: "Dr. Lakhvi's lineage traces back to Hazrat Ali (RA) through Imam Muhammad ibn al-Hanafiyyah (RA), belonging to the Alawi family." 
+  },
+  { 
+    title: "پیدائش و جائے پیدائش", 
+    icon: "📍", 
+    en: "Birth & Workplace", 
+    urduContent: `ڈاکٹر محمد حماد لکھوی 9 سمبر 1965 دیپالپور کے نواح میں واقعہ ایک گاؤں قلعہ تارا سنگھ میں پیدا ہوئے۔`, 
+    enContent: "Born on December 9, 1965, in Qila Tara Singh, near Dipalpur, Punjab." 
+  },
+  { 
+    title: "خاندانی پس منظر", 
+    icon: "🏡", 
+    en: "Family Background", 
+    urduContent: `برصغیر پاک و ہند کا معروف خاندان لکھوی دین کی اشاعت و تبلیغ میں ان کا ایک طویل سفر ہے جو 300 سال سے زیادہ کے عرصے پر محیط ہے۔آپ کے آباؤ اجداد میں سے حافظ محمد بن بارک اللہ لکھوی میاں نذیر حسین دہلوی کے شاگرد تھے جنہوں نے پنجابی نظم کی صورت میں 30سے زیادہ کتابیں لکھیں جن میں سے نہایت مشہور "احوال الآخرۃ" اور قرآن کی تفسیر"تفسیر محمدی"ہے۔ ابواب الصرف کے نام سے سب سے پہلی کتاب لکھنے کا اعزاز بھی حافظ محمد بن بارک اللہ لکھوی کو حاصل ہے۔\n\nمرزا قادیانی کو فاسق و کاذب قرار دینے کی اولیت میں لکھوی بزرگ بھی شامل ہیں خود مرزا کی کتاب "حقیقت الوحی" میں لکھوی بزرگوں کی خط و کتابت کا تذکرہ بھی اس بات کی دلیل ہے۔ مرزا کے بارے میں مولانا محى الدين عبد الرحمن آپ کے پڑدادا کا اولین فتوی“ان فرعون و هامان و جنودهما کانوا خاطئین" کا مفصل تذکرہ مولانا اسحاق بھٹی صاحب کی کتاب "تذکرہ مولانا محی الدین لکھوی" میں بھی ملتاہے۔مولانا محی الدین عبد الرحمن کے اس فتوے کے جواب میں مرزا غلام احمدقادیانی نے جواب میں آپ کے دادا کو کہا کہ اللہ نے مجھے بھی الہام کیا ہے "انا شانئک ھو الابتر" کہ تیری نسل آگے نہیں چلے گی ۔مرزا کے جھوٹے ہونے اور اس کی تکذیب میں اللہ کے حکم سے مرزے کی زندگی میں ہی اس کی یہ بات جھوٹی ثابت ہوئی اور آپ کےپڑداد اکے گھر آپ کے دادا محمد علی مدنی کی ولادت ہوئی ، مرزا کو جب خبر ہوئی کہنے لگا اب اس سے آگے ان کی نسل بالکل نا چلے گی اس کی یہ بات بھی جھوٹی نکلی اور آج اللہ کے فضل سے ڈاکٹر محمد حماد لکھوی سمیت آپ کے پڑدادا کی اتنی اولاد موجود ہے ماشاء اللہ جو شاید گننا مشکل ہو جائے یہ امر واقع مرزا کے جھوٹے ہونے کی واقعاتی دلیل ہے۔\n\nآپ کے پڑدادامحی الدین بن عبدالرحمن جنت بقیع میں مدفون ہیں۔آپ کے دادا مسجد نبوی میں حدیث کے استاد تھے۔آپ کے والد محی الدین لکھوی ایک عالم دین ہونے کے ساتھ ساتھ پاکستان کی پہلی اسمبلی میں منتخب ہوئے آپ کے چچا جو کہ آپ کے سسر بھی ہیں اہل حدیث جماعت کے سربراہ تھے اور کئی بار پاکستان کی پارلیمنٹ میں منتخب ہوئےانہوں نے جنرل ضیاء الحق کی صدارت اور تحریک پاکستان میں نمایاں کرداد ادا کیا۔`, 
+    enContent: "The Lakhvi family has a 300-year history of serving Islam. His ancestors were scholars, authors, and parliamentarians who played key roles in the Pakistan Movement and religious education." 
+  },
+  { 
+    title: "تعلیمی مراحل", 
+    icon: "🎓", 
+    en: "Educational Background", 
+    urduContent: `آپ نے ناظرہ قرآن الہ آباد کی جامع مسجد سےپڑھا۔سکول کی ابتدائی تعلیم اپنے گاؤں سے حاصل کی ۔\n\n• میٹرک — دیپالپور ہائی سکول — 1982\n• ایف ایس سی — گورنمنٹ کالج دیپالپور — 1984\n• بی اے — پنجاب یونیورسٹی — 1986\n• ایم اے اسلامیات — پنجاب یونیورسٹی — 1988 (پہلی پوزیشن اور گولڈ میدل حاصل کیا)\n• ایم اے عربی — پنجاب یونیورسٹی — 1990 (فرسٹ ڈویژن)\n• پی ایچ ڈی — 2001 (مقالہ: حریت فرد کا اسلامی تصور)\n• ایل ایل بی — پنجاب یونیورسٹی لاء کالج — 2008\n• پوسٹ ڈاکٹریٹ — یونیورسٹی آف گلاسگو، اسکاٹ لینڈ، برطانیہ — 2007 (گورنمنٹ آف پاکستان سکالرشپ)`, 
+    enContent: "PhD in Islamic Studies, Post-Doctorate from the University of Glasgow, and LLB from Punjab University. Recipient of a Gold Medal in MA." 
+  },
+  { 
+    title: "الاجازہ فی الحدیث", 
+    icon: "📜", 
+    en: "Ijazah in Hadith", 
+    urduContent: `میٹرک کے بعد کچھ عرصہ جامعہ ابی بکر کراچی میں زیر تعلیم رہے۔جامعہ محمدیہ اوکاڑہ میں بطور ناظم دفتر خدمات انجام دیتے رہے تو اسی دوران درس نظامی کی کتب کا مطالعہ بھی کیا۔شیخ الحدیث مولانا عبد الحلیم سے جذوی طور پر حدیث کی کتابیں پڑھیں۔اختتام بخاری کے موقع پر شیخ الجامعہ نے آپ کو سند اور (الاجازہ فی الحدیث) بھی مرحمت فرمائی۔`, 
+    enContent: "Formally received Ijazah in Hadith from Sheikh al-Hadith Maulana Abdul Haleem after studying Dars-e-Nizami and Hadith texts." 
+  },
+  { 
+    title: "تدریسی مراحل", 
+    icon: "🏛️", 
+    en: "Teaching Career", 
+    urduContent: `بطور لیکچرارآپ گورنمنٹ کالج ٹوبہ ٹیک سنگھ میں 1990 میں تعینات ہو ئے۔تھوڑے عرصے بعد دسمبر 1990میں آپ کی پتوکی ٹرانسفر ہوگئی اس کے بعد پریل 1991میں گورنمنٹ کالج اوکاڑہ میں منتقل ہو گئے۔\n\n• 1996–2005 — لیکچرار (ادارہ علوم اسلامیہ، پنجاب یونیورسٹی)\n• 2005–2010 — اسسٹنٹ پروفیسر\n• 2010–2014 — اسوسیٹ پروفیسر\n• 2014–2019 — پروفیسر\n• 2019 تا حال — ڈین (ادارہ علوم اسلامیہ، جامعہ پنجاب)\n\nآپ نے 1990 سے اب تک درجہ ذیل مضامین پڑھائے:\n\nپی ایچ ڈی / ایم فل لیول:\n• اسلامی نطریہ (منتخب متن کا تنقیدی مطالعہ)\n• جدید مغربی ادب میں اسلام کا مطالعہ\n• اسلامی تاریخ\n• تحقیق کے طریقہ کار (اسلامی تحقیق کا طریقہ کار، ببلیوگرافی، خطۃ البحث)\n\nماسٹر / ایم اے لیول:\n• تفسیر القرآن\n• اسلامی تاریخ\n• اسلام اور فلسفہ (یونانی فلسفہ اور اسلامی نطریہ)\n• حدیث و علوم حدیث\n• عربی\n\nبی اے لیول:\n• قرآن (ترجمہ و تفسیر)\n• حدیث (منتخب متن)\n• فقہ (منتخب متن)\n• ابتدائی مسلم تاریخ`, 
+    enContent: "Extensive teaching experience from Lecturer to Dean at Punjab University, covering PhD, MPhil, MA, and BA levels across multiple Islamic subjects." 
+  },
+  { 
+    title: "تعلیمی عہدے", 
+    icon: "🎖️", 
+    en: "Academic Titles", 
+    urduContent: `• ڈین، فیکلٹی ادارہ علوم اسلامیہ ، پنجاب یونیورسٹی لاہور۔ پاکستان\n• ممبر متحدہ علماء بورڈ پنجاب\n• وائس چئیرمین پیغام ٹی وی\n• پروفیسر،ادارہ علوم اسلامیہ پنجاب یونیورسٹی لاہور۔ پاکستان\n• ایڈیٹر، "القلم" (ادارہ علوم اسلامیہ کا ایچ ای سی سے تسلیم شدہ ریسرچ جرنل )۔ (2008-2019)\n• کنٹرولر امتحانات ادارہ علوم اسلامیہ، پنجاب یونیورسٹی، لاہورپاکستان\n• ممبر بورڈ آف اسٹڈیز ادارہ علوم اسلامیہ، پنجاب یونیورسٹی،لاہور ، پاکستان\n• ممبر بورڈ آف فیکلٹی، فیکلٹی شعبہ علوم اسلامیہ &اورینٹل لرننگ، پنجاب یونیورسٹی لاہور (1999-2005)\n• ممبر ڈاکٹورل پروگرام کمیٹی، شعبہ علوم اسلامیہ، پنجاب یونیورسٹی\n• ممبر بورڈ آف فیکلٹی، فیکلٹی شعبہ علوم اسلامیہ، پنجاب یونیورسٹی لاہور۔پاکستان\n• ممبر اکیڈمک سٹاف ایسوسی ایشن، پنجاب یونیورسٹی لاہور۔پاکستان\n• ممبر اتحاد بن المسلمین کمیٹی حکومت پنجاب (2009 سے آج تک)\n• ممبر پنجاب قرآن بورڈ، حکومت پنجاب (2011 سے آج تک)\n• اسلامیات کے موضوع کے ماہر (سبجیکٹ ایکسپرٹ) فیڈرل پبلک سروس کمیشن\n• اسلامیات کے مضمون کے ماہر (سبجیکٹ ایکسپرٹ) پنجاب پبلک سروس کمیشن\n• اسلامیت سبجیکٹ ایکسپرٹ، ورچوئل یونیورسٹی پاکستان (2004)\n• ممبرالقلم ایجوکیشنل اینڈ ویلفیئر سوسائٹی (این جی او)، لاہور\n• مذہبی ماہر، ریڈیو پاکستان لاہور (2003-2006)\n• مذہبی ماہر، ریڈیو رمضان گلاسگو UK (2006-2007)\n• مذہبی ماہر ۔ پی ٹی وی، اے ٹی وی، لاہور نیوز، پیغام ٹی وی، جیو نیوز، دنیا نیوز، وقت ٹی وی، ایس ایم ٹی این ٹی وی۔`, 
+    enContent: "Holds numerous prominent positions including Dean at PU, Member of Punjab Quran Board, Vice Chairman of Pegham TV, and subject expert for FPSC/PPSC." 
+  },
+  { 
+    title: "بین الاقوامی کانفرنسز", 
+    icon: "🌍", 
+    en: "International Conferences", 
+    urduContent: `آپ نے 17 سے زائد ملکی و غیر ملکی بین الاقوامی کانفرنسوں میں شرکت کی اور کئی ایک میں اپنے فکر انگیز مقالے پیش کیے۔`, 
+    enContent: "Participated in over 17 national and international conferences, presenting research papers on various Islamic themes." 
+  },
+  { 
+    title: "دینی و تبلیغی خدمات و سرگرمیاں", 
+    icon: "🕌", 
+    en: "Religious Services & Activities", 
+    urduContent: `بتوفیق الہی آپ کی پوری زندگی دین کی تبلیغ و اشاعت میں صرف ہوئی ۔ بچپن ہی میں والد محترم کے تبلیغی دوروں میں اکثر آپ اور آپ کے باقی بھائی ان کے ساتھ جایا کرتے تھے، جوانی کی دہلیز پر قدم رکھا تو اپنے والد محترم کے ساتھ بطور ان کے خادم اور معاون بھی سفر تبلیغ دین کے لیے کیے۔\n\nگاؤں میں آپ مولانا محی الدین لکھوی رحمۃ اللہ علیہ کی غیر موجودگی میں خطبہ دیتے ۔1990سے جامعہ محمدیہ اوکاڑہ میں مستقل خطبہ دینا شروع کیا ۔2005 میں برطانیہ چلے گئے اور وہاں ایک مسجد میں انگریزی زبان میں خطبہ دیتے رہے۔2009 سے تاحال مسجد المبارک لاہور میں آپ خطبہ و امامت نماز جمعہ کے فرائض سر انجام دے رہے ہیں۔\n\n"اسلامی تہذیب و تمدن اور تہذیبوں کی عصری صورت حال " پر گورنر ہاؤس لاہور میں سال 2006 میں گورنر پنجاب کو بریفنگ دی۔ سال 2008 سے 2019 تک ادارہ علوم اسلامیہ کے ایچ ای سی سے تسلیم شدہ جرنل کے ایڈیٹر ہونے کی ذمہ اداری بھی ادا کی۔ تبلیغ دین کے لیے کئی دفعہ بیرون ملک بھی جاتے رہتے ہیں۔ملک کے اندر مختلف مدارس جامعات اور دیگر تعلیمی اداروں میں آپ کے دروس و خطبات منعقد ہوتے رہتے ہیں۔ 2015 سے اب تک ہر ہفتے پیغام ٹی وی پر آپ کاتفسیر القرآن کا درس جاری ہے جس سے دنیا بھر میں لوگ مستفید ہو رہے ہیں۔`, 
+    enContent: "Lifelong devotion to Dawah. Weekly Tafseer lectures on Pegham TV and Friday sermons at Masjid Al-Mubarak, Lahore. Also briefed the Governor on Islamic Civilizations." 
+  },
+  { 
+    title: "مشہور ٹی وی پروگرامز", 
+    icon: "📺", 
+    en: "Famous TV Programs", 
+    urduContent: `تفسیر القرآن — پیغام ٹی وی\nاسلام اور الحاد — پیس ٹی وی\nدعا مومن کا ہتھیار — پیس ٹی وی\nحدیث جبرئیل — پیس ٹی وی\nروشنی — لاہور نیوز\nپیام صبح — دنیا نیوز\nپیام پاکستان — پیغام ٹی وی\nزکوۃ — پیس ٹی وی`, 
+    enContent: "Host and expert on various TV programs including Pegham TV, Peace TV, Dunya News, and Lahore News." 
+  },
+  { 
+    title: "ایوارڑذ", 
+    icon: "🥇", 
+    en: "Awards", 
+    urduContent: `آپ نے ایم اے میں پہلی پوزیشن لے کر گولڈ میڈل حاصل کیا۔`, 
+    enContent: "Recipient of the Gold Medal for securing 1st Position in MA Islamic Studies at Punjab University." 
+  },
+  { 
+    title: "اساتذہ", 
+    icon: "🌟", 
+    en: "Teachers & Mentors", 
+    urduContent: `• مولانا معین الدین\n• مولانا محی الدین\n• شیخ الحدیث مولانا عبد الحلیم\n• ڈاکٹر شبیر احمد\n• ڈاکٹر حمید اللہ\n• حافظ محمد اختر\n• پروفیسر ڈاکٹر جمیلہ شوکت\n• ممتاز احمد سالک`, 
+    enContent: "Studied under renowned scholars including Maulana Mohyuddin Lakhvi, Dr. Muhammad Hamidullah, and Prof. Dr. Jameela Shoukat." 
+  },
+  { 
+    title: "کتب", 
+    icon: "📚", 
+    en: "Books", 
+    urduContent: `• حریت فرد کا اسلامی تصور (مقالہ پی ایچ ڈی)\n• رابطہ عالم اسلامی کی دینی خدمات (مقالہ ایم اے)\n• آبادی اور ترقی (کتابچہ مکتبہ دار السلام)`, 
+    enContent: "Author of books on individual freedom in Islam, Rabita Alam-e-Islami, and population/development." 
+  },
+  { 
+    title: "شائع شدہ آرٹیکلز", 
+    icon: "📝", 
+    en: "Published Articles", 
+    urduContent: `1۔مطالعہ سیرت کا مادی منہج(القلم ، جامعہ پنجاب لاہور ، V/I:22/2دسمبر2017 صفحہ181-207)
+2۔تصور جلال ، اقبال اور رومانوی مفکرین کے افکار کا تقابلی مطالعہ (القلم ، جامعہ پنجاب لاہور ، V/I:12/2دسمبر2016 ، صفحہ 222-231)
+3۔پاکستان میں عورتوں کے حق وراثت سے محرومی کا مسئلہ عصری اور شرعی حوالے سے ایک تحقیقی جائزہ (مجلہ تحقیق ،آرئینٹل کالج ،جامعہ پنجاب لاہور ،2011 V:31 Serial :78, )
+4۔تحدید ملکیت اور گردش دولت کا اسلامی تصور (پاکستان جرنل آف اسلامک ریسرچ ،بہاؤ الدین زکریا یونیورسٹی ، ملتان،V7جون 2011،صفحہ 29-51)
+5۔برطانوی عہد کے مسلم معاشرے پر اثرات (الاضواء ،جامعہ پنجاب لاہور ، V/I:25/33جون 2010،صفحہ 185 -199)
+6۔بین المذاہب ہم آہنگی اوررواداری کے بنیادی اصول قرآن و سنت کی روشنی میں (القلم ، جامعہ پنجاب لاہورV/I:25/33جون 2010 صفحہ 122-139)
+7۔پاکستانی علاقوں میں رواج پذیر رسم وٹہ سٹا :اسلامی اور عصری تحقیقی جائزہ (القلم ، جامعہ پنجاب لاہور، V/I:14/14دسمبر2009،صفحہ 212-235)
+8۔اسلامی تصور حکمرانی اور اس کے حدود و اختیارات (القلم ، جامعہ پنجاب لاہور ، V/I:13/13دسمبر 2009 ،صفحہ176-186)
+9۔فلسفہ حدود و قیود اور فلاح انسانیت (القلم ، جامعہ پنجاب لاہور، V/I:10/10،صفحہ217-234،س:2006)
+10۔آبادی اور ترقی (محادث لاہور ،اگست 2005)
+11۔آذادی اظہار اور تحریک اسلام (القلم ، جامعہ پنجاب لاہور، صفحہ 259-283 ،س:2005)
+12۔حقیقت زندگی (القلم ، جامعہ پنجاب لاہور ،V/I:8/8 دسمبر 2004،صفحہ 171-202)
+13۔میعار زندگی (القلم ، جامعہ پنجاب لاہور V/I:7/7،صفحہ:135-167،س:2003)
+14۔تخلیق انسانیت کا مقصد(افکار معلم ، لاہور نومبر 2003)
+15۔حریت فکر کامفہوم اور اہمیت (افکار معلم ،لاہور 2003)
+16۔اسلام میں حریت فکر کی حدود(القلم ، جامعہ پنجاب لاہور،V/I:5/5،جون1999،صفحہ:103-116)
+17۔مغربی معاشرے میں حریت فکر کا تصور(القلم جامعہ پنجاب لاہور ،مجلہ تحقیق ، جامعہ پنجاب لاہور1999)
+18۔حریت فرد کا اسلامی تصور (القلم ، جامعہ پنجاب لاہور، 1998V/I:5/5،صفحہ 129-145)
+19۔شاہ ولی اللہ کے اصول تجدید مشیت -عصری تناظر میں(ابحاث ، V7/27ستمبر 2022،صفحہ1-20)
+20۔ہجرت حبشہ کے اسباب و علل کی مادی تاویلات کا تنقیدی جائزہ(جہات الاسلام جامعہ پنجاب لاہور ، V12/2تمبر 2022،صفحہ112 تا 126)
+21. A Glimpse in the History of Nationalism in Muslim World (Al-Adhwa, P.U. LHR, Volume / Issue XXIV/ XLII, Page Nos. 21-36, Dec. 2014)
+22. Faith in Predestination and its Philosophy- An Islamic Perspective (Al-Adhwa, P.U. LHR, Volume / Issue XXIV/ XXXIV, Page Nos. 1-10, Dec. 2010)
+23. A Critical Study of "Women Protection Bill 2006"- in the light of the Quran and the Sunnah (Pakistan Journal of Islamic Research” BZU, Multan., Volume 6, Page Nos 63-76, Dec. 2010)
+24. Historical Foundations of Western Though (“Al-Qalam” P.U. LHR, Volume / Issue 15/ 2, Page Nos 51-65, Dec. 2010)
+25. Western Feminist Movement and “Women Protection Bill of Pakistan”-An analytical study “Pakistan Journal of Social Sciences” B.Z.U, Multan, Volume / Issue : 30/ 2, Page Nos 245-250, Dec. 2010)
+26. Islam and Fertility Regulations (e-Journal of “WASET” World Academy of Science, Engineering & Technology, FRANCE, Internati onal/ 66, Page Nos 640-642 , June 2010)
+27. Ibn Khaldun and his Politico Economic Thoughts (Al-Qalam” P.U. LHR, Volume / Issue : 14/ 14 Page Nos 63-75, Dec. 2009)
+28. Scope of Religious Freewill in Islamic Realm (Al-Qalam” P.U. LHR, Volume / Issue :XXIV/ XXXII , Page Nos 19-29, 2009)
+30. Issue of Gender and Feminist Movement: An Historical Appraisal (Pakistan Journal of Islamic Research” BZU, Multan., Volume 4, Page Nos 1-21, 2009)
+31. The Concept of Peace and Security in Islam (A chapter in book "The World's Religions after September 1.1" (edited by Arvind Sharma, McGill University Canada), Published in USA. International, Page Nos 83-86, 2008)
+32. The Holy Prophet (SAW) as a Messenger of Peace in the World (Al-Adhwa, P.U. LHR, Volume / Issue XXII/ XXX, Page Nos. 1-16, Dec. 2008)
+33. Methodology of Tafseer e Muhammadi (Al-Qalam” P.U. LHR, Volume / Issue :12/12 , Page Nos 1-30 June 2008)
+34. Methodology of Tafseer e Muhammadi and contemporary Trends of Quranic Interpretations (Faculty of Islamic Revealed Knowledge, International Islamic University Kuala Lumpur, Malaysia, International , Page Nos 233-270 , 2006 )
+35. Early Patterns of Change in Muslim Societies – A Review (LHR 2015)
+36. The Economic Terminologies of Shah Waliullah – A Critical Analysis (International Journal of Special Education , Volume / Issue: 37/3 , Page Nos 3026- 3040 , 2022) 
+38. Psychological Aspects of Harassment at Workplace, Social Effects & Islamic Remedies (Pakistan Journal of Islamic Philosophy , Volume / Issue 4/1 , Page Nos 1-20 , June 2022 )
+39. Harassment at Work Place, Social Effects & Islamic Remedies, In Context of South Punjab (Webology, Volume / Issue 19/2 , Page Nos 8602- 8617 , 2022)
+40. Males and the Islamic Family System: An Analytical Study of Legislation on Domestic Violence in Pakistan (Webology, Volume / Issue 19/4 , Page Nos 222-230 , 2022)
+41. Attendance of Women in Mosques in the Perspectives of Basic Sources of Islamic Law and Current Era (International Research Journal on Islamic Studies , V3 , Page Nos 1-18 , Dec 2018 )
+42. Introduction, History, Dangers and Challenges of Cyber Crimes (“Al-Qalam” P.U. LHR , Volume / Issue 25/2 , Page Nos 167-183 ,Dec 2020)
+43. Methodology of Qur‟anic Interpretation in Faid al-bari by Anwar Shah Kashmiri: A Research Study (Journal of Islamic Civilization and Culture, Islamabad , Volume / Issue 3/1, Page Nos : 290-322 , June 2022)
+44. Types of Incentives and Advertisements in Commercial Deals, A Research Study in the Light of Shariah (Iqan, Faisalabad , Volume / Issue 1/1 , Page Nos 81-104 , Dec.2018)
+45. Diversity in Muslim - Christian Relationship - Views of Qur‟an and Sunnah (“Al-Qalam” P.U. LHR , Volume / Issue 22/1 , Page Nos 47-63 ,Dec 2017)
+46. The Challenge for Muslim Intellectuals: Unraveling the postmodernist enigma (“Al-Qalam” P.U. LHR , Volume / Issue 21/1 , Page Nos 17-32 ,Dec 2016)
+47. The Authenticity of women‟s Witness in Islam: A Study in the Light of Al-Qur‟an (“Al-Qalam” P.U. LHR , Volume / Issue 20/2 , Page Nos 1-16,Dec 2015)`, 
+    enContent: "A compilation of 47 research articles published in HEC-recognized journals and international platforms, covering topics from Islamic history to contemporary social issues." 
+  },
 ];
+
 
 export default function BiographyPage() {
   return (
