@@ -34,7 +34,9 @@ export default function CommunityPage({ onProgramClick }) {
         {/* Payam-e-Subah section */}
         <div style={{ background: COLORS.white, border: `1px solid ${COLORS.border}`, borderRadius: 2, padding: "36px", marginBottom: 36 }}>
           <div style={{ display: "flex", gap: 16, alignItems: "center", marginBottom: 20, flexWrap: "wrap" }}>
-            <div style={{ fontSize: 40 }}>🌅</div>
+            <div style={{ width: 80, height: 80, background: COLORS.darkGreen, borderRadius: 4, overflow: "hidden", flexShrink: 0 }}>
+              <img src="/payam2019.jpeg" alt="Payam-e-Subah" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+            </div>
             <div>
               <div className="urdu" style={{ fontSize: 22, color: COLORS.darkGreen, fontWeight: 700, lineHeight: 2 }}>پیام صبح — دنیا نیوز</div>
               <div style={{ fontSize: 14, color: COLORS.textLight }}>Payam-e-Subah · Dunya News · Annual Programs 2019–2022</div>
