@@ -73,7 +73,7 @@ export const PAYAM_SUBAH_YEARS = [
   {
     year: "2019",
     label: "۲۰۱۹",
-    thumbnail: "/payam-2019.jpg", // place in public folder
+    thumbnail: "/payam2019.jpeg",
     facebookUrl: "https://www.facebook.com/share/1GUoLS5Qvu/",
     episodes: [
       {

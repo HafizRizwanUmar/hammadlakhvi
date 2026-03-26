@@ -78,7 +78,14 @@ export default function ArticlesPage({ onArticleSelect }) {
           <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
             {filtered.map((a, i) => (
               <div key={a.id || i} className="article-card" onClick={() => onArticleSelect(a)}
-                style={{ background: COLORS.white, border: `1px solid ${COLORS.border}`, padding: "18px 20px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12, borderLeft: `4px solid ${catColor(a.category)}`, animation: `slideIn 0.4s ease ${i * 0.03}s both`, boxShadow: "0 1px 4px rgba(0,0,0,0.04)" }}>
+                style={{ background: COLORS.white, border: `1px solid ${COLORS.border}`, padding: "18px 20px", display: "flex", alignItems: "center", flexWrap: "wrap", gap: 16, borderLeft: `4px solid ${catColor(a.category)}`, animation: `slideIn 0.4s ease ${i * 0.03}s both`, boxShadow: "0 1px 4px rgba(0,0,0,0.04)" }}>
+                
+                {a.thumbnail && (
+                  <div style={{ width: 80, height: 60, borderRadius: 2, overflow: "hidden", border: `1px solid ${COLORS.border}`, flexShrink: 0 }}>
+                    <img src={a.thumbnail} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                  </div>
+                )}
+
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <div className={a.lang === "urdu" ? "urdu" : ""} style={{ fontSize: a.lang === "urdu" ? 16 : 15, color: COLORS.darkGreen, fontWeight: 600, marginBottom: a.titleEn ? 2 : 6, lineHeight: a.lang === "urdu" ? 2 : 1.4 }}>{a.title}</div>
                   {a.titleEn && a.lang === "urdu" && <div style={{ fontSize: 12, color: COLORS.textLight, fontStyle: "italic", marginBottom: 6 }}>{a.titleEn}</div>}

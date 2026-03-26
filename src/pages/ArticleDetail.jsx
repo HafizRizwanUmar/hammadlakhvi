@@ -97,6 +97,13 @@ export default function ArticleDetailPage({ article, onBack }) {
                   <h3 style={{ fontFamily: "'Amiri',serif", fontSize: 16, color: COLORS.darkGreen, margin: 0 }}>Full Article</h3>
                   <span style={{ background: `${COLORS.gold}22`, color: COLORS.gold, border: `1px solid ${COLORS.gold}44`, padding: "2px 8px", fontSize: 9, borderRadius: 2, fontWeight: 700 }}>📄 Full Text</span>
                 </div>
+
+                {article.thumbnail && (
+                  <div style={{ marginBottom: 20, borderRadius: 4, overflow: "hidden", border: `1px solid ${COLORS.border}` }}>
+                    <img src={article.thumbnail} alt={article.title} style={{ width: "100%", height: "auto", display: "block" }} />
+                  </div>
+                )}
+
                 <div
                   className={isUrdu ? "urdu" : ""}
                   style={{
@@ -114,7 +121,16 @@ export default function ArticleDetailPage({ article, onBack }) {
                     overflowX: "hidden",
                   }}
                 >
-                  {article.content}
+                  {(() => {
+                    const text = article.content || "";
+                    const parts = text.split(/(\*\*.*?\*\*)/g);
+                    return parts.map((part, i) => {
+                      if (part.startsWith("**") && part.endsWith("**")) {
+                        return <strong key={i} style={{ color: COLORS.darkGreen }}>{part.slice(2, -2)}</strong>;
+                      }
+                      return part;
+                    });
+                  })()}
                 </div>
 
                 {/* ── Footnotes / References ──────────────────────────── */}
