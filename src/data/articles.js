@@ -310,7 +310,7 @@ Keywords: Islamic teachings, trials and tribulations, trust, obedience, persever
     id: "dawat-e-deen-khawateen",
     title: "دعوت دین میں خواتین کا کردار",
     titleEn: "The Role of Women in Dawah",
-    journal: "Bazeera Center Makkah",
+    journal: "N/A",
     year: "2024",
     lang: "urdu",
     abstract: "اس مضمون میں اسلام کی روشنی میں دعوت دین کے حوالے سے خواتین کی ذمہ داریاں اور ان کے اہم کردار کا جائزہ لیا گیا ہے۔ یہ گفتگو پروفیسر ڈاکٹر محمد حماد لکھوی حفظہ اللّٰہ کی مکہ مکرمہ کی آن لائن دعوت دین کانفرنس سے ماخوذ ہے۔",
