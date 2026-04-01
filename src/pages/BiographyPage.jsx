@@ -13,7 +13,7 @@ const BIO_SECTIONS = [
     title: "پیدائش و جائے پیدائش", 
     icon: "📍", 
     en: "Birth & Workplace", 
-    urduContent: `ڈاکٹر محمد حماد لکھوی 9 سمبر 1965 دیپالپور کے نواح میں واقعہ ایک گاؤں قلعہ تارا سنگھ میں پیدا ہوئے۔`, 
+    urduContent: `ڈاکٹر محمد حماد لکھوی 9 دسمبر 1965 دیپالپور کے نواح میں واقعہ ایک گاؤں قلعہ تارا سنگھ میں پیدا ہوئے۔`, 
     enContent: "Born on December 9, 1965, in Qila Tara Singh, near Dipalpur, Punjab." 
   },
   { 

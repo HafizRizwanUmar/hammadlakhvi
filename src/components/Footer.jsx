@@ -9,8 +9,7 @@ export default function Footer({ setPage }) {
             <div style={{ fontFamily: "'Amiri',serif", fontSize: 20, color: COLORS.goldLight, marginBottom: 8 }}>Dr. Muhammad Hammad Lakhvi</div>
             <div className="urdu" style={{ fontSize: 13, color: "rgba(250,246,239,0.5)", lineHeight: 1.8 }}>
               • صدر فیتھ فاؤنڈیشن <br />
-              • سابق ڈین کلیہ علوم اسلامیہ جامعہ پنجاب <br />
-              • ڈائریکٹر ادارہ علوم اسلامیہ جامعہ پنجاب لاہور
+              • سابق ڈین کلیہ علوم اسلامیہ جامعہ پنجاب
             </div>
           </div>
           <div>

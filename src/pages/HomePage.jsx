@@ -46,12 +46,10 @@ export default function HomePage({ setActive, onProgramClick }) {
             <div className="urdu" style={{ fontSize: "clamp(14px,1.8vw,20px)", color: COLORS.goldLight, marginBottom: 14, lineHeight: 2 }}>پروفیسر ڈاکٹر محمد حماد لکھوی حفظہ اللّٰہ</div>
             <div style={{ width: 80, height: 2, background: COLORS.gold, marginBottom: 18 }} />
             <div className="urdu" style={{ fontSize: 13, color: "rgba(250,246,239,0.9)", marginBottom: 10, lineHeight: 1.8, textAlign: "right", width: "100%" }}>
-                • صدر فیتھ فاؤنڈیشن &nbsp; • سابق ڈین کلیہ علوم اسلامیہ جامعہ پنجاب <br />
-                • ڈائریکٹر ادارہ علوم اسلامیہ جامعہ پنجاب لاہور پاکستان
+                • صدر فیتھ فاؤنڈیشن &nbsp; • سابق ڈین کلیہ علوم اسلامیہ جامعہ پنجاب
             </div>
             <p style={{ fontFamily: "'Libre Baskerville',serif", fontSize: "clamp(11px,1.3vw,14px)", color: "rgba(250,246,239,0.75)", marginBottom: 12, lineHeight: 1.6 }}>
-                President Faith Foundation · Former Dean, Faculty of Islamic Studies <br />
-                Director, Institute of Islamic Studies, University of the Punjab
+                President Faith Foundation · Former Dean, Faculty of Islamic Studies
             </p>
             <div className="hero-creds" style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 28 }}>
               {["Post-Doc — Glasgow UK", "Ph.D. Islamic Studies", "LLB Law", "MA Islamiyat — Gold Medal"].map(c => (
