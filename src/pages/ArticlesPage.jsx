@@ -112,7 +112,7 @@ export default function ArticlesPage({ onArticleSelect }) {
                 
                 {a.thumbnail && (
                   <div style={{ width: 80, height: 60, borderRadius: 2, overflow: "hidden", border: `1px solid ${COLORS.border}`, flexShrink: 0 }}>
-                    <img src={a.thumbnail.startsWith('/') ? `${IMG_BASE}${a.thumbnail}` : a.thumbnail} alt="" style={{ width: "100%", height: "100%\", objectFit: "cover" }} />
+                    <img src={a.thumbnail.startsWith('/') ? `${IMG_BASE}${a.thumbnail}` : a.thumbnail} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                   </div>
                 )}
 
