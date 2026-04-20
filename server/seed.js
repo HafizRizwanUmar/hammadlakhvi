@@ -263,6 +263,16 @@ const seedDB = async () => {
     const conn = await mongoose.connect(process.env.MONGODB_URI);
     console.log('Connected to MongoDB for seeding...');
 
+    // 1. Update Admin User
+    await User.deleteMany({});
+    const adminUser = new User({
+      username: process.env.ADMIN_USERNAME || 'hammadlakhvi_admin',
+      password: process.env.ADMIN_PASSWORD || 'LakhviAdmin#2026'
+    });
+    await adminUser.save();
+    console.log('Admin User Created.');
+
+    // 2. Sync Articles
     await Article.deleteMany({});
     const articlesToInsert = ARTICLES_DATA.map(art => ({
       ...art,
