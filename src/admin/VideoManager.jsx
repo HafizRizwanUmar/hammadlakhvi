@@ -174,6 +174,129 @@ const VideoManager = () => {
                     <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', marginBottom: '8px' }}>Description</label>
                     <textarea value={formData.description} onChange={(e) => setFormData({...formData, description: e.target.value})} rows="3" style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid #ddd' }} />
                   </div>
+
+                  <div style={{ borderTop: '1px solid #eee', marginTop: '20px', paddingTop: '20px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+                      <label style={{ fontSize: '14px', fontWeight: '700' }}>Episodes / Series Videos</label>
+                      <button 
+                        type="button"
+                        onClick={() => setFormData({...formData, videos: [...formData.videos, { id: '', title: '', ep: '' }]})}
+                        style={{ background: 'none', border: 'none', color: COLORS.green, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px', fontSize: '13px' }}
+                      >
+                        <PlusCircle size={16} /> Add Episode
+                      </button>
+                    </div>
+                    
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                      {formData.videos.map((vid, idx) => (
+                        <div key={idx} style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr 0.8fr 40px', gap: '8px', alignItems: 'center', background: '#f8f9fa', padding: '12px', borderRadius: '12px' }}>
+                          <input type="text" placeholder="ID" value={vid.id} onChange={(e) => {
+                            const newVids = [...formData.videos];
+                            newVids[idx].id = e.target.value;
+                            setFormData({...formData, videos: newVids});
+                          }} style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ddd', fontSize: '12px' }} />
+                          
+                          <input type="text" placeholder="Title" value={vid.title} onChange={(e) => {
+                            const newVids = [...formData.videos];
+                            newVids[idx].title = e.target.value;
+                            setFormData({...formData, videos: newVids});
+                          }} style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ddd', fontSize: '12px' }} />
+                          
+                          <input type="text" placeholder="Ep/Part" value={vid.ep} onChange={(e) => {
+                            const newVids = [...formData.videos];
+                            newVids[idx].ep = e.target.value;
+                            setFormData({...formData, videos: newVids});
+                          }} style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ddd', fontSize: '12px' }} />
+                          
+                          <button 
+                            type="button"
+                            onClick={() => {
+                              const newVids = formData.videos.filter((_, i) => i !== idx);
+                              setFormData({...formData, videos: newVids});
+                            }}
+                            style={{ background: 'none', border: 'none', color: '#ff6b6b', cursor: 'pointer' }}
+                          >
+                            <Trash2 size={16} />
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {activeTab === 'PAYAM_SUBAH' && (
+                <>
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                    <div>
+                      <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', marginBottom: '8px' }}>Year (e.g., 2019)</label>
+                      <input type="text" value={formData.year} onChange={(e) => setFormData({...formData, year: e.target.value})} style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid #ddd' }} />
+                    </div>
+                    <div>
+                      <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', marginBottom: '8px' }}>Label (Urdu Year)</label>
+                      <input type="text" value={formData.label} onChange={(e) => setFormData({...formData, label: e.target.value})} style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid #ddd' }} />
+                    </div>
+                  </div>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', marginBottom: '8px' }}>Facebook URL</label>
+                    <input type="text" value={formData.facebookUrl} onChange={(e) => setFormData({...formData, facebookUrl: e.target.value})} style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid #ddd' }} />
+                  </div>
+
+                  <div style={{ borderTop: '1px solid #eee', marginTop: '20px', paddingTop: '20px' }}>
+                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+                      <label style={{ fontSize: '14px', fontWeight: '700' }}>Yearly Episodes</label>
+                      <button 
+                        type="button"
+                        onClick={() => setFormData({...formData, episodes: [...formData.episodes, { topic: '', date: '', month: '', youtubeId: '', dunyanewsUrl: '' }]})}
+                        style={{ background: 'none', border: 'none', color: COLORS.green, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px', fontSize: '13px' }}
+                      >
+                        <PlusCircle size={16} /> Add Episode
+                      </button>
+                    </div>
+
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                      {formData.episodes.map((ep, idx) => (
+                        <div key={idx} style={{ background: '#f8f9fa', padding: '16px', borderRadius: '12px', display: 'flex', flexDirection: 'column', gap: '12px', position: 'relative' }}>
+                          <button 
+                            type="button"
+                            onClick={() => {
+                              const newEps = formData.episodes.filter((_, i) => i !== idx);
+                              setFormData({...formData, episodes: newEps});
+                            }}
+                            style={{ position: 'absolute', top: '10px', right: '10px', background: 'none', border: 'none', color: '#ff6b6b', cursor: 'pointer' }}
+                          >
+                            <Trash2 size={16} />
+                          </button>
+
+                          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
+                             <input type="text" placeholder="Topic (Urdu)" value={ep.topic} onChange={(e) => {
+                                const newEps = [...formData.episodes];
+                                newEps[idx].topic = e.target.value;
+                                setFormData({...formData, episodes: newEps});
+                              }} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ddd', fontSize: '12px' }} />
+                             <input type="text" placeholder="Date (e.g., April 9, 2019)" value={ep.date} onChange={(e) => {
+                                const newEps = [...formData.episodes];
+                                newEps[idx].date = e.target.value;
+                                setFormData({...formData, episodes: newEps});
+                              }} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ddd', fontSize: '12px' }} />
+                          </div>
+                          
+                          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
+                             <input type="text" placeholder="YouTube ID" value={ep.youtubeId} onChange={(e) => {
+                                const newEps = [...formData.episodes];
+                                newEps[idx].youtubeId = e.target.value;
+                                setFormData({...formData, episodes: newEps});
+                              }} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ddd', fontSize: '12px' }} />
+                             <input type="text" placeholder="DunyaNews URL" value={ep.dunyanewsUrl} onChange={(e) => {
+                                const newEps = [...formData.episodes];
+                                newEps[idx].dunyanewsUrl = e.target.value;
+                                setFormData({...formData, episodes: newEps});
+                              }} style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ddd', fontSize: '12px' }} />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </>
               )}
 

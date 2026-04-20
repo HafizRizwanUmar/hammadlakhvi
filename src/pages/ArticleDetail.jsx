@@ -121,16 +121,11 @@ export default function ArticleDetailPage({ article, onBack }) {
                     overflowX: "hidden",
                   }}
                 >
-                  {(() => {
-                    const text = article.content || "";
-                    const parts = text.split(/(\*\*.*?\*\*)/g);
-                    return parts.map((part, i) => {
-                      if (part.startsWith("**") && part.endsWith("**")) {
-                        return <strong key={i} style={{ color: COLORS.darkGreen }}>{part.slice(2, -2)}</strong>;
-                      }
-                      return part;
-                    });
-                  })()}
+                  {/* Render HTML content safely */}
+                  <div 
+                    dangerouslySetInnerHTML={{ __html: article.content || "" }}
+                    style={{ whiteSpace: "normal" }} // Quill handles spacing with tags
+                  />
                 </div>
 
                 {/* ── Footnotes / References ──────────────────────────── */}

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 import { Plus, Edit2, Trash2, X, Upload, Save, Search, ExternalLink } from 'lucide-react';
 import { COLORS, API_BASE, IMG_BASE } from '../constants';
 
@@ -17,6 +19,24 @@ const ArticleManager = () => {
     abstract: '', content: '', url: '', lang: 'urdu'
   });
   const [thumbnail, setThumbnail] = useState(null);
+  
+  // Quill Modules configuration
+  const modules = {
+    toolbar: [
+      [{ 'header': [1, 2, 3, false] }],
+      ['bold', 'italic', 'underline', 'strike'],
+      [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+      [{ 'direction': 'rtl' }, { 'align': [] }],
+      ['link', 'clean'],
+      ['blockquote', 'code-block'],
+    ],
+  };
+
+  const formats = [
+    'header', 'bold', 'italic', 'underline', 'strike',
+    'list', 'bullet', 'direction', 'align',
+    'link', 'blockquote', 'code-block'
+  ];
 
   useEffect(() => {
     fetchArticles();
@@ -185,8 +205,17 @@ const ArticleManager = () => {
                 <textarea value={formData.abstract} onChange={(e) => setFormData({...formData, abstract: e.target.value})} rows="3" style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid #ddd' }} />
               </div>
               <div style={{ gridColumn: 'span 2' }}>
-                <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', marginBottom: '8px' }}>Full Content (supports Urdu)</label>
-                <textarea value={formData.content} onChange={(e) => setFormData({...formData, content: e.target.value})} rows="10" style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid #ddd', fontFamily: "'Noto Nastaliq Urdu', serif" }} />
+                <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', marginBottom: '8px' }}>Full Content (Rich Text Editor)</label>
+                <div style={{ background: '#fff', borderRadius: '8px', overflow: 'hidden', border: '1px solid #ddd' }}>
+                  <ReactQuill 
+                    theme="snow"
+                    value={formData.content}
+                    onChange={(val) => setFormData({...formData, content: val})}
+                    modules={modules}
+                    formats={formats}
+                    style={{ height: '300px', marginBottom: '40px' }}
+                  />
+                </div>
               </div>
               <div>
                 <label style={{ display: 'block', fontSize: '14px', fontWeight: '600', marginBottom: '8px' }}>Thumbnail Image</label>
