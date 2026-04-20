@@ -7,7 +7,7 @@ const User = require('./models/User');
 
 dotenv.config();
 
-// Helper to convert **bold** to <strong>bold</strong> and handle newlines
+// Helper to convert **bold** to <strong>bold</strong> and handle newlines for Rich Text Editor
 const formatContentToHTML = (text) => {
   if (!text) return '';
   return text
@@ -49,13 +49,13 @@ const ARTICLES_DATA = [
 قَالَتْ: سَمِعْتُ رَسُوْلَ اللهِ صلی الله عليه وآله وسلم يَقُوْلُ: مُرُوْا بِالْمَعْرُوْفِ وَانْهَوْا عَنِ الْمُنْکَرِ، قَبْلَ أَنْ تَدْعُوْا فَـلَا يُسْتَجَابُ لَکُمْ.(رَوَاهُ ابْنُ مَاجَه وَالطَّبَرَانِيُّ )
 ترجمہ:ایک اور روایت میں حضرت عائشہ صدیقہ رضی اللہ عنها بیان کرتی ہیں: میں نے رسول اللہ ﷺ کو فرماتے ہوئے سنا: نیکی کا حکم دو اور برائی سے منع کرو قبل اس کے کہ (ایسا وقت آجائے جب) تم اللہ تعالیٰ سے دعا مانگو (مگر) تمہاری دعا کو قبول نہ کیا جائے۔
 یہاں ایک اور بات بھی گوش گزار کر لیں کہ امر بالمعروف ونهی عن المنکر کے ساتھ ساتھ دعوت کا ایک اہم پہلو یہ بھی ہے جو ایک داعی کو جاننا چاہیے کہ داعی صرف وہ نہیں ہے جو لمبی لمبی تقاریر کرے داعی وہ بھی ہے کہ جس کو دیکھ کر جس کے پاس بیٹھ کر چاہے وہ خاموش ہو اسے دیکھ کر "اللہ" یاد آ جائے۔جیسا کہ رسول اللہ ﷺ جب شام کی منڈی میں خضرت خدیجہ رضی اللہ عنھا کا مال لے کر گئے، غلے پر بارش پڑ گئی تو رسول اللہ ﷺ نے گیلا مال علیحدہ کر دیا اور خشک مال علیحدہ کر دیا ، آپ کی اس دیانت داری سے پوری منڈی میں آپ صدیق و امانت دار تاجر کے طور پر مشہور ہو گئے، یعنی آپ ﷺ نے اپنے کردار اپنی صداقت سے لوگوں کو متاثر کیا اور انہے صدق کی دعوت دی بغیر کسی تقریر کے۔
-{ خواتین کے لیے نصیحت: کیا ہماری خواتین بھی امر بالمعروف و نہی عن المنکر کا اہتمام کرتی ہیں؟ اور کیا انہوں نے دین کو اس طرح اپنایا ہے کہ ان کو دیکھ کر"اللہ" یاد آ جائے۔ کیا خواتین کا ہر قول ، فعل ،ان کا لباس ، ان کا کردار، ان کی زندگی کا ہر پہلو قرآن و سنت کے مطابق ہے کہ ان کو دیکھ کر پتہ چلے یہ حقیقی داعیہ ہے اور وہ بھی داعیہ الی اللّٰہ نا کہ الی غیر اللّٰہ؟}
+{ خواتین کے لیے نصیحت: کیا ہماری خواتین بھی امر بالمعروف و نہی عن المنکر کا اہتمام کرتی ہیں؟ اور کیا انہوں نے دین کو اس طرح اپنایا ہے کہ ان کو دیکھ کر"اللہ" یاد آ جائے؟ کیا خواتین کا ہر قول ، فعل ،ان کا لباس ، ان کا کردار، ان کی زندگی کا ہر پہلو قرآن و سنت کے مطابق ہے کہ ان کو دیکھ کر پتہ چلے یہ حقیقی داعیہ ہے اور وہ بھی داعیہ الی اللّٰہ نا کہ الی غیر اللّٰہ؟}
 
 **4) دعوت کے کاموں میں /دین کے کاموں میں اہم مشورے فراہم کرنا :**
 حضرت خدیجہ نے رسول اللہ ﷺ کو پہلی وحی کے موقع سے لے کر ان پر دین کی راہ میں آنے والے ہر مشکل وقت میں ، دین کے ہر معاملے میں رسول اللہﷺ کو نا صرف مفید مشورے فراہم کیے بلکہ حوصلہ اور support بھی فراہم کی۔حضرت خدیجہ ہر موقع پر رسول اللہ ﷺ کو تسلی دیا کرتی تھیں ان کا حوصلہ بنا کرتی تھیں۔حضرت خدیجہ کا وجود دین کی اشاعت کا ذریعہ بنا بہت سے مرد و خواتین ان کی دعوت سے مسلمان ہوئے۔سیرت ابن ہشام میں آتا ہے کہ:
 کانت (خديجة) له وزیر صدق علی الإسلام یشکو إليها. (سیرت ابن ہشام).
 ترجمہ:حضرت خدیجہ نبی اکرم ﷺ کے لیےتبلیغ اسلام میں سچی مددگار تھیں آپ ﷺ ان سے مشاورت کیا کرتے تھے۔
-{ خواتین کے لیے نصیحت: خواتین کو بھی اپنے باپ ، بھائی ، شوہر، بیٹے اور دیگر مسلمان مردوں کو اللہ کی طرف سے عطا کردہ حکمت و دانائی کو استعمال کرتے ہوئے دین اسلام کے لیے مفید مشورے فراہم کرنے چاہیے , مشکل مرحلوں میں ان کا حوصلہ بننا چاہیے تا کہ دین اسلام کو فائدہ پہنچ سکے جیسے ام المونین خدیجہ رضی اللہ عنھا کے زریعے پہنچا۔}
+{ خواتین کے لیے نصیحت: خواتین کو بھی اپنے باپ ، بھائی ، شوهر، بیٹے اور دیگر مسلمان مردوں کو اللہ کی طرف سے عطا کردہ حکمت و دانائی کو استعمال کرتے ہوئے دین اسلام کے لیے مفید مشورے فراہم کرنے چاہیے , مشکل مرحلوں میں ان کا حوصلہ بننا چاہیے تا کہ دین اسلام کو فائدہ پہنچ سکے جیسے ام المونین خدیجہ رضی اللہ عنھا کے زریعے پہنچا۔}
 
 **5) دین کی تعلیم حاصل کر کے اس کی اشاعت میں کردار اداد کریں :**
 حضرت عائشہ صدیقہ ایک عالمہ تھیں ۔ایک عرصہ تک آپ نے گھر کے معاملات کے حوالے سے صحابہ و صحابیات کو تو تعلیم دی ہی تھی، اس کے علاوہ آپ بہت سے دیگر علوم کی ماہر تھیں ۔۔جیسے "قرآن کے علوم ،عرب کی تاریخ، علم الفرائض ، تاریخ العرب ، عرب کی شاعری" وغیرہ جیسے بڑے بڑے علوم کی عالمہ تھیں اور دین اسلام کی اشاعت کا بہت دیر تک آپ فریضہ سر انجام دیتی رہینہ۔ہشام بن عروہ کا ایک قول علامہ ذہبی نے نقل کیا ہےتذکرۃ الحفاظ کے اندر کہ:
@@ -78,9 +78,21 @@ const ARTICLES_DATA = [
 ];
 
 const VIDEOS_DATA = [
+  // Short Clips
   { id: "5RuqA4c_8GQ", title: "تفسیر سورۃ الفاتحہ", subtitle: "Tafseer Surah Al-Fatiha", type: "CLIP" },
   { id: "yDa1JTOf0xA", title: "حدیث جبرئیل — کامل درس", subtitle: "Hadith Jibril — Full Explanation", type: "CLIP" },
   { id: "nmBwd3MkPSY", title: "توحید کا مفہوم و اہمیت", subtitle: "Concept & Importance of Tawheed", type: "CLIP" },
+  { id: "HBbQMQkz3GE", title: "نماز — اہمیت اور فضائل", subtitle: "Salah — Significance & Virtues", type: "CLIP" },
+  { id: "S5PkGChDv9U", title: "رمضان المبارک کی تیاری", subtitle: "Preparing for Ramadan", type: "CLIP" },
+  { id: "Xk4uGYkbBFg", title: "اسلام میں صبر کا مقام", subtitle: "The Station of Patience in Islam", type: "CLIP" },
+
+  // Long Videos
+  { id: "5RuqA4c_8GQ", title: "تفسیر القرآن — مکمل درس سلسلہ", subtitle: "Complete Tafseer Series — Pegham TV", type: "LONG", duration: "45 min" },
+  { id: "yDa1JTOf0xA", title: "حدیث اور علوم حدیث — جامع درس", subtitle: "Sciences of Hadith — Full Lecture", type: "LONG", duration: "60 min" },
+  { id: "nmBwd3MkPSY", title: "اسلامی فلسفہ اور مغربی فکر", subtitle: "Islamic Philosophy vs Western Thought", type: "LONG", duration: "52 min" },
+  { id: "HBbQMQkz3GE", title: "مسلم خاندانی نظام", subtitle: "Islamic Family System — University Lecture", type: "LONG", duration: "70 min" },
+
+  // Lecture Series
   {
     id: "khulasa-quran-2026",
     title: "خلاصہ مضامین قرآن | رمضان ۲۰۲۶",
@@ -91,9 +103,49 @@ const VIDEOS_DATA = [
     description: "🎙️ Dr Muhammad Hammad Bin Mohiyudin Lakhvi. Summary of Quranic themes for Ramadan 2026.",
     videos: [
       { id: "5zZPlHzkFnc", title: "Day 1 | Para 1", ep: "Day 1" },
-      { id: "v0d0EqHMizQ", title: "Day 2 | Para 2", ep: "Day 2" }
+      { id: "v0d0EqHMizQ", title: "Day 2 | Para 2", ep: "Day 2" },
+      { id: "K2sEgEBQJlU", title: "Day 3 | Para 3", ep: "Day 3" },
+      { id: "WmgFaw2xFUU", title: "Day 4 | Para 4", ep: "Day 4" },
+      { id: "ybebuUNURbE", title: "Day 5 | Para 5 Complete", ep: "Day 5" },
+      { id: "OTF9Ksj9m38", title: "Day 6 | Para 6 & 7", ep: "Day 6" },
+      { id: "L-i3XxTxMzc", title: "Day 7 | Para 8 & 9", ep: "Day 7" },
+      { id: "_VmYWv0PZ2w", title: "Day 8 | Para 9 & 10", ep: "Day 8" },
+      { id: "pu_jjCc1WpI", title: "Day 9 | Para 11 & 12", ep: "Day 9" },
+      { id: "YwfdAS-uNkY", title: "Day 10 | Para 12 & 13", ep: "Day 10" },
+      { id: "SP_vI_MlHAM", title: "Day 11 | Para 14", ep: "Day 11" },
+      { id: "lQgCo0OwGOM", title: "Day 12 | Para 15", ep: "Day 12" },
+      { id: "IC4ZlULRMgA", title: "Day 13 | Para 16", ep: "Day 13" },
+      { id: "b27gKt-lipg", title: "Day 14 | Para 17", ep: "Day 14" },
+      { id: "ESd-u0xHBII", title: "Day 15 | Para 18", ep: "Day 15" },
+      { id: "DKz0LeQgGlE", title: "Day 16 | Para 19", ep: "Day 16" },
+      { id: "M_mU9XazSdI", title: "Day 17 | Para 20", ep: "Day 17" },
+      { id: "LKcoxiKxHxU", title: "Day 18 | Para 21", ep: "Day 18" },
+      { id: "BjEug95IqjE", title: "Day 19 | Para 22", ep: "Day 19" },
+      { id: "x5PU32kZk7M", title: "Day 20 | Para 23", ep: "Day 20" },
     ]
   },
+  {
+    id: "walidayn",
+    title: "والدین کی ذمہ داریاں",
+    subtitle: "Walidayn Ki Zimaydaarian",
+    type: "SERIES",
+    channel: "Official Channel",
+    thumbnail: "/t2.jpg",
+    description: "A comprehensive 9-part series on the responsibilities of parents in Islam.",
+    videos: [
+      { id: "x04g-Hg8POo", title: "Part 1", ep: "Part 1" },
+      { id: "iJo7_Cvdlbs", title: "Part 2", ep: "Part 2" },
+      { id: "Je-KTWMYmpo", title: "Part 3", ep: "Part 3" },
+      { id: "d4cRFz7OvBI", title: "Part 4", ep: "Part 4" },
+      { id: "naDC7UYChZg", title: "Part 5", ep: "Part 5" },
+      { id: "IFj7NOIQMyE", title: "Part 6", ep: "Part 6" },
+      { id: "U-9VVg-ngFc", title: "Part 7", ep: "Part 7" },
+      { id: "PUWNhcOILUU", title: "Part 8", ep: "Part 8" },
+      { id: "OECVk9qvY-A", title: "Part 9", ep: "Part 9" },
+    ]
+  },
+
+  // TV Programs
   {
     id: "tafseer-al-quran",
     slug: "tafseer-al-quran",
@@ -103,17 +155,34 @@ const VIDEOS_DATA = [
     icon: "📖",
     channel: "Pegham TV",
     channelColor: "#1A5C3A",
+    description: "Weekly verse-by-verse Quranic exegesis broadcast on Pegham TV.",
     videos: [
-      { id: "5RuqA4c_8GQ", title: "تفسیر سورۃ الفاتحہ", ep: "Episode 1" }
+      { id: "5RuqA4c_8GQ", title: "Tafseer Surah Al-Fatiha", ep: "Episode 1" },
+      { id: "yDa1JTOf0xA", title: "Tafseer Surah Al-Baqarah", ep: "Episode 2" },
+    ]
+  },
+  {
+    id: "payam-e-subah-archive",
+    year: "2019",
+    label: "۲۰۱۹",
+    type: "PAYAM_SUBAH",
+    title: "پیام صبح",
+    thumbnail: "/payam2019.jpeg",
+    facebookUrl: "https://www.facebook.com/share/1GUoLS5Qvu/",
+    episodes: [
+      { month: "April 2019", date: "April 9, 2019", topic: "اللّٰہ کی راہ پر راضی رہنا", youtubeId: "Mo-wfqoMiGE" },
+      { month: "April 2019", date: "April 16, 2019", topic: "نیکی کسے کہتے ہیں؟", youtubeId: "jVCaKWIyNd8" },
+      { month: "July 2019", date: "July 18, 2019", topic: "دین کے پیغام کو آگے پینچانا", youtubeId: "InKOLWNCimI" },
     ]
   }
 ];
 
 const seedDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGODB_URI);
+    const conn = await mongoose.connect(process.env.MONGODB_URI);
     console.log('Connected to MongoDB for seeding...');
 
+    // 1. Update Admin User
     await User.deleteMany({ username: process.env.ADMIN_USERNAME });
     const adminUser = new User({
       username: process.env.ADMIN_USERNAME || 'hammadlakhvi_admin',
@@ -121,17 +190,21 @@ const seedDB = async () => {
     });
     await adminUser.save();
 
+    // 2. Sync Articles with HTML format
     await Article.deleteMany({});
     const articlesToInsert = ARTICLES_DATA.map(art => ({
       ...art,
       content: formatContentToHTML(art.content)
     }));
     await Article.insertMany(articlesToInsert);
+    console.log(`${articlesToInsert.length} Articles Synced.`);
 
+    // 3. Sync Videos
     await Video.deleteMany({});
     await Video.insertMany(VIDEOS_DATA);
+    console.log(`${VIDEOS_DATA.length} Video Entries Synced.`);
 
-    console.log('Seeding completed successfully!');
+    console.log('Database sync completed successfully!');
     process.exit();
   } catch (err) {
     console.error('Seeding error:', err);
