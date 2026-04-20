@@ -1,7 +1,8 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
+import axios from "axios";
 import { COLORS } from "../constants";
 import { SectionHeader } from "../components/UI";
-import { ARTICLES, ARTICLE_CATEGORIES } from "../data/articles";
+import SEO from "../components/SEO";
 
 const CATEGORY_COLORS = {
   Seerah: "#2C5F3F", Theology: "#1A3A2A", History: "#6B4A1A",
@@ -11,12 +12,35 @@ const CATEGORY_COLORS = {
 };
 const catColor = (cat) => CATEGORY_COLORS[cat] || COLORS.green;
 
+const API_BASE = "http://localhost:5000/api";
+
 export default function ArticlesPage({ onArticleSelect }) {
+  const [articles, setArticles] = useState([]);
   const [langFilter, setLangFilter] = useState("all");
   const [catFilter, setCatFilter] = useState("all");
   const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(true);
 
-  const filtered = useMemo(() => ARTICLES.filter((a) => {
+  useEffect(() => {
+    fetchArticles();
+  }, []);
+
+  const fetchArticles = async () => {
+    try {
+      const res = await axios.get(`${API_BASE}/articles`);
+      setArticles(res.data);
+    } catch (err) {
+      console.error("Error fetching articles:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const categories = useMemo(() => {
+    return [...new Set(articles.map(a => a.category))].sort();
+  }, [articles]);
+
+  const filtered = useMemo(() => articles.filter((a) => {
     if (langFilter !== "all" && a.lang !== langFilter) return false;
     if (catFilter !== "all" && a.category !== catFilter) return false;
     if (search.trim()) {
@@ -25,10 +49,14 @@ export default function ArticlesPage({ onArticleSelect }) {
       if (!hay.includes(q)) return false;
     }
     return true;
-  }), [langFilter, catFilter, search]);
+  }), [langFilter, catFilter, search, articles]);
 
   return (
     <div style={{ padding: "100px 24px 80px", background: COLORS.cream, minHeight: "100vh" }}>
+      <SEO 
+        title="Research Articles & Publications" 
+        description="Access and read the research articles, journal papers, and scholarly publications by Prof. Dr. Muhammad Hammad Lakhvi."
+      />
       <div style={{ maxWidth: 1040, margin: "0 auto" }}>
         <SectionHeader title="Research Articles" urdu="علمی مقالات" sub="47+ peer-reviewed publications · click any article to read" />
 
@@ -54,7 +82,7 @@ export default function ArticlesPage({ onArticleSelect }) {
           <div style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" }}>
             <span style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: "0.1em", color: COLORS.textLight, flexShrink: 0 }}>Category:</span>
             <button onClick={() => setCatFilter("all")} style={{ background: catFilter==="all" ? COLORS.gold : "transparent", border: `1px solid ${catFilter==="all" ? COLORS.gold : COLORS.border}`, color: catFilter==="all" ? COLORS.darkGreen : COLORS.textLight, padding: "4px 12px", fontSize: 11, cursor: "pointer", borderRadius: 2, fontWeight: catFilter==="all" ? 700 : 400 }}>All</button>
-            {ARTICLE_CATEGORIES.map((cat) => (
+            {categories.map((cat) => (
               <button key={cat} onClick={() => setCatFilter(cat)} style={{ background: catFilter===cat ? catColor(cat) : "transparent", border: `1px solid ${catFilter===cat ? catColor(cat) : COLORS.border}`, color: catFilter===cat ? "#fff" : COLORS.textLight, padding: "4px 12px", fontSize: 11, cursor: "pointer", borderRadius: 2, fontWeight: catFilter===cat ? 700 : 400, transition: "all 0.15s" }}>{cat}</button>
             ))}
           </div>
@@ -62,14 +90,16 @@ export default function ArticlesPage({ onArticleSelect }) {
 
         {/* Results count */}
         <div style={{ fontSize: 12, color: COLORS.textLight, marginBottom: 16 }}>
-          Showing {filtered.length} of {ARTICLES.length} articles
+          Showing {filtered.length} of {articles.length} articles
           {(langFilter !== "all" || catFilter !== "all" || search) && (
             <button onClick={() => { setLangFilter("all"); setCatFilter("all"); setSearch(""); }} style={{ marginLeft: 12, background: "none", border: "none", color: COLORS.gold, fontSize: 12, cursor: "pointer", textDecoration: "underline" }}>Clear filters</button>
           )}
         </div>
 
         {/* List */}
-        {filtered.length === 0 ? (
+        {loading ? (
+          <div style={{ textAlign: "center", padding: "60px 0", color: COLORS.textLight }}>Loading articles...</div>
+        ) : filtered.length === 0 ? (
           <div style={{ textAlign: "center", padding: "60px 24px", color: COLORS.textLight }}>
             <div style={{ fontSize: 40, marginBottom: 12 }}>🔍</div>
             <p>No articles match your filters.</p>
@@ -82,7 +112,7 @@ export default function ArticlesPage({ onArticleSelect }) {
                 
                 {a.thumbnail && (
                   <div style={{ width: 80, height: 60, borderRadius: 2, overflow: "hidden", border: `1px solid ${COLORS.border}`, flexShrink: 0 }}>
-                    <img src={a.thumbnail} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    <img src={a.thumbnail.startsWith('/') ? `http://localhost:5000${a.thumbnail}` : a.thumbnail} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                   </div>
                 )}
 

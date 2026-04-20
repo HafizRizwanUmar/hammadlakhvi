@@ -1,6 +1,9 @@
+import { Link } from "react-router-dom";
 import { COLORS, NAV_ITEMS } from "../constants";
 
-export default function Footer({ setPage }) {
+export default function Footer() {
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
   return (
     <footer style={{ background: COLORS.charcoal, padding: "60px 24px 24px", color: "rgba(250,246,239,0.7)" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
@@ -15,7 +18,7 @@ export default function Footer({ setPage }) {
           <div>
             <div style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: "0.15em", color: COLORS.gold, marginBottom: 16 }}>Quick Links</div>
             {NAV_ITEMS.map(n => (
-              <button key={n.id} onClick={() => { setPage(n.id); window.scrollTo({ top: 0, behavior: "smooth" }); }} style={{ display: "block", background: "none", border: "none", cursor: "pointer", color: "rgba(250,246,239,0.6)", fontSize: 13, padding: "4px 0", fontFamily: "'Libre Baskerville',serif", textAlign: "left" }}>{n.label}</button>
+              <Link key={n.id} to={n.path} onClick={scrollToTop} style={{ display: "block", background: "none", border: "none", cursor: "pointer", color: "rgba(250,246,239,0.6)", fontSize: 13, padding: "4px 0", fontFamily: "'Libre Baskerville',serif", textAlign: "left", textDecoration: "none" }}>{n.label}</Link>
             ))}
           </div>
           <div>

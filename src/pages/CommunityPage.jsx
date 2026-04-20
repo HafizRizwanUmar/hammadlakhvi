@@ -1,11 +1,18 @@
+import { useNavigate } from "react-router-dom";
 import { COLORS } from "../constants";
 import { SectionHeader } from "../components/UI";
+import SEO from "../components/SEO";
 import { TV_PROGRAMS_DATA } from "../data/videos";
 
 export default function CommunityPage({ onProgramClick }) {
+  const navigate = useNavigate();
   return (
     <div style={{ padding: "100px 24px 80px", background: COLORS.cream, minHeight: "100vh" }}>
-      <div style={{ maxWidth: 1000, margin: "0 auto" }}>
+      <SEO 
+        title="TV Programs & Community Services" 
+        description="Discover Islamic TV programs on Pegham TV and explore the legacy of community service provided by the Lakhvi scholars."
+      />
+      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         <SectionHeader title="Community" urdu="برادری" sub="Connect · Learn · Grow together in faith" />
 
         {/* Connect cards */}
@@ -60,8 +67,8 @@ export default function CommunityPage({ onProgramClick }) {
           </h3>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(260px,1fr))", gap: 18 }}>
             {TV_PROGRAMS_DATA.map((p, i) => (
-              <div key={p.id} className="tv-program-card" onClick={() => onProgramClick(p.slug || p.id)}
-                style={{ background: COLORS.white, border: `1px solid ${COLORS.border}`, padding: "22px 20px", borderRadius: 2, borderTop: `3px solid ${p.channelColor}`, cursor: "pointer", animation: `fadeUp 0.5s ease ${i * 0.07}s both` }}>
+              <div key={p.id} className="tv-program-card" onClick={() => navigate(`/tv/${p.slug || p.id}`)}
+                style={{ background: COLORS.white, border: `1px solid ${COLORS.border}`, padding: "28px 20px", textAlign: "center", borderRadius: 2, borderTop: `4px solid ${p.channelColor}`, boxShadow: "0 2px 8px rgba(0,0,0,0.06)", cursor: "pointer", animation: `fadeUp 0.5s ease ${i * 0.07}s both` }}>
                 <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
                   {p.thumbnail ? (
                     <img src={p.thumbnail} alt={p.name} style={{ width: 44, height: 44, borderRadius: 2, objectFit: "cover" }} />

@@ -1,16 +1,18 @@
 // HomePage.jsx
-import { COLORS } from "../constants";
+import { useNavigate } from "react-router-dom";
+import { COLORS, NAV_ITEMS } from "../constants";
 import { SectionHeader } from "../components/UI";
 import { TV_PROGRAMS_DATA } from "../data/videos";
 
-function FeaturedTVPrograms({ onProgramClick }) {
+function FeaturedTVPrograms() {
+  const navigate = useNavigate();
   return (
     <section style={{ padding: "80px 24px", background: COLORS.cream }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         <SectionHeader title="Featured TV Programs" urdu="مشہور ٹی وی پروگرامز" sub="Click any program to watch videos" />
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(200px,1fr))", gap: 20 }}>
           {TV_PROGRAMS_DATA.map((p, i) => (
-            <div key={p.id} className="tv-program-card" onClick={() => onProgramClick(p.slug || p.id)}
+            <div key={p.id} className="tv-program-card" onClick={() => navigate(`/tv/${p.slug || p.id}`)}
               style={{ background: COLORS.white, border: `1px solid ${COLORS.border}`, padding: "28px 20px", textAlign: "center", borderRadius: 2, borderTop: `4px solid ${p.channelColor}`, boxShadow: "0 2px 8px rgba(0,0,0,0.06)", animation: `fadeUp 0.5s ease ${i * 0.08}s both` }}>
               <div style={{ fontSize: 34, marginBottom: 12 }}>{p.icon}</div>
               <div className="urdu" style={{ fontSize: 16, color: COLORS.darkGreen, fontWeight: 600, marginBottom: 6, lineHeight: 2 }}>{p.name}</div>
@@ -24,19 +26,20 @@ function FeaturedTVPrograms({ onProgramClick }) {
   );
 }
 
-export default function HomePage({ setActive, onProgramClick }) {
+export default function HomePage() {
+  const navigate = useNavigate();
+
+  const getPath = (id) => NAV_ITEMS.find(n => n.id === id)?.path || "/";
+
   return (
     <div>
       <section style={{ minHeight: "100vh", display: "flex", alignItems: "center", background: `linear-gradient(160deg,${COLORS.darkGreen} 0%,${COLORS.green} 60%,#1a4a30 100%)`, position: "relative", overflow: "hidden", paddingTop: 64 }}>
         <div style={{ position: "absolute", inset: 0, opacity: 0.05, backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4AF37' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")` }} />
         <div className="hero-layout" style={{ maxWidth: 1200, margin: "0 auto", padding: "80px 56px", width: "100%", display: "flex", alignItems: "center", gap: 72, position: "relative", animation: "fadeUp 0.9s ease" }}>
           <div style={{ flexShrink: 0, display: "flex", justifyContent: "center" }}>
-            <div className="hero-pic" style={{ width: 300, height: 370, borderRadius: 16, border: `5px solid ${COLORS.goldLight}`, animation: "glowPulse 3s ease-in-out infinite", overflow: "hidden", background: COLORS.darkGreen }}>
+            <div className="hero-pic" style={{ width: 300, height: 370, borderRadius: 16, border: `5px solid ${COLORS.goldLight}`, animation: "glowPulse 3s ease-in-out infinite", position: "relative", overflow: "hidden", background: COLORS.darkGreen }}>
               <img src="/profile.jpg" alt="Dr. Muhammad Hammad Lakhvi" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center" }}
                 onError={e => { e.target.style.display = "none"; e.target.parentElement.innerHTML = `<div style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:${COLORS.darkGreen}"><div style="font-size:80px">👤</div></div>`; }} />
-              <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, background: "linear-gradient(to top,rgba(26,58,42,0.9) 0%,transparent 100%)", padding: "28px 16px 14px", textAlign: "center" }}>
-
-              </div>
             </div>
           </div>
           <div className="hero-text" style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 0 }}>
@@ -58,7 +61,7 @@ export default function HomePage({ setActive, onProgramClick }) {
             </div>
             <div className="hero-btns" style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
               {[["Watch Lectures", "lectures", true], ["Read Articles", "articles", false], ["Biography", "biography", false], ["Contact", "contact", false]].map(([label, id, primary]) => (
-                <button key={id} onClick={() => setActive(id)} style={{ background: primary ? `linear-gradient(135deg,${COLORS.gold},${COLORS.goldLight})` : "transparent", border: `2px solid ${COLORS.gold}`, color: primary ? COLORS.darkGreen : COLORS.cream, padding: "12px 26px", fontSize: 13, fontFamily: "'Libre Baskerville',serif", letterSpacing: "0.1em", textTransform: "uppercase", cursor: "pointer", borderRadius: 2, fontWeight: primary ? 700 : 400 }}>{label}</button>
+                <button key={id} onClick={() => navigate(getPath(id))} style={{ background: primary ? `linear-gradient(135deg,${COLORS.gold},${COLORS.goldLight})` : "transparent", border: `2px solid ${COLORS.gold}`, color: primary ? COLORS.darkGreen : COLORS.cream, padding: "12px 26px", fontSize: 13, fontFamily: "'Libre Baskerville',serif", letterSpacing: "0.1em", textTransform: "uppercase", cursor: "pointer", borderRadius: 2, fontWeight: primary ? 700 : 400 }}>{label}</button>
               ))}
             </div>
           </div>
@@ -73,7 +76,7 @@ export default function HomePage({ setActive, onProgramClick }) {
         </div>
       </section>
 
-      <FeaturedTVPrograms onProgramClick={onProgramClick} />
+      <FeaturedTVPrograms />
     </div>
   );
 }

@@ -1,7 +1,10 @@
+import { useState, useEffect } from "react";
+import axios from "axios";
 import { COLORS } from "../constants";
 import { SectionHeader } from "../components/UI";
+import SEO from "../components/SEO";
 
-const BIO_SECTIONS = [
+const DEFAULT_BIO_SECTIONS = [
   { 
     title: "نام و نسب ", 
     icon: "🌳", 
@@ -219,60 +222,89 @@ const BIO_SECTIONS = [
 
 
 export default function BiographyPage() {
+  const [sections, setSections] = useState(DEFAULT_BIO_SECTIONS);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchBio = async () => {
+      try {
+        const res = await axios.get("http://localhost:5000/api/meta/biography");
+        if (res.data && Array.isArray(res.data)) {
+          setSections(res.data);
+        }
+      } catch (err) {
+        console.error("Error fetching bio:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchBio();
+  }, []);
+
   return (
     <div style={{ padding: "100px 24px 80px", background: COLORS.cream, minHeight: "100vh" }}>
+      <SEO 
+        title="Biography of Prof. Dr. Muhammad Hammad Lakhvi" 
+        description="Explore the life, educational background, teaching career, and academic titles of Prof. Dr. Muhammad Hammad Lakhvi."
+      />
       <div style={{ maxWidth: 960, margin: "0 auto" }}>
         <SectionHeader title="Biography" urdu="سوانح حیات" />
 
-        {/* Header card */}
-        <div style={{ background: `linear-gradient(135deg,${COLORS.darkGreen},${COLORS.green})`, padding: "36px 40px", borderRadius: 2, marginBottom: 36 }}>
-          <div style={{ display: "flex", gap: 28, alignItems: "center", flexWrap: "wrap" }}>
-            <div style={{ width: 120, height: 120, borderRadius: "50%", border: `3px solid ${COLORS.goldLight}`, boxShadow: "0 0 0 6px rgba(184,151,42,0.2)", overflow: "hidden", flexShrink: 0, background: COLORS.green }}>
-              <img src="/profile.jpg" alt="" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }}
-                onError={e => { e.target.style.display = "none"; e.target.parentElement.innerHTML = `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:48px">👤</div>`; }} />
-            </div>
-            <div style={{ flex: 1, minWidth: 180 }}>
-              <h2 style={{ fontFamily: "'Amiri',serif", fontSize: 26, color: COLORS.goldLight, marginBottom: 4 }}>Dr. Muhammad Hammad Lakhvi</h2>
-              <div className="urdu" style={{ fontSize: 17, color: "rgba(250,246,239,0.9)", marginBottom: 6, lineHeight: 2 }}>پروفیسر ڈاکٹر محمد حماد لکھوی حفظہ اللّٰہ</div>
-              <div className="urdu" style={{ fontSize: 13, color: COLORS.goldLight, lineHeight: 1.8, marginBottom: 12 }}>
-                • صدر فیتھ فاؤنڈیشن <br />
-                • سابق ڈین کلیہ علوم اسلامیہ جامعہ پنجاب لاہور پاکستان <br />
-                • ڈائریکٹر ادارہ علوم اسلامیہ جامعہ پنجاب لاہور پاکستان
+        {loading ? (
+          <div style={{ textAlign: "center", padding: "40px", color: COLORS.textLight }}>Loading biography...</div>
+        ) : (
+          <>
+            {/* Header card */}
+            <div style={{ background: `linear-gradient(135deg,${COLORS.darkGreen},${COLORS.green})`, padding: "36px 40px", borderRadius: 2, marginBottom: 36 }}>
+              <div style={{ display: "flex", gap: 28, alignItems: "center", flexWrap: "wrap" }}>
+                <div style={{ width: 120, height: 120, borderRadius: "50%", border: `3px solid ${COLORS.goldLight}`, boxShadow: "0 0 0 6px rgba(184,151,42,0.2)", overflow: "hidden", flexShrink: 0, background: COLORS.green }}>
+                  <img src="/profile.jpg" alt="" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }}
+                    onError={e => { e.target.style.display = "none"; e.target.parentElement.innerHTML = `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:48px">👤</div>`; }} />
+                </div>
+                <div style={{ flex: 1, minWidth: 180 }}>
+                  <h2 style={{ fontFamily: "'Amiri',serif", fontSize: 26, color: COLORS.goldLight, marginBottom: 4 }}>Dr. Muhammad Hammad Lakhvi</h2>
+                  <div className="urdu" style={{ fontSize: 17, color: "rgba(250,246,239,0.9)", marginBottom: 6, lineHeight: 2 }}>پروفیسر ڈاکٹر محمد حماد لکھوی حفظہ اللّٰہ</div>
+                  <div className="urdu" style={{ fontSize: 13, color: COLORS.goldLight, lineHeight: 1.8, marginBottom: 12 }}>
+                    • صدر فیتھ فاؤنڈیشن <br />
+                    • سابق ڈین کلیہ علوم اسلامیہ جامعہ پنجاب لاہور پاکستان <br />
+                    • ڈائریکٹر ادارہ علوم اسلامیہ جامعہ پنجاب لاہور پاکستان
+                  </div>
+                  <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                    {["پیدائش: 1965، دیپالپور", "پوسٹ ڈاکٹریٹ — گلاسگو", "پی ایچ ڈی — پنجاب یونیورسٹی"].map(b => (
+                      <span key={b} className="urdu" style={{ background: "rgba(184,151,42,0.2)", border: `1px solid ${COLORS.gold}`, color: COLORS.goldLight, padding: "3px 10px", fontSize: 12, borderRadius: 2, lineHeight: 2 }}>{b}</span>
+                    ))}
+                  </div>
+                </div>
               </div>
-              <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-                {["پیدائش: 1965، دیپالپور", "پوسٹ ڈاکٹریٹ — گلاسگو", "پی ایچ ڈی — پنجاب یونیورسٹی"].map(b => (
-                  <span key={b} className="urdu" style={{ background: "rgba(184,151,42,0.2)", border: `1px solid ${COLORS.gold}`, color: COLORS.goldLight, padding: "3px 10px", fontSize: 12, borderRadius: 2, lineHeight: 2 }}>{b}</span>
-                ))}
-              </div>
             </div>
-          </div>
-        </div>
 
-        {/* Sections */}
-        {BIO_SECTIONS.map((s, i) => (
-          <div key={s.title} style={{ marginBottom: 20, background: COLORS.white, border: `1px solid ${COLORS.border}`, borderRadius: 2, overflow: "hidden", animation: `fadeUp 0.6s ease ${i * 0.04}s both` }}>
-            <div style={{ background: `${COLORS.green}11`, padding: "13px 22px", borderBottom: `1px solid ${COLORS.border}`, display: "flex", gap: 10, alignItems: "center" }}>
-              <span style={{ fontSize: 18 }}>{s.icon}</span>
-              <span className="urdu" style={{ fontSize: 16, color: COLORS.darkGreen, lineHeight: 2 }}>{s.title}</span>
-              <span style={{ fontSize: 11, color: COLORS.textLight, letterSpacing: "0.08em", textTransform: "uppercase", marginLeft: 4 }}>{s.en}</span>
-            </div>
-            <div style={{ padding: "20px 24px" }}>
-              <div className="urdu" style={{ fontSize: 15, lineHeight: 2.4, color: COLORS.text, marginBottom: 12, whiteSpace: "pre-line" }}>{s.urduContent}</div>
-              <div style={{ borderTop: `1px dashed ${COLORS.border}`, paddingTop: 10 }}>
-                <p style={{ fontSize: 12, lineHeight: 1.8, color: COLORS.textLight, fontStyle: "italic" }}>{s.enContent}</p>
+            {/* Sections */}
+            {sections.map((s, i) => (
+              <div key={s.title + i} style={{ marginBottom: 20, background: COLORS.white, border: `1px solid ${COLORS.border}`, borderRadius: 2, overflow: "hidden", animation: `fadeUp 0.6s ease ${i * 0.04}s both` }}>
+                <div style={{ background: `${COLORS.green}11`, padding: "13px 22px", borderBottom: `1px solid ${COLORS.border}`, display: "flex", gap: 10, alignItems: "center" }}>
+                  <span style={{ fontSize: 18 }}>{s.icon}</span>
+                  <span className="urdu" style={{ fontSize: 16, color: COLORS.darkGreen, lineHeight: 2 }}>{s.title}</span>
+                  <span style={{ fontSize: 11, color: COLORS.textLight, letterSpacing: "0.08em", textTransform: "uppercase", marginLeft: 4 }}>{s.en}</span>
+                </div>
+                <div style={{ padding: "20px 24px" }}>
+                  <div className="urdu" style={{ fontSize: 15, lineHeight: 2.4, color: COLORS.text, marginBottom: 12, whiteSpace: "pre-line" }}>{s.urduContent}</div>
+                  <div style={{ borderTop: `1px dashed ${COLORS.border}`, paddingTop: 10 }}>
+                    <p style={{ fontSize: 12, lineHeight: 1.8, color: COLORS.textLight, fontStyle: "italic" }}>{s.enContent}</p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        ))}
+            ))}
 
-        {/* Gold medal closing */}
-        <div style={{ background: `${COLORS.gold}11`, border: `2px solid ${COLORS.gold}`, padding: "28px", borderRadius: 2, textAlign: "center" }}>
-          <div style={{ fontSize: 36, marginBottom: 8 }}>🥇</div>
-          <div className="urdu" style={{ fontSize: 22, color: COLORS.darkGreen, marginBottom: 4, lineHeight: 2 }}>گولڈ میڈل — پنجاب یونیورسٹی</div>
-          <div style={{ fontFamily: "'Amiri',serif", fontSize: 18, color: COLORS.darkGreen, marginBottom: 8 }}>Gold Medal — Punjab University</div>
-          <p style={{ color: COLORS.textLight, fontSize: 14, marginBottom: 16 }}>1st Position in MA Islamic Studies · ایم اے اسلامیات میں اول پوزیشن</p>
-          <div className="urdu" style={{ fontSize: 16, color: COLORS.green, lineHeight: 2.6 }}>ماشاء اللّٰہ لا قوۃ الا باللّٰہ</div>
-        </div>
+            {/* Gold medal closing */}
+            <div style={{ background: `${COLORS.gold}11`, border: `2px solid ${COLORS.gold}`, padding: "28px", borderRadius: 2, textAlign: "center" }}>
+              <div style={{ fontSize: 36, marginBottom: 8 }}>🥇</div>
+              <div className="urdu" style={{ fontSize: 22, color: COLORS.darkGreen, marginBottom: 4, lineHeight: 2 }}>گولڈ میڈل — پنجاب یونیورسٹی</div>
+              <div style={{ fontFamily: "'Amiri',serif", fontSize: 18, color: COLORS.darkGreen, marginBottom: 8 }}>Gold Medal — Punjab University</div>
+              <p style={{ color: COLORS.textLight, fontSize: 14, marginBottom: 16 }}>1st Position in MA Islamic Studies · ایم اے اسلامیات میں اول پوزیشن</p>
+              <div className="urdu" style={{ fontSize: 16, color: COLORS.green, lineHeight: 2.6 }}>ماشاء اللّٰہ لا قوۃ الا باللّٰہ</div>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

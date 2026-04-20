@@ -19,92 +19,133 @@ import ContactPage from "./pages/ContactPage";
 import TVProgramDetailPage from "./pages/TVProgramDetail";
 import PayamSubahPage, { PayamYearPage } from "./pages/PayamSubah";
 
-function parseHash(hash) {
-  const raw = (hash || "").replace(/^#\/?/, "");
-  const parts = raw.split("/").filter(Boolean);
-  return { section: parts[0] || "home", sub: parts[1] || null, id: parts[2] || null };
-}
+import { Routes, Route, Navigate } from 'react-router-dom';
+import AdminLogin from './admin/AdminLogin';
+import AdminLayout from './admin/AdminLayout';
+import AdminDashboard from './admin/AdminDashboard';
+import ArticleManager from './admin/ArticleManager';
+import VideoManager from './admin/VideoManager';
+import SettingsManager from './admin/SettingsManager';
+import InquiryManager from './admin/InquiryManager';
 
-function pushHash(section, sub, id) {
-  let h = "#/" + section;
-  if (sub) h += "/" + sub;
-  if (id) h += "/" + id;
-  window.location.hash = h;
-  return parseHash(h);
-}
+import SEO from "./components/SEO";
 
 export default function App() {
-  const [route, setRoute] = useState(() => parseHash(window.location.hash));
   const [selectedVideo, setSelectedVideo] = useState(null);
-  const [selectedArticle, setSelectedArticle] = useState(null);
-
-  useEffect(() => {
-    const onHashChange = () => {
-      const r = parseHash(window.location.hash);
-      setRoute(r);
-      if (r.section !== "articles" || !r.sub) setSelectedArticle(null);
-    };
-    window.addEventListener("hashchange", onHashChange);
-    return () => window.removeEventListener("hashchange", onHashChange);
-  }, []);
-
-  useEffect(() => { window.scrollTo({ top: 0, behavior: "smooth" }); }, [route.section, route.sub, route.id]);
-
-  const navigate = useCallback((section, sub, id) => { setRoute(pushHash(section, sub, id)); }, []);
   const handleVideoClick = (v) => setSelectedVideo(v);
-  const navActive = route.section === "tv" ? "community" : route.section;
-
-  const renderPage = () => {
-    const { section, sub, id } = route;
-
-    if (section === "tv") {
-      if (sub === "payam-e-subah") {
-        if (id) {
-          const yearData = PAYAM_SUBAH_YEARS.find(y => y.year === id);
-          if (yearData) return <PayamYearPage yearData={yearData} onBack={() => navigate("tv", "payam-e-subah")} onVideoClick={handleVideoClick} />;
-        }
-        return <PayamSubahPage onYearSelect={(year) => navigate("tv", "payam-e-subah", year)} onBack={() => navigate("community")} />;
-      }
-      if (sub) {
-        const program = TV_PROGRAMS_DATA.find(p => p.slug === sub || p.id === sub);
-        if (program) {
-          if (program.useYearlyFormat) { navigate("tv", "payam-e-subah"); return null; }
-          return <TVProgramDetailPage program={program} onBack={() => navigate("community")} onVideoClick={handleVideoClick} onPayamSubahOpen={() => navigate("tv", "payam-e-subah")} />;
-        }
-      }
-      return <CommunityPage onProgramClick={(slug) => navigate("tv", slug)} />;
-    }
-
-    if (section === "articles" && sub && selectedArticle) {
-      return <ArticleDetailPage article={selectedArticle} onBack={() => { setSelectedArticle(null); navigate("articles"); }} />;
-    }
-
-    switch (section) {
-      case "home": return <HomePage setActive={(id) => navigate(id)} onProgramClick={(slug) => navigate("tv", slug)} />;
-      case "biography": return <BiographyPage />;
-      case "clips": return <ShortsPage onVideoClick={handleVideoClick} />;
-      case "lectures": return <LecturesPage onVideoClick={handleVideoClick} />;
-      case "articles": return (
-        <ArticlesPage onArticleSelect={(article) => {
-          setSelectedArticle(article);
-          const slug = article.title.slice(0, 40).replace(/\s+/g, "-").replace(/[^\w\u0600-\u06FF-]/g, "").toLowerCase() || "article";
-          navigate("articles", slug);
-        }} />
-      );
-      case "fatwa": return <FatwaPage />;
-      case "events": return <EventsPage />;
-      case "community": return <CommunityPage onProgramClick={(slug) => navigate("tv", slug)} />;
-      case "contact": return <ContactPage />;
-      default: return <HomePage setActive={(id) => navigate(id)} onProgramClick={(slug) => navigate("tv", slug)} />;
-    }
-  };
 
   return (
     <>
       <style>{FONTS + GLOBAL_STYLE}</style>
-      <NavBar active={navActive} setPage={(id) => navigate(id)} />
-      <main style={{ minHeight: "100vh" }}>{renderPage()}</main>
-      <Footer setPage={(id) => navigate(id)} />
+      <Routes>
+        {/* Admin Routes */}
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<Navigate to="dashboard" replace />} />
+          <Route path="dashboard" element={<AdminDashboard />} />
+          <Route path="articles" element={<ArticleManager />} />
+          <Route path="videos" element={<VideoManager />} />
+          <Route path="inquiries" element={<InquiryManager />} />
+          <Route path="settings" element={<SettingsManager />} />
+        </Route>
+
+        {/* Public Site Routes */}
+        <Route path="/" element={
+          <>
+            <NavBar active="home" />
+            <SEO title="Home" description="Official website of Prof. Dr. Muhammad Hammad Lakhvi. Islamic scholar and directory of Faith Foundation." />
+            <main style={{ minHeight: "100vh" }}><HomePage /></main>
+            <Footer />
+          </>
+        } />
+
+        <Route path="/biography-of-dr-hammad-lakhvi" element={
+          <>
+            <NavBar active="biography" />
+            <SEO title="Biography" description="Detailed biography of Prof. Dr. Muhammad Hammad Lakhvi, his education, teachers, and academic achievements." />
+            <main style={{ minHeight: "100vh" }}><BiographyPage /></main>
+            <Footer />
+          </>
+        } />
+
+        <Route path="/islamic-short-clips" element={
+          <>
+            <NavBar active="shorts" />
+            <SEO title="Short Video Clips" description="Watch and share short Islamic clips and reminders by Dr. Hammad Lakhvi." />
+            <main style={{ minHeight: "100vh" }}><ShortsPage onVideoClick={handleVideoClick} /></main>
+            <Footer />
+          </>
+        } />
+
+        <Route path="/islamic-lectures-and-series" element={
+          <>
+            <NavBar active="lectures" />
+            <SEO title="Islamic Lectures & Series" description="Comprehensive collection of Tafseer, Hadith, and Islamic lecture series by Dr. Hammad Lakhvi." />
+            <main style={{ minHeight: "100vh" }}><LecturesPage onVideoClick={handleVideoClick} /></main>
+            <Footer />
+          </>
+        } />
+
+        <Route path="/research-articles-by-dr-hammad-lakhvi" element={
+          <>
+            <NavBar active="articles" />
+            <SEO title="Research Articles" description="Explore peer-reviewed publications and research articles on Islamic theology, history, and contemporary issues." />
+            <main style={{ minHeight: "100vh" }}><ArticlesPage onArticleSelect={(a) => window.location.href = `/article/${a.id || a._id}`} /></main>
+            <Footer />
+          </>
+        } />
+
+        <Route path="/islamic-qa-and-fatwa" element={
+          <>
+            <NavBar active="fatwa" />
+            <SEO title="Q&A / Fatwas" description="Islamic guidance and answers to contemporary questions in the light of Quran and Sunnah." />
+            <main style={{ minHeight: "100vh" }}><FatwaPage /></main>
+            <Footer />
+          </>
+        } />
+
+        <Route path="/events-and-activities" element={
+          <>
+            <NavBar active="events" />
+            <SEO title="Events & Activities" description="Latest updates on seminars, conferences, and community events involving Dr. Hammad Lakhvi." />
+            <main style={{ minHeight: "100vh" }}><EventsPage /></main>
+            <Footer />
+          </>
+        } />
+
+        <Route path="/tv-programs-and-community" element={
+          <>
+            <NavBar active="community" />
+            <SEO title="TV Programs & Community" description="Explore Pegham TV programs and community services provided by the Lakhvi family." />
+            <main style={{ minHeight: "100vh" }}><CommunityPage onProgramClick={(slug) => window.location.href = `/tv/${slug}`} /></main>
+            <Footer />
+          </>
+        } />
+
+        <Route path="/contact-us" element={
+          <>
+            <NavBar active="contact" />
+            <SEO title="Contact" description="Get in touch for questions, invitations, or community support." />
+            <main style={{ minHeight: "100vh" }}><ContactPage /></main>
+            <Footer />
+          </>
+        } />
+        
+        {/* Detail Routes */}
+        <Route path="/tv/:slug" element={
+          <>
+            <NavBar active="community" />
+            <main style={{ minHeight: "100vh" }}>
+              <TVProgramDetailPage onBack={() => window.location.href = "/tv-programs-and-community"} onVideoClick={handleVideoClick} />
+            </main>
+            <Footer />
+          </>
+        } />
+
+        {/* Fallback */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+
       <VideoModal video={selectedVideo} onClose={() => setSelectedVideo(null)} />
       <WhatsAppButton />
     </>

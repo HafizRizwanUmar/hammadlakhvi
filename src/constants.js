@@ -14,14 +14,14 @@ export const COLORS = {
 
 export const NAV_ITEMS = [
   { id: "home", label: "Home", path: "/" },
-  { id: "biography", label: "Biography", path: "/biography" },
-  { id: "shorts", label: "Short Clips", path: "/clips" },
-  { id: "lectures", label: "Lectures", path: "/lectures" },
-  { id: "articles", label: "Articles", path: "/articles" },
-  { id: "fatwa", label: "Q&A / Fatwas", path: "/fatwa" },
-  { id: "events", label: "Events", path: "/events" },
-  { id: "community", label: "Community", path: "/community" },
-  { id: "contact", label: "Contact", path: "/contact" },
+  { id: "biography", label: "Biography", path: "/biography-of-dr-hammad-lakhvi" },
+  { id: "shorts", label: "Short Clips", path: "/islamic-short-clips" },
+  { id: "lectures", label: "Lectures", path: "/islamic-lectures-and-series" },
+  { id: "articles", label: "Articles", path: "/research-articles-by-dr-hammad-lakhvi" },
+  { id: "fatwa", label: "Q&A / Fatwas", path: "/islamic-qa-and-fatwa" },
+  { id: "events", label: "Events", path: "/events-and-activities" },
+  { id: "community", label: "Community", path: "/tv-programs-and-community" },
+  { id: "contact", label: "Contact", path: "/contact-us" },
 ];
 
 export const GLOBAL_STYLE = `

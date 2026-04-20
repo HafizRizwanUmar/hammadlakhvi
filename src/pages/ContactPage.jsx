@@ -1,13 +1,37 @@
 import { useState } from "react";
+import axios from "axios";
 import { COLORS } from "../constants";
 import { SectionHeader } from "../components/UI";
+import SEO from "../components/SEO";
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
-  const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleSubmit = async () => {
+    if (!form.name || !form.email || !form.message) {
+      setError("Please fill in all required fields.");
+      return;
+    }
+    setError("");
+    setLoading(true);
+    try {
+      await axios.post("http://localhost:5000/api/inquiries", form);
+      setSent(true);
+    } catch (err) {
+      setError("Failed to send message. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div style={{ padding: "100px 24px 80px", background: COLORS.cream, minHeight: "100vh" }}>
+      <SEO 
+        title="Contact Dr. Muhammad Hammad Lakhvi" 
+        description="Get in touch with Prof. Dr. Muhammad Hammad Lakhvi for queries, scholarly advice, or community invitations."
+      />
       <div style={{ maxWidth: 900, margin: "0 auto" }}>
         <SectionHeader title="Contact" urdu="رابطہ" sub="Get in touch for lectures, fatawa, or media" />
         <div className="contact-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 40 }}>
@@ -42,10 +66,11 @@ export default function ContactPage() {
                 <div style={{ fontSize: 60, marginBottom: 16 }}>✅</div>
                 <div style={{ fontFamily: "'Amiri',serif", fontSize: 24, color: COLORS.darkGreen, marginBottom: 8 }}>Message Sent!</div>
                 <p style={{ color: COLORS.textLight, fontSize: 14 }}>JazakAllahu Khayran. We will respond as soon as possible.</p>
-                <button onClick={() => setSent(false)} style={{ marginTop: 20, background: COLORS.darkGreen, color: COLORS.cream, border: "none", padding: "10px 24px", borderRadius: 2, cursor: "pointer", fontSize: 13 }}>Send Another →</button>
+                <button onClick={() => { setSent(false); setForm({ name: "", email: "", subject: "", message: "" }); }} style={{ marginTop: 20, background: COLORS.darkGreen, color: COLORS.cream, border: "none", padding: "10px 24px", borderRadius: 2, cursor: "pointer", fontSize: 13 }}>Send Another →</button>
               </div>
             ) : (
               <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                {error && <div style={{ color: '#e03131', fontSize: '13px', background: '#fff0f0', padding: '10px', borderRadius: '4px', border: '1px solid #ffa8a8' }}>{error}</div>}
                 {[
                   { key: "name", label: "Your Name", type: "text", placeholder: "Muhammad Ali" },
                   { key: "email", label: "Email Address", type: "email", placeholder: "you@example.com" },
@@ -59,6 +84,7 @@ export default function ContactPage() {
                       value={form[f.key]}
                       onChange={e => setForm(p => ({ ...p, [f.key]: e.target.value }))}
                       style={{ width: "100%", padding: "12px 16px", border: `1px solid ${COLORS.border}`, borderRadius: 2, fontSize: 14, fontFamily: "'Libre Baskerville',serif", background: COLORS.white, outline: "none", color: COLORS.text }}
+                      disabled={loading}
                     />
                   </div>
                 ))}
@@ -70,13 +96,15 @@ export default function ContactPage() {
                     value={form.message}
                     onChange={e => setForm(p => ({ ...p, message: e.target.value }))}
                     style={{ width: "100%", padding: "12px 16px", border: `1px solid ${COLORS.border}`, borderRadius: 2, fontSize: 14, fontFamily: "'Libre Baskerville',serif", background: COLORS.white, outline: "none", resize: "vertical", color: COLORS.text }}
+                    disabled={loading}
                   />
                 </div>
                 <button
-                  onClick={() => { if (form.name && form.email && form.message) setSent(true); }}
-                  style={{ background: `linear-gradient(135deg,${COLORS.darkGreen},${COLORS.green})`, color: COLORS.cream, border: "none", padding: "14px 32px", fontSize: 13, letterSpacing: "0.1em", textTransform: "uppercase", cursor: "pointer", borderRadius: 2, fontWeight: 700 }}
+                  onClick={handleSubmit}
+                  disabled={loading}
+                  style={{ background: `linear-gradient(135deg,${COLORS.darkGreen},${COLORS.green})`, color: COLORS.cream, border: "none", padding: "14px 32px", fontSize: 13, letterSpacing: "0.1em", textTransform: "uppercase", cursor: loading ? "not-allowed" : "pointer", borderRadius: 2, fontWeight: 700, opacity: loading ? 0.7 : 1 }}
                 >
-                  Send Message →
+                  {loading ? "Sending..." : "Send Message →"}
                 </button>
               </div>
             )}

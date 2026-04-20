@@ -11,13 +11,17 @@ const FATWAS = [
 export default function FatwaPage() {
   const [openIdx, setOpenIdx] = useState(null);
   return (
-    <div style={{ padding: "100px 24px 80px", background: COLORS.cream, minHeight: "100vh" }}>
-      <div style={{ maxWidth: 900, margin: "0 auto" }}>
+    <div style={{ padding: "100px 24px 100px", background: COLORS.cream, minHeight: "100vh" }}>
+      <SEO 
+        title="Islamic Q&A and Fatwa" 
+        description="Get authentic Islamic guidance and answers to contemporary questions in the light of Quran and Sunnah."
+      />
+      <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center" }}>
         <SectionHeader title="Q&A / Fatwas" urdu="سوال و جواب / فتاوی" sub="Islamic Jurisprudence & Guidance" />
         <div style={{ background: `${COLORS.gold}11`, border: `1px solid ${COLORS.gold}44`, padding: "16px 24px", borderRadius: 2, marginBottom: 32 }}>
           <p style={{ fontSize: 13, color: COLORS.text, lineHeight: 1.7 }}><strong>Note:</strong> Responses here are brief summaries. For comprehensive fatawa, please watch the full recorded sessions or contact us.</p>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 12, textAlign: "left" }}>
           {FATWAS.map((f, i) => (
             <div key={i} style={{ background: COLORS.white, border: `1px solid ${COLORS.border}`, borderRadius: 2, overflow: "hidden" }}>
               <button onClick={() => setOpenIdx(openIdx === i ? null : i)} style={{ width: "100%", background: "none", border: "none", cursor: "pointer", padding: "20px 24px", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 16, textAlign: "left", fontFamily: "'Libre Baskerville',serif" }}>
