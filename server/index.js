@@ -30,11 +30,12 @@ app.use('/api/inquiries', inquiryRoutes);
 // --- Serving Frontend Build ---
 // Assuming the 'dist' folder is inside the root (one level up from 'server')
 const distPath = path.join(__dirname, '..', 'dist');
+// Static serving of frontend assets
 app.use(express.static(distPath));
 
-// Catch-all route for SPA: serve index.html for any unknown routes
-app.get('/:path*', (req, res) => {
-  if (req.path.startsWith('/api')) return res.status(404).json({ error: 'API route not found' });
+// Catch-all route for SPA: serve index.html for any unknown routes (Express 5 compatible)
+app.use((req, res, next) => {
+  if (req.path.startsWith('/api')) return next();
   res.sendFile(path.join(distPath, 'index.html'));
 });
 
