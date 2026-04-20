@@ -1,8 +1,52 @@
-import { COLORS } from "../constants";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import { COLORS, API_BASE } from "../constants";
 import { BackBtn } from "../components/UI";
 
-export default function ArticleDetailPage({ article, onBack }) {
-  if (!article) return null;
+export default function ArticleDetailPage({ article: initialArticle, onBack }) {
+  const { id } = useParams();
+  const [article, setArticle] = useState(initialArticle);
+  const [loading, setLoading] = useState(!initialArticle);
+
+  useEffect(() => {
+    if (!initialArticle && id) {
+      fetchArticle();
+    }
+  }, [id, initialArticle]);
+
+  const fetchArticle = async () => {
+    try {
+      const res = await axios.get(`${API_BASE}/articles/${id}`);
+      setArticle(res.data);
+    } catch (err) {
+      console.error("Error fetching article:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div style={{ padding: "100px 24px", textAlign: "center", background: COLORS.cream, minHeight: "100vh" }}>
+        <p style={{ color: COLORS.textLight }}>Loading article...</p>
+      </div>
+    );
+  }
+
+  if (!article) {
+    return (
+      <div style={{ padding: "100px 24px", textAlign: "center", background: COLORS.cream, minHeight: "100vh" }}>
+        <div style={{ maxWidth: 860, margin: "0 auto" }}>
+          <BackBtn onClick={onBack} label="← Back to Articles" />
+          <div style={{ marginTop: 40, color: COLORS.textLight }}>
+            <div style={{ fontSize: 40, marginBottom: 12 }}>⚠️</div>
+            <p>Article not found.</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
   const isUrdu = article.lang === "urdu";
   const hasContent = Boolean(article.content);
   const hasFootnotes = Array.isArray(article.footnotes) && article.footnotes.length > 0;

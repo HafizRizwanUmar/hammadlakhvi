@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const path = require('path');
 const Article = require('./models/Article');
 const Video = require('./models/Video');
 const User = require('./models/User');
@@ -55,7 +54,7 @@ const ARTICLES_DATA = [
 حضرت خدیجہ نے رسول اللہ ﷺ کو پہلی وحی کے موقع سے لے کر ان پر دین کی راہ میں آنے والے ہر مشکل وقت میں ، دین کے ہر معاملے میں رسول اللہﷺ کو نا صرف مفید مشورے فراہم کیے بلکہ حوصلہ اور support بھی فراہم کی۔حضرت خدیجہ ہر موقع پر رسول اللہ ﷺ کو تسلی دیا کرتی تھیں ان کا حوصلہ بنا کرتی تھیں۔حضرت خدیجہ کا وجود دین کی اشاعت کا ذریعہ بنا بہت سے مرد و خواتین ان کی دعوت سے مسلمان ہوئے۔سیرت ابن ہشام میں آتا ہے کہ:
 کانت (خديجة) له وزیر صدق علی الإسلام یشکو إليها. (سیرت ابن ہشام).
 ترجمہ:حضرت خدیجہ نبی اکرم ﷺ کے لیےتبلیغ اسلام میں سچی مددگار تھیں آپ ﷺ ان سے مشاورت کیا کرتے تھے۔
-{ خواتین کے لیے نصیحت: خواتین کو بھی اپنے باپ ، بھائی ، شوهر، بیٹے اور دیگر مسلمان مردوں کو اللہ کی طرف سے عطا کردہ حکمت و دانائی کو استعمال کرتے ہوئے دین اسلام کے لیے مفید مشورے فراہم کرنے چاہیے , مشکل مرحلوں میں ان کا حوصلہ بننا چاہیے تا کہ دین اسلام کو فائدہ پہنچ سکے جیسے ام المونین خدیجہ رضی اللہ عنھا کے زریعے پہنچا۔}
+{ خواتین کے لیے نصیحت: خواتین کو بھی اپنے باپ ، بھائی ، شوہر، بیٹے اور دیگر مسلمان مردوں کو اللہ کی طرف سے عطا کردہ حکمت و دانائی کو استعمال کرتے ہوئے دین اسلام کے لیے مفید مشورے فراہم کرنے چاہیے , مشکل مرحلوں میں ان کا حوصلہ بننا چاہیے تا کہ دین اسلام کو فائدہ پہنچ سکے جیسے ام المونین خدیجہ رضی اللہ عنھا کے زریعے پہنچا۔}
 
 **5) دین کی تعلیم حاصل کر کے اس کی اشاعت میں کردار اداد کریں :**
 حضرت عائشہ صدیقہ ایک عالمہ تھیں ۔ایک عرصہ تک آپ نے گھر کے معاملات کے حوالے سے صحابہ و صحابیات کو تو تعلیم دی ہی تھی، اس کے علاوہ آپ بہت سے دیگر علوم کی ماہر تھیں ۔۔جیسے "قرآن کے علوم ،عرب کی تاریخ، علم الفرائض ، تاریخ العرب ، عرب کی شاعری" وغیرہ جیسے بڑے بڑے علوم کی عالمہ تھیں اور دین اسلام کی اشاعت کا بہت دیر تک آپ فریضہ سر انجام دیتی رہینہ۔ہشام بن عروہ کا ایک قول علامہ ذہبی نے نقل کیا ہےتذکرۃ الحفاظ کے اندر کہ:
@@ -64,7 +63,7 @@ const ARTICLES_DATA = [
 { خواتین کے لیے نصیحت: آج بھی خواتین کو دینی علوم پر مضبوط و گہری دسترس حاصل ہونی چاہیے ، دینی علوم کی تعلیم حاصل کرنی چاہیے اور دین اسلام کے بتائے ہوئے defined دائرہ کاراور طریقے کے مطابق اپنی صلاحیتوں کو بہترین طریقے سے بروئے کار لاتے ہوئے اس علم کی احسن انداز سے اشاعت میں اپنا نمایاں کردار ادا کرنا چاہیے۔}
 
 **6) دین کے مختلف مواقع پر خواتین کا کردار و ساتھ :**
-دین اسلام کے آغاز سے لے کر ہر موقع دیکھ لیں تو ہمیں خواتین کا نمایاں کردار نظر آتا ہے۔ بیعت عقبہ اولی اور ثانی ، ہجرت مدینہ ، غزوات گویا ہر موقع پر خواتین ساتھ تھیں۔غزوات میں خواتین مختلف طریقوں سے اپنا کردار ادا کرتی تھیں۔پانی پلاتی تھیں ، مرہم پٹی کرتی تھیں۔
+دین اسلام کے آغاز سے لے کر ہر موقع دیکھ لیں تو ہمیں خواتین का نمایاں کردار نظر آتا ہے۔ بیعت عقبہ اولی اور ثانی ، ہجرت مدینہ ، غزوات گویا ہر موقع پر خواتین ساتھ تھیں۔غزوات میں خواتین مختلف طریقوں سے اپنا کردار ادا کرتی تھیں۔پانی پلاتی تھیں ، مرہم پٹی کرتی تھیں۔
 { خواتین کے لیے نصیحت: انہی امہات المومنین اور صحابیات کے نقش قدم پر چلتے ہوئے آج بھی خواتین کو ہر موقع پر اپنے دائرہ کار اور اسلامی تعلیمات کے مطابق جہاں بھی جب بھی دین کے لیے کچھ پیش کرنے کی ضرورت ہو کوئی قربانی دینی ہو یا اپنی صلاحیتیں بروئے کار لاتے ہوئے دین کے لیے کچھ کرنا ہو تو پیش پیش رینا چاہیے۔} 
 
 **7) گھروں میں دعوت دین کا باقاعدہ و لازمی احتمام کرنا**
@@ -100,7 +99,7 @@ const VIDEOS_DATA = [
     type: "SERIES",
     channel: "Official Channel",
     thumbnail: "/t1.jpg",
-    description: "🎙️ Dr Muhammad Hammad Bin Mohiyudin Lakhvi. Summary of Quranic themes for Ramadan 2026.",
+    description: "🎙️ Dr Muhammad Hammad Bin Mohiyudin Lakhvi. A comprehensive summary of Quranic themes for Ramadan 2026.",
     videos: [
       { id: "5zZPlHzkFnc", title: "Day 1 | Para 1", ep: "Day 1" },
       { id: "v0d0EqHMizQ", title: "Day 2 | Para 2", ep: "Day 2" },
@@ -145,6 +144,38 @@ const VIDEOS_DATA = [
     ]
   },
 
+  // Payam-e-Subah Archive
+  {
+    year: "2019",
+    label: "۲۰۱۹",
+    type: "PAYAM_SUBAH",
+    title: "پیام صبح ۲۰۱۹",
+    thumbnail: "/payam2019.jpeg",
+    facebookUrl: "https://www.facebook.com/share/1GUoLS5Qvu/",
+    episodes: [
+      { month: "April 2019", date: "April 9, 2019", topic: "اللّٰہ کی راہ پر راضی رہنا", youtubeId: "Mo-wfqoMiGE" },
+      { month: "April 2019", date: "April 16, 2019", topic: "نیکی کسے کہتے ہیں؟", youtubeId: "jVCaKWIyNd8" },
+      { month: "June 2019", date: "June 11, 2019", topic: "سفر کے آداب", youtubeId: null },
+      { month: "June 2019", date: "June 18, 2019", topic: "شیطان کو سرپرست بنانا", youtubeId: null },
+      { month: "July 2019", date: "July 18, 2019", topic: "دین کے پیغام کو آگے پینچانا", youtubeId: "InKOLWNCimI" },
+      { month: "July 2019", date: "July 23, 2019", topic: "سورة البقرة أية ٢٥٠", youtubeId: "ktZ0JVKx65U" },
+      { month: "July 2019", date: "July 31, 2019", topic: "سورة النمل البقرة أية ١٩", youtubeId: "RGXxW0VIvjg" },
+      { month: "August 2019", date: "August 6, 2019", topic: "101 سورة يوسف", youtubeId: "6uw3WqMtELQ" },
+      { month: "August 2019", date: "August 21, 2019", topic: "البقرہ ٢٥٠", youtubeId: "v_hcN36Tvas" },
+      { month: "August 2019", date: "August 22, 2019", topic: "آل عمران آیت 38 & 39", youtubeId: "LNNgTbZ-Sgw" },
+      { month: "August 2019", date: "August 27, 2019", topic: "سورة آل عمران أية 194", youtubeId: "b5q3vgy7qM8" },
+      { month: "September 2019", date: "September 16, 2019", topic: "سورة التحريم أية ١١", youtubeId: "vJKGJV-NIwI" },
+      { month: "September 2019", date: "September 23, 2019", topic: "سورة القصص أية 16 & 17", youtubeId: "KYZ71RV7ZvM" },
+      { month: "October 2019", date: "October 30, 2019", topic: "سیرت کا مطالعہ کیوں ضروری ہے؟", youtubeId: "HdxpZBD3u18" },
+      { month: "November 2019", date: "November 4, 2019", topic: "اسوہ رسول صلی اللّٰہ علیہ وآلہ وسلم", youtubeId: "OXtZhQfooCE" },
+      { month: "November 2019", date: "November 19, 2019", topic: "النساء آیت 25", youtubeId: "-H7vvZG1kBU" },
+      { month: "December 2019", date: "December 30, 2019", topic: "سورة آل الشورى أية ١٩ & ٢٠", youtubeId: "KMMLoHsDFxE" },
+    ]
+  },
+  { year: "2020", label: "۲۰۲۰", type: "PAYAM_SUBAH", title: "پیام صبح ۲۰۲۰", thumbnail: "/payam-2020.jpg", facebookUrl: "https://www.facebook.com/share/p/1AwA1ZwbMo/", episodes: [] },
+  { year: "2021", label: "۲۰۲۱", type: "PAYAM_SUBAH", title: "پیام صبح ۲۰۲۱", thumbnail: "/payam-2021.jpg", facebookUrl: "https://www.facebook.com/share/1C6XUADaac/", episodes: [] },
+  { year: "2022", label: "۲۰۲۲", type: "PAYAM_SUBAH", title: "پیام صبح ۲۰۲۲", thumbnail: "/payam-2022.jpg", facebookUrl: "https://www.facebook.com/share/p/1DVhDGJz8U/", episodes: [] },
+
   // TV Programs
   {
     id: "tafseer-al-quran",
@@ -155,26 +186,76 @@ const VIDEOS_DATA = [
     icon: "📖",
     channel: "Pegham TV",
     channelColor: "#1A5C3A",
-    description: "Weekly verse-by-verse Quranic exegesis broadcast on Pegham TV.",
+    description: "Weekly verse-by-verse Quranic exegesis.",
     videos: [
-      { id: "5RuqA4c_8GQ", title: "Tafseer Surah Al-Fatiha", ep: "Episode 1" },
-      { id: "yDa1JTOf0xA", title: "Tafseer Surah Al-Baqarah", ep: "Episode 2" },
+      { id: "5RuqA4c_8GQ", title: "تفسیر سورۃ الفاتحہ", ep: "Episode 1" },
+      { id: "yDa1JTOf0xA", title: "تفسیر سورۃ البقرہ", ep: "Episode 2" },
+      { id: "nmBwd3MkPSY", title: "تفسیر سورۃ آل عمران", ep: "Episode 3" },
+      { id: "HBbQMQkz3GE", title: "تفسیر سورۃ النساء", ep: "Episode 4" },
+    ]
+  },
+  { id: "payam-e-subah", slug: "payam-e-subah", title: "پیام صبح", subtitle: "Payam-e-Subah", type: "TV_PROGRAM", icon: "🌅", channel: "Dunya News", channelColor: "#C8102E", videos: [] },
+  {
+    id: "dua-momin-ka-hathiyar",
+    slug: "dua-momin-ka-hathiyar",
+    title: "دعا مومن کا ہتھیار",
+    subtitle: "Dua — The Believer's Weapon",
+    type: "TV_PROGRAM",
+    icon: "🙏",
+    channel: "Peace TV",
+    channelColor: "#0066CC",
+    videos: [
+      { id: "5RuqA4c_8GQ", title: "دعا کی اہمیت اور فضیلت", ep: "Episode 1" },
+      { id: "yDa1JTOf0xA", title: "قرآنی دعائیں", ep: "Episode 2" },
+      { id: "nmBwd3MkPSY", title: "نبوی دعائیں", ep: "Episode 3" },
     ]
   },
   {
-    id: "payam-e-subah-archive",
-    year: "2019",
-    label: "۲۰۱۹",
-    type: "PAYAM_SUBAH",
-    title: "پیام صبح",
-    thumbnail: "/payam2019.jpeg",
-    facebookUrl: "https://www.facebook.com/share/1GUoLS5Qvu/",
-    episodes: [
-      { month: "April 2019", date: "April 9, 2019", topic: "اللّٰہ کی راہ پر راضی رہنا", youtubeId: "Mo-wfqoMiGE" },
-      { month: "April 2019", date: "April 16, 2019", topic: "نیکی کسے کہتے ہیں؟", youtubeId: "jVCaKWIyNd8" },
-      { month: "July 2019", date: "July 18, 2019", topic: "دین کے پیغام کو آگے پینچانا", youtubeId: "InKOLWNCimI" },
+    id: "islam-aur-ilhad",
+    slug: "islam-aur-ilhad",
+    title: "اسلام اور الحاد",
+    subtitle: "Islam & Atheism",
+    type: "TV_PROGRAM",
+    icon: "💡",
+    channel: "Peace TV",
+    channelColor: "#0066CC",
+    videos: [
+      { id: "HBbQMQkz3GE", title: "الحاد کا تعارف اور تاریخ", ep: "Episode 1" },
+      { id: "S5PkGChDv9U", title: "وجود خدا کے دلائل", ep: "Episode 2" },
+      { id: "Xk4uGYkbBFg", title: "قرآن اور جدید سائنس", ep: "Episode 3" },
     ]
-  }
+  },
+  {
+    id: "hadith-jibril",
+    slug: "hadith-jibril",
+    title: "حدیث جبرئیل",
+    subtitle: "Hadith Jibril",
+    type: "TV_PROGRAM",
+    icon: "⚖️",
+    channel: "Peace TV",
+    channelColor: "#0066CC",
+    videos: [
+      { id: "5RuqA4c_8GQ", title: "حدیث جبرئیل — تعارف", ep: "Episode 1" },
+      { id: "yDa1JTOf0xA", title: "ایمان کے ارکان", ep: "Episode 2" },
+      { id: "nmBwd3MkPSY", title: "اسلام کے ارکان", ep: "Episode 3" },
+      { id: "HBbQMQkz3GE", title: "احسان — اعلی مقام", ep: "Episode 4" },
+    ]
+  },
+  {
+    id: "roshni",
+    slug: "roshni",
+    title: "روشنی",
+    subtitle: "Roshni",
+    type: "TV_PROGRAM",
+    icon: "🌙",
+    channel: "Lahore News",
+    channelColor: "#8B4513",
+    videos: [
+      { id: "S5PkGChDv9U", title: "روشنی — ایمان کی کرن", ep: "Episode 1" },
+      { id: "Xk4uGYkbBFg", title: "اخلاق اسلامی", ep: "Episode 2" },
+      { id: "5RuqA4c_8GQ", title: "صبر اور رضا", ep: "Episode 3" },
+    ]
+  },
 ];
 
 const seedDB = async () => {
@@ -182,15 +263,6 @@ const seedDB = async () => {
     const conn = await mongoose.connect(process.env.MONGODB_URI);
     console.log('Connected to MongoDB for seeding...');
 
-    // 1. Update Admin User
-    await User.deleteMany({ username: process.env.ADMIN_USERNAME });
-    const adminUser = new User({
-      username: process.env.ADMIN_USERNAME || 'hammadlakhvi_admin',
-      password: process.env.ADMIN_PASSWORD || 'LakhviAdmin#2026'
-    });
-    await adminUser.save();
-
-    // 2. Sync Articles with HTML format
     await Article.deleteMany({});
     const articlesToInsert = ARTICLES_DATA.map(art => ({
       ...art,
@@ -199,7 +271,6 @@ const seedDB = async () => {
     await Article.insertMany(articlesToInsert);
     console.log(`${articlesToInsert.length} Articles Synced.`);
 
-    // 3. Sync Videos
     await Video.deleteMany({});
     await Video.insertMany(VIDEOS_DATA);
     console.log(`${VIDEOS_DATA.length} Video Entries Synced.`);

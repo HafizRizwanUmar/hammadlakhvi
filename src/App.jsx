@@ -142,6 +142,16 @@ export default function App() {
           </>
         } />
 
+        <Route path="/article/:id" element={
+          <>
+            <NavBar active="articles" />
+            <main style={{ minHeight: "100vh" }}>
+              <ArticleDetailPage onBack={() => window.location.href = "/research-articles-by-dr-hammad-lakhvi"} />
+            </main>
+            <Footer />
+          </>
+        } />
+
         {/* Fallback */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
