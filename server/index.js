@@ -27,6 +27,17 @@ app.use('/api/videos', videoRoutes);
 app.use('/api/meta', metaRoutes);
 app.use('/api/inquiries', inquiryRoutes);
 
+// --- Serving Frontend Build ---
+// Assuming the 'dist' folder is inside the root (one level up from 'server')
+const distPath = path.join(__dirname, '..', 'dist');
+app.use(express.static(distPath));
+
+// Catch-all route for SPA: serve index.html for any unknown routes
+app.get('*', (req, res) => {
+  if (req.path.startsWith('/api')) return res.status(404).json({ error: 'API route not found' });
+  res.sendFile(path.join(distPath, 'index.html'));
+});
+
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => {
