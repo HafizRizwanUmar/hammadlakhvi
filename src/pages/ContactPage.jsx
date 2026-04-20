@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { COLORS } from "../constants";
+import { COLORS, API_BASE, IMG_BASE } from "../constants";
 import { SectionHeader } from "../components/UI";
 import SEO from "../components/SEO";
 
@@ -17,7 +17,7 @@ export default function ContactPage() {
     setError("");
     setLoading(true);
     try {
-      await axios.post("http://localhost:5000/api/inquiries", form);
+      await axios.post(`${API_BASE}/inquiries`, form);
       setSent(true);
     } catch (err) {
       setError("Failed to send message. Please try again later.");

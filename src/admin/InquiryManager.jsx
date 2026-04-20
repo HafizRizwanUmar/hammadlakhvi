@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Mail, Trash2, CheckCircle, Clock, Eye, X } from 'lucide-react';
-import { COLORS } from '../constants';
+import { COLORS, API_BASE, IMG_BASE } from '../constants';
 
 const InquiryManager = () => {
   const [inquiries, setInquiries] = useState([]);
@@ -15,7 +15,7 @@ const InquiryManager = () => {
   const fetchInquiries = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://localhost:5000/api/inquiries', {
+      const res = await axios.get(`${API_BASE}/inquiries`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setInquiries(res.data);
@@ -29,7 +29,7 @@ const InquiryManager = () => {
   const updateStatus = async (id, status) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.patch(`http://localhost:5000/api/inquiries/${id}/status`, { status }, {
+      await axios.patch(`${API_BASE}/inquiries/${id}/status`, { status }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchInquiries();
@@ -43,7 +43,7 @@ const InquiryManager = () => {
     if (!window.confirm('Are you sure you want to delete this inquiry?')) return;
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:5000/api/inquiries/${id}`, {
+      await axios.delete(`${API_BASE}/inquiries/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchInquiries();

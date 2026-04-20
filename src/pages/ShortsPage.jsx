@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { COLORS } from "../constants";
+import { COLORS, API_BASE, IMG_BASE } from "../constants";
 import { SectionHeader, VideoCard } from "../components/UI";
 import SEO from "../components/SEO";
 
@@ -11,7 +11,7 @@ export default function ShortsPage({ onVideoClick }) {
   useEffect(() => {
     const fetchClips = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/videos");
+        const res = await axios.get(`${API_BASE}/videos`);
         setClips(res.data.filter(v => v.type === "CLIP"));
       } catch (err) {
         console.error("Error fetching clips:", err);

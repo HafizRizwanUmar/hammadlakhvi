@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { BookOpen, Video, Users, ArrowUpRight } from 'lucide-react';
-import { COLORS } from '../constants';
+import { COLORS, API_BASE, IMG_BASE } from '../constants';
 
 const AdminDashboard = () => {
   const [stats, setStats] = useState({ articles: 0, videos: 0 });
@@ -10,8 +10,8 @@ const AdminDashboard = () => {
     const fetchStats = async () => {
       try {
         const [arts, vids] = await Promise.all([
-          axios.get('http://localhost:5000/api/articles'),
-          axios.get('http://localhost:5000/api/videos')
+          axios.get(`${API_BASE}/articles`),
+          axios.get(`${API_BASE}/videos`)
         ]);
         setStats({
           articles: arts.data.length,

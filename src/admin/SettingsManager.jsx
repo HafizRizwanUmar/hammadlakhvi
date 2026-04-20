@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Save, Info, Phone, Mail, Globe, MapPin } from 'lucide-react';
-import { COLORS } from '../constants';
+import { COLORS, API_BASE, IMG_BASE } from '../constants';
 
 const SettingsManager = () => {
   const [bio, setBio] = useState('');
@@ -21,9 +21,9 @@ const SettingsManager = () => {
   const fetchData = async () => {
     try {
       const [bioRes, contactRes, emailRes] = await Promise.all([
-        axios.get('http://localhost:5000/api/meta/biography').catch(() => ({ data: '' })),
-        axios.get('http://localhost:5000/api/meta/contact').catch(() => ({ data: {} })),
-        axios.get('http://localhost:5000/api/meta/email_config').catch(() => ({ data: {} }))
+        axios.get(`${API_BASE}/meta/biography`).catch(() => ({ data: '' })),
+        axios.get(`${API_BASE}/meta/contact`).catch(() => ({ data: {} })),
+        axios.get(`${API_BASE}/meta/email_config`).catch(() => ({ data: {} }))
       ]);
       setBio(bioRes.data);
       setContact(prev => ({ ...prev, ...contactRes.data }));
@@ -39,7 +39,7 @@ const SettingsManager = () => {
     setSaveStatus(`Saving ${key}...`);
     try {
       const token = localStorage.getItem('token');
-      await axios.post(`http://localhost:5000/api/meta/${key}`, { value }, {
+      await axios.post(`${API_BASE}/meta/${key}`, { value }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setSaveStatus('All changes saved successfully!');

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Plus, Edit2, Trash2, X, PlusCircle, LayoutGrid, List, Monitor } from 'lucide-react';
-import { COLORS } from '../constants';
+import { COLORS, API_BASE, IMG_BASE } from '../constants';
 
 const VideoManager = () => {
   const [videos, setVideos] = useState([]);
@@ -26,7 +26,7 @@ const VideoManager = () => {
   }, []);
 
   const fetchVideos = async () => {
-    const res = await axios.get('http://localhost:5000/api/videos');
+    const res = await axios.get(`${API_BASE}/videos`);
     setVideos(res.data);
   };
 
@@ -49,11 +49,11 @@ const VideoManager = () => {
     e.preventDefault();
     const token = localStorage.getItem('token');
     if (editingVideo) {
-      await axios.put(`http://localhost:5000/api/videos/${editingVideo._id}`, formData, {
+      await axios.put(`${API_BASE}/videos/${editingVideo._id}`, formData, {
         headers: { Authorization: `Bearer ${token}` }
       });
     } else {
-      await axios.post('http://localhost:5000/api/videos', formData, {
+      await axios.post(`${API_BASE}/videos`, formData, {
         headers: { Authorization: `Bearer ${token}` }
       });
     }
@@ -63,7 +63,7 @@ const VideoManager = () => {
 
   const handleDelete = async (id) => {
     if (window.confirm('Delete this entry?')) {
-      await axios.delete(`http://localhost:5000/api/videos/${id}`, {
+      await axios.delete(`${API_BASE}/videos/${id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
       fetchVideos();

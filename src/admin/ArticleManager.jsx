@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Plus, Edit2, Trash2, X, Upload, Save, Search, ExternalLink } from 'lucide-react';
-import { COLORS } from '../constants';
+import { COLORS, API_BASE, IMG_BASE } from '../constants';
 
 const ArticleManager = () => {
   const [articles, setArticles] = useState([]);
@@ -24,7 +24,7 @@ const ArticleManager = () => {
 
   const fetchArticles = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/articles');
+      const res = await axios.get(`${API_BASE}/articles`);
       setArticles(res.data);
     } finally {
       setLoading(false);
@@ -49,7 +49,7 @@ const ArticleManager = () => {
 
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this article?')) {
-      await axios.delete(`http://localhost:5000/api/articles/${id}`, {
+      await axios.delete(`${API_BASE}/articles/${id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
       fetchArticles();
@@ -64,11 +64,11 @@ const ArticleManager = () => {
 
     const token = localStorage.getItem('token');
     if (editingArticle) {
-      await axios.put(`http://localhost:5000/api/articles/${editingArticle.id}`, data, {
+      await axios.put(`${API_BASE}/articles/${editingArticle.id}`, data, {
         headers: { Authorization: `Bearer ${token}` }
       });
     } else {
-      await axios.post('http://localhost:5000/api/articles', data, {
+      await axios.post(`${API_BASE}/articles`, data, {
         headers: { Authorization: `Bearer ${token}` }
       });
     }

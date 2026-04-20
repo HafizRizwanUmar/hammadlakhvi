@@ -12,6 +12,9 @@ export const COLORS = {
   white: "#FFFFFF",
 };
 
+export const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+export const IMG_BASE = import.meta.env.VITE_IMG_URL || "http://localhost:5000";
+
 export const NAV_ITEMS = [
   { id: "home", label: "Home", path: "/" },
   { id: "biography", label: "Biography", path: "/biography-of-dr-hammad-lakhvi" },

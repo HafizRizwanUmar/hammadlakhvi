@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { COLORS } from "../constants";
+import { COLORS, API_BASE, IMG_BASE } from "../constants";
 import { SectionHeader } from "../components/UI";
 import SEO from "../components/SEO";
 
@@ -228,7 +228,7 @@ export default function BiographyPage() {
   useEffect(() => {
     const fetchBio = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/meta/biography");
+        const res = await axios.get(`${API_BASE}/meta/biography`);
         if (res.data && Array.isArray(res.data)) {
           setSections(res.data);
         }

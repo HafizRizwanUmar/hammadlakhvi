@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect } from "react";
 import axios from "axios";
-import { COLORS } from "../constants";
+import { COLORS, API_BASE, IMG_BASE } from "../constants";
 import { SectionHeader } from "../components/UI";
 import SEO from "../components/SEO";
 
@@ -12,7 +12,7 @@ const CATEGORY_COLORS = {
 };
 const catColor = (cat) => CATEGORY_COLORS[cat] || COLORS.green;
 
-const API_BASE = "http://localhost:5000/api";
+// API base centralized in constants
 
 export default function ArticlesPage({ onArticleSelect }) {
   const [articles, setArticles] = useState([]);
@@ -112,7 +112,7 @@ export default function ArticlesPage({ onArticleSelect }) {
                 
                 {a.thumbnail && (
                   <div style={{ width: 80, height: 60, borderRadius: 2, overflow: "hidden", border: `1px solid ${COLORS.border}`, flexShrink: 0 }}>
-                    <img src={a.thumbnail.startsWith('/') ? `http://localhost:5000${a.thumbnail}` : a.thumbnail} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    <img src={a.thumbnail.startsWith('/') ? `${IMG_BASE}${a.thumbnail}` : a.thumbnail} alt="" style={{ width: "100%", height: "100%\", objectFit: "cover" }} />
                   </div>
                 )}
 
