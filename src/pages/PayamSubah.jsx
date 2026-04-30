@@ -108,7 +108,7 @@ export function PayamYearPage({ yearData, onBack, onVideoClick }) {
                 style={{ width: "100%", height: "100%", objectFit: "contain", display: "block", minHeight: 180 }}
                 onError={e => {
                   e.target.style.display = "none";
-                  e.target.parentElement.innerHTML = `<div style="width:100%;height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#0a1a12;gap:8px"><div style="font-size:48px">🌅</div><div style="font-size:32px;font-family:'Noto Nastaliq Urdu',serif;color:#D4AF37;direction:rtl">${yearData.label}</div></div>`;
+                  e.target.parentElement.innerHTML = `<div style="width:100%;height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#0a1a12;gap:8px"><div style="font-size:48px">🌅</div><div style="font-size:32px;font-family:'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif;color:#D4AF37;direction:rtl">${yearData.label}</div></div>`;
                 }}
               />
             </div>
@@ -246,7 +246,7 @@ export default function PayamSubahPage({ onYearSelect, onBack }) {
                   style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "contain" }}
                   onError={e => {
                     e.target.style.display = "none";
-                    e.target.parentElement.innerHTML = `<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#1A3A2A,#2C5F3F);gap:8px"><div style="font-size:40px">🌅</div><div style="font-family:'Noto Nastaliq Urdu',serif;font-size:28px;color:#D4AF37;direction:rtl">${yr.label}</div></div>`;
+                    e.target.parentElement.innerHTML = `<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#1A3A2A,#2C5F3F);gap:8px"><div style="font-size:40px">🌅</div><div style="font-family:'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif;font-size:28px;color:#D4AF37;direction:rtl">${yr.label}</div></div>`;
                   }}
                 />
                 {/* Year overlay */}

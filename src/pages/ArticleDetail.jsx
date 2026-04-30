@@ -167,7 +167,8 @@ export default function ArticleDetailPage({ article: initialArticle, onBack }) {
                 >
                   {/* Render HTML content safely */}
                   <div 
-                    dangerouslySetInnerHTML={{ __html: article.content || "" }}
+                    className="custom-rich-text"
+                    dangerouslySetInnerHTML={{ __html: article.content?.replace(/&nbsp;/g, ' ') || "" }}
                     style={{ whiteSpace: "normal" }} // Quill handles spacing with tags
                   />
                 </div>

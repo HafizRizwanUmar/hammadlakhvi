@@ -42,6 +42,7 @@ router.post('/', auth, upload.single('thumbnail'), async (req, res) => {
 router.put('/:id', auth, upload.single('thumbnail'), async (req, res) => {
   try {
     const data = { ...req.body };
+    delete data._id; // Prevent immutable _id modification error
     if (req.file) data.thumbnail = `/uploads/${req.file.filename}`;
     
     ['videos', 'episodes'].forEach(key => {

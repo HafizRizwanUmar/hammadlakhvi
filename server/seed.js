@@ -265,9 +265,12 @@ const seedDB = async () => {
 
     // 1. Update Admin User
     await User.deleteMany({});
+    const username = process.env.ADMIN_USERNAME || 'hammadlakhvi_admin';
+    const password = process.env.ADMIN_PASSWORD || 'LakhviAdmin#2026';
+    console.log(`Creating Admin: Username=[${username}], Password=[${password}]`);
     const adminUser = new User({
-      username: process.env.ADMIN_USERNAME || 'hammadlakhvi_admin',
-      password: process.env.ADMIN_PASSWORD || 'LakhviAdmin#2026'
+      username,
+      password
     });
     await adminUser.save();
     console.log('Admin User Created.');

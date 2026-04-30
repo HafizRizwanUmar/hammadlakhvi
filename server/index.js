@@ -10,6 +10,7 @@ const articleRoutes = require('./routes/articles');
 const videoRoutes = require('./routes/videos');
 const metaRoutes = require('./routes/meta');
 const inquiryRoutes = require('./routes/inquiries');
+const sitemapRoutes = require('./routes/sitemap');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -26,6 +27,7 @@ app.use('/api/articles', articleRoutes);
 app.use('/api/videos', videoRoutes);
 app.use('/api/meta', metaRoutes);
 app.use('/api/inquiries', inquiryRoutes);
+app.get('/sitemap.xml', sitemapRoutes);
 
 // --- Serving Frontend Build ---
 // Assuming the 'dist' folder is inside the root (one level up from 'server')
@@ -35,7 +37,7 @@ app.use(express.static(distPath));
 
 // Catch-all route for SPA: serve index.html for any unknown routes (Express 5 compatible)
 app.use((req, res, next) => {
-  if (req.path.startsWith('/api')) return next();
+  if (req.path.startsWith('/api') || req.path === '/sitemap.xml') return next();
   res.sendFile(path.join(distPath, 'index.html'));
 });
 

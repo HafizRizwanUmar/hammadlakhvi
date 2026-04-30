@@ -287,9 +287,9 @@ export default function BiographyPage() {
                   <span style={{ fontSize: 11, color: COLORS.textLight, letterSpacing: "0.08em", textTransform: "uppercase", marginLeft: 4 }}>{s.en}</span>
                 </div>
                 <div style={{ padding: "20px 24px" }}>
-                  <div className="urdu" style={{ fontSize: 15, lineHeight: 2.4, color: COLORS.text, marginBottom: 12, whiteSpace: "pre-line" }}>{s.urduContent}</div>
+                  <div className="urdu custom-rich-text" style={{ fontSize: 15, lineHeight: 2.4, color: COLORS.text, marginBottom: 12 }} dangerouslySetInnerHTML={{ __html: s.urduContent?.replace(/&nbsp;/g, ' ') }} />
                   <div style={{ borderTop: `1px dashed ${COLORS.border}`, paddingTop: 10 }}>
-                    <p style={{ fontSize: 12, lineHeight: 1.8, color: COLORS.textLight, fontStyle: "italic" }}>{s.enContent}</p>
+                    <div className="custom-rich-text" style={{ fontSize: 12, lineHeight: 1.8, color: COLORS.textLight, fontStyle: "italic" }} dangerouslySetInnerHTML={{ __html: s.enContent?.replace(/&nbsp;/g, ' ') }} />
                   </div>
                 </div>
               </div>

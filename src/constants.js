@@ -13,8 +13,8 @@ export const COLORS = {
 };
 
 const isProd = import.meta.env.PROD;
-export const API_BASE = isProd ? "/api" : (import.meta.env.VITE_API_URL || "http://localhost:5000/api");
-export const IMG_BASE = isProd ? "" : (import.meta.env.VITE_IMG_URL || "http://localhost:5000");
+export const API_BASE = isProd ? "/api" : (import.meta.env.VITE_API_URL || "http://localhost:5001/api");
+export const IMG_BASE = isProd ? "" : (import.meta.env.VITE_IMG_URL || "http://localhost:5001");
 
 export const NAV_ITEMS = [
   { id: "home", label: "Home", path: "/" },
@@ -34,7 +34,7 @@ export const GLOBAL_STYLE = `
   ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: ${COLORS.cream}; }
   ::-webkit-scrollbar-thumb { background: ${COLORS.gold}; border-radius: 3px; }
-  .urdu { font-family: 'Noto Nastaliq Urdu', serif; direction: rtl; text-align: right; line-height: 2.2; }
+  .urdu { font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif; direction: rtl; text-align: right; line-height: 2.2; word-spacing: 2px; }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
   @keyframes shimmer { 0%,100% { opacity: 0.6; } 50% { opacity: 1; } }
@@ -69,8 +69,46 @@ export const GLOBAL_STYLE = `
     .series-detail-info h3, .series-detail-info p, .series-detail-info div { text-align: center !important; }
     .series-detail-info .series-meta { justify-content: center !important; }
     .article-detail-meta-grid { grid-template-columns: 1fr !important; }
-    .contact-grid { grid-template-columns: 1fr !important; }
+  }
+  
+  /* Rich Text Rendering Styles */
+  .custom-rich-text ul, .custom-rich-text ol { padding-left: 2.5em; margin-bottom: 1em; }
+  .custom-rich-text.urdu ul, .custom-rich-text.urdu ol { padding-left: 0; padding-right: 2.5em; }
+  .custom-rich-text li { margin-bottom: 0.5em; list-style-position: outside; }
+  .custom-rich-text p { margin-bottom: 0.8em; }
+  .custom-rich-text strong, .custom-rich-text b { font-weight: bold; }
+  .custom-rich-text em, .custom-rich-text i { font-style: italic; }
+
+  /* Custom Fonts for Rich Text Editor */
+  .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="jameel-noori"]::before,
+  .ql-snow .ql-picker.ql-font .ql-picker-item[data-value="jameel-noori"]::before {
+    content: "Jameel Noori";
+    font-family: 'Jameel Noori Nastaleeq', serif;
+  }
+  .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="arabic-calligraphy"]::before,
+  .ql-snow .ql-picker.ql-font .ql-picker-item[data-value="arabic-calligraphy"]::before {
+    content: "Arabic Calligraphy";
+    font-family: 'Aref Ruqaa', serif;
+  }
+  .ql-snow .ql-picker.ql-font .ql-picker-label:not([data-value])::before,
+  .ql-snow .ql-picker.ql-font .ql-picker-item:not([data-value])::before {
+    content: "Default Font";
+  }
+
+  .ql-font-jameel-noori {
+    font-family: 'Jameel Noori Nastaleeq', serif !important;
+  }
+  .ql-font-arabic-calligraphy {
+    font-family: 'Aref Ruqaa', serif !important;
   }
 `;
 
-export const FONTS = `@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap');`;
+export const FONTS = `@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Noto+Nastaliq+Urdu:wght@400;600;700&family=Aref+Ruqaa:wght@400;700&display=swap');
+@font-face {
+  font-family: 'Jameel Noori Nastaleeq';
+  src: url('https://cdn.jsdelivr.net/gh/naqashali/Jameel-Noori-Nastaleeq-Web-Font@master/JameelNooriNastaleeq.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/gh/naqashali/Jameel-Noori-Nastaleeq-Web-Font@master/JameelNooriNastaleeq.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}`;

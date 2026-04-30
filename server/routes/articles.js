@@ -60,6 +60,7 @@ router.post('/', auth, upload.single('thumbnail'), async (req, res) => {
 router.put('/:id', auth, upload.single('thumbnail'), async (req, res) => {
   try {
     const updateData = { ...req.body };
+    delete updateData._id; // Prevent immutable _id modification error
     if (req.file) {
       updateData.thumbnail = `/uploads/${req.file.filename}`;
     }

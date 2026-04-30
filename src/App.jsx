@@ -27,6 +27,7 @@ import ArticleManager from './admin/ArticleManager';
 import VideoManager from './admin/VideoManager';
 import SettingsManager from './admin/SettingsManager';
 import InquiryManager from './admin/InquiryManager';
+import BiographyManager from './admin/BiographyManager';
 
 import SEO from "./components/SEO";
 
@@ -46,6 +47,7 @@ export default function App() {
           <Route path="articles" element={<ArticleManager />} />
           <Route path="videos" element={<VideoManager />} />
           <Route path="inquiries" element={<InquiryManager />} />
+          <Route path="biography" element={<BiographyManager />} />
           <Route path="settings" element={<SettingsManager />} />
         </Route>
 
