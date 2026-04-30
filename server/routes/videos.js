@@ -15,6 +15,7 @@ router.get('/', async (req, res) => {
     const videos = await Video.find();
     res.json(videos);
   } catch (err) {
+    console.error('Error fetching videos:', err);
     res.status(500).json({ error: err.message });
   }
 });
@@ -34,6 +35,7 @@ router.post('/', auth, upload.single('thumbnail'), async (req, res) => {
     const saved = await newVideo.save();
     res.status(201).json(saved);
   } catch (err) {
+    console.error('Error creating video entry:', err);
     res.status(500).json({ error: err.message });
   }
 });
@@ -49,9 +51,10 @@ router.put('/:id', auth, upload.single('thumbnail'), async (req, res) => {
       if (typeof data[key] === 'string') data[key] = JSON.parse(data[key]);
     });
 
-    const updated = await Video.findByIdAndUpdate(req.params.id, data, { new: true });
+    const updated = await Video.findByIdAndUpdate(req.params.id, data, { returnDocument: 'after' });
     res.json(updated);
   } catch (err) {
+    console.error('Error updating video entry:', err);
     res.status(500).json({ error: err.message });
   }
 });
@@ -62,6 +65,7 @@ router.delete('/:id', auth, async (req, res) => {
     await Video.findByIdAndDelete(req.params.id);
     res.json({ message: 'Deleted successfully' });
   } catch (err) {
+    console.error('Error deleting video entry:', err);
     res.status(500).json({ error: err.message });
   }
 });

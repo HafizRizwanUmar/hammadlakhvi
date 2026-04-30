@@ -21,6 +21,7 @@ router.get('/', async (req, res) => {
     const articles = await Article.find().sort({ createdAt: -1 });
     res.json(articles);
   } catch (err) {
+    console.error('Error fetching articles:', err);
     res.status(500).json({ error: err.message });
   }
 });
@@ -32,6 +33,7 @@ router.get('/:id', async (req, res) => {
     if (!article) return res.status(404).json({ message: 'Article not found' });
     res.json(article);
   } catch (err) {
+    console.error('Error fetching article:', err);
     res.status(500).json({ error: err.message });
   }
 });
@@ -52,6 +54,7 @@ router.post('/', auth, upload.single('thumbnail'), async (req, res) => {
     const savedArticle = await newArticle.save();
     res.status(201).json(savedArticle);
   } catch (err) {
+    console.error('Error creating article:', err);
     res.status(500).json({ error: err.message });
   }
 });
@@ -71,10 +74,11 @@ router.put('/:id', auth, upload.single('thumbnail'), async (req, res) => {
     const updatedArticle = await Article.findOneAndUpdate(
       { id: req.params.id },
       updateData,
-      { new: true }
+      { returnDocument: 'after' }
     );
     res.json(updatedArticle);
   } catch (err) {
+    console.error('Error updating article:', err);
     res.status(500).json({ error: err.message });
   }
 });
@@ -85,6 +89,7 @@ router.delete('/:id', auth, async (req, res) => {
     await Article.findOneAndDelete({ id: req.params.id });
     res.json({ message: 'Article deleted successfully' });
   } catch (err) {
+    console.error('Error deleting article:', err);
     res.status(500).json({ error: err.message });
   }
 });

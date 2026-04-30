@@ -9,6 +9,7 @@ router.get('/:key', async (req, res) => {
     if (!meta) return res.status(404).json({ message: 'Meta not found' });
     res.json(meta.value);
   } catch (err) {
+    console.error('Error fetching meta:', err);
     res.status(500).json({ error: err.message });
   }
 });
@@ -20,10 +21,11 @@ router.post('/:key', auth, async (req, res) => {
     const meta = await Meta.findOneAndUpdate(
       { key: req.params.key },
       { value },
-      { upsert: true, new: true }
+      { upsert: true, returnDocument: 'after' }
     );
     res.json(meta);
   } catch (err) {
+    console.error('Error updating meta:', err);
     res.status(500).json({ error: err.message });
   }
 });
