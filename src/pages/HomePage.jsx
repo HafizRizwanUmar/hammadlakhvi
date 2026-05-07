@@ -1,6 +1,8 @@
 // HomePage.jsx
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { COLORS, NAV_ITEMS } from "../constants";
+import axios from "axios";
+import { COLORS, NAV_ITEMS, API_BASE } from "../constants";
 import { SectionHeader } from "../components/UI";
 import { TV_PROGRAMS_DATA } from "../data/videos";
 
@@ -28,8 +30,21 @@ function FeaturedTVPrograms() {
 
 export default function HomePage() {
   const navigate = useNavigate();
+  const [hero, setHero] = useState(null);
+
+  useEffect(() => {
+    axios.get(`${API_BASE}/meta/hero`).then(res => setHero(res.data)).catch(() => {});
+  }, []);
 
   const getPath = (id) => NAV_ITEMS.find(n => n.id === id)?.path || "/";
+
+  // Use dynamic data or fallback to defaults
+  const h = hero || {
+    title: "Dr. Muhammad Hammad Lakhvi",
+    urduTitle: "پروفیسر ڈاکٹر محمد حماد لکھوی حفظہ اللّٰہ",
+    bioSnippet: "• صدر فیتھ فاؤنڈیشن • سابق ڈین کلیہ علوم اسلامیہ جامعہ پنجاب",
+    creds: ["Post-Doc — Glasgow UK", "Ph.D. Islamic Studies", "LLB Law", "MA Islamiyat — Gold Medal"]
+  };
 
   return (
     <div>
@@ -45,17 +60,14 @@ export default function HomePage() {
           <div className="hero-text" style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 0 }}>
             <div style={{ fontSize: 36, marginBottom: 10, animation: "shimmer 3s infinite" }}>☽</div>
             <div style={{ fontFamily: "'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif", fontSize: "clamp(15px,2.2vw,22px)", color: COLORS.goldLight, marginBottom: 16, direction: "rtl", lineHeight: 2, width: "100%", textAlign: "right" }}>بسم اللّٰہ الرحمن الرحیم</div>
-            <h1 style={{ fontFamily: "'Amiri',serif", fontSize: "clamp(30px,4.5vw,62px)", color: COLORS.cream, fontWeight: 700, lineHeight: 1.1, marginBottom: 8 }}>Dr. Muhammad<br />Hammad Lakhvi</h1>
-            <div className="urdu" style={{ fontSize: "clamp(14px,1.8vw,20px)", color: COLORS.goldLight, marginBottom: 14, lineHeight: 2 }}>پروفیسر ڈاکٹر محمد حماد لکھوی حفظہ اللّٰہ</div>
+            <h1 style={{ fontFamily: "'Amiri',serif", fontSize: "clamp(30px,4.5vw,62px)", color: COLORS.cream, fontWeight: 700, lineHeight: 1.1, marginBottom: 8 }}>{h.title}</h1>
+            <div className="urdu" style={{ fontSize: "clamp(14px,1.8vw,20px)", color: COLORS.goldLight, marginBottom: 14, lineHeight: 2 }}>{h.urduTitle}</div>
             <div style={{ width: 80, height: 2, background: COLORS.gold, marginBottom: 18 }} />
             <div className="urdu" style={{ fontSize: 13, color: "rgba(250,246,239,0.9)", marginBottom: 10, lineHeight: 1.8, textAlign: "right", width: "100%" }}>
-                • صدر فیتھ فاؤنڈیشن &nbsp; • سابق ڈین کلیہ علوم اسلامیہ جامعہ پنجاب
+                {h.bioSnippet}
             </div>
-            <p style={{ fontFamily: "'Libre Baskerville',serif", fontSize: "clamp(11px,1.3vw,14px)", color: "rgba(250,246,239,0.75)", marginBottom: 12, lineHeight: 1.6 }}>
-                President Faith Foundation · Former Dean, Faculty of Islamic Studies
-            </p>
             <div className="hero-creds" style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 28 }}>
-              {["Post-Doc — Glasgow UK", "Ph.D. Islamic Studies", "LLB Law", "MA Islamiyat — Gold Medal"].map(c => (
+              {h.creds.map(c => (
                 <span key={c} style={{ background: "rgba(184,151,42,0.18)", border: `1px solid ${COLORS.gold}`, color: COLORS.goldLight, padding: "5px 13px", borderRadius: 2, fontSize: 11, letterSpacing: "0.04em", fontFamily: "'Libre Baskerville',serif" }}>{c}</span>
               ))}
             </div>

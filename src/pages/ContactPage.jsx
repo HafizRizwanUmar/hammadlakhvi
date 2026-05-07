@@ -8,6 +8,7 @@ export default function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [sent, setSent] = useState(false);
 
   const handleSubmit = async () => {
     if (!form.name || !form.email || !form.message) {
@@ -28,10 +29,6 @@ export default function ContactPage() {
 
   return (
     <div style={{ padding: "100px 24px 80px", background: COLORS.cream, minHeight: "100vh" }}>
-      <SEO 
-        title="Contact Dr. Muhammad Hammad Lakhvi" 
-        description="Get in touch with Prof. Dr. Muhammad Hammad Lakhvi for queries, scholarly advice, or community invitations."
-      />
       <div style={{ maxWidth: 900, margin: "0 auto" }}>
         <SectionHeader title="Contact" urdu="رابطہ" sub="Get in touch for lectures, fatawa, or media" />
         <div className="contact-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 40 }}>

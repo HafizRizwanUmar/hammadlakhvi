@@ -11,7 +11,7 @@ function SeriesDetailView({ series, onBack, onVideoClick }) {
         <BackBtn onClick={onBack} label="← Back to Series" />
         <div className="series-detail-header">
           <div className="series-detail-thumb-container">
-            <img src={series.thumbnail && series.thumbnail.startsWith('/') ? `${IMG_BASE}${series.thumbnail}` : (series.thumbnail || (series.videos && series.videos[0] ? `https://img.youtube.com/vi/${series.videos[0].id}/hqdefault.jpg` : ""))} alt={series.title}
+            <img src={series.thumbnail && series.thumbnail.startsWith('/uploads/') ? `${IMG_BASE}${series.thumbnail}` : (series.thumbnail || (series.videos && series.videos[0] ? `https://img.youtube.com/vi/${series.videos[0].id}/hqdefault.jpg` : ""))} alt={series.title}
               style={{ width: "100%", height: "100%", objectFit: "contain" }}
               onError={e => { e.target.style.display = "none"; e.target.parentElement.innerHTML = `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:60px">📚</div>`; }} />
           </div>
@@ -90,7 +90,7 @@ export default function LecturesPage({ onVideoClick }) {
                   <div key={s.id || s._id} className="series-card" onClick={() => setActiveSeriesId(s.id || s._id)}
                     style={{ background: COLORS.white, border: `1px solid ${COLORS.border}`, borderRadius: 2, overflow: "hidden", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", animation: `fadeUp 0.5s ease ${i * 0.1}s both` }}>
                     <div style={{ position: "relative", aspectRatio: "16/9", background: "#000", overflow: "hidden" }}>
-                      <img src={(s.thumbnail && s.thumbnail.startsWith('/') ? `${IMG_BASE}${s.thumbnail}` : s.thumbnail) || `https://img.youtube.com/vi/${s.videos?.[0]?.id}/hqdefault.jpg`} alt={s.title}
+                      <img src={(s.thumbnail && s.thumbnail.startsWith('/uploads/') ? `${IMG_BASE}${s.thumbnail}` : s.thumbnail) || `https://img.youtube.com/vi/${s.videos?.[0]?.id}/hqdefault.jpg`} alt={s.title}
                         style={{ width: "100%", height: "100%", objectFit: "contain" }}
                         onError={e => { e.target.style.display = "none"; e.target.parentElement.innerHTML = `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:${COLORS.darkGreen};color:${COLORS.goldLight};font-size:48px">📚</div>`; }} />
                       <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.32)", display: "flex", alignItems: "center", justifyContent: "center" }}>

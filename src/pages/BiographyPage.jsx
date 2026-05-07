@@ -223,14 +223,35 @@ const DEFAULT_BIO_SECTIONS = [
 
 export default function BiographyPage() {
   const [sections, setSections] = useState(DEFAULT_BIO_SECTIONS);
+  const [header, setHeader] = useState({
+    name: "Dr. Muhammad Hammad Lakhvi",
+    urduName: "پروفیسر ڈاکٹر محمد حماد لکھوی حفظہ اللّٰہ",
+    titles: [
+      "صدر فیتھ فاؤنڈیشن",
+      "سابق ڈین کلیہ علوم اسلامیہ جامعہ پنجاب لاہور پاکستان",
+      "ڈائریکٹر ادارہ علوم اسلامیہ جامعہ پنجاب لاہور پاکستان"
+    ],
+    boxes: [
+      "پیدائش: 1965، دیپالپور",
+      "پوسٹ ڈاکٹریٹ — گلاسگو",
+      "پی ایچ ڈی — پنجاب یونیورسٹی"
+    ]
+  });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchBio = async () => {
       try {
-        const res = await axios.get(`${API_BASE}/meta/biography`);
-        if (res.data && Array.isArray(res.data)) {
-          setSections(res.data);
+        const [sectionsRes, headerRes] = await Promise.all([
+          axios.get(`${API_BASE}/meta/biography`),
+          axios.get(`${API_BASE}/meta/biography_header`).catch(() => ({ data: null }))
+        ]);
+
+        if (sectionsRes.data && Array.isArray(sectionsRes.data)) {
+          setSections(sectionsRes.data);
+        }
+        if (headerRes.data) {
+          setHeader(headerRes.data);
         }
       } catch (err) {
         console.error("Error fetching bio:", err);
@@ -262,15 +283,15 @@ export default function BiographyPage() {
                     onError={e => { e.target.style.display = "none"; e.target.parentElement.innerHTML = `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:48px">👤</div>`; }} />
                 </div>
                 <div style={{ flex: 1, minWidth: 180 }}>
-                  <h2 style={{ fontFamily: "'Amiri',serif", fontSize: 26, color: COLORS.goldLight, marginBottom: 4 }}>Dr. Muhammad Hammad Lakhvi</h2>
-                  <div className="urdu" style={{ fontSize: 17, color: "rgba(250,246,239,0.9)", marginBottom: 6, lineHeight: 2 }}>پروفیسر ڈاکٹر محمد حماد لکھوی حفظہ اللّٰہ</div>
+                  <h2 style={{ fontFamily: "'Amiri',serif", fontSize: 26, color: COLORS.goldLight, marginBottom: 4 }}>{header.name}</h2>
+                  <div className="urdu" style={{ fontSize: 17, color: "rgba(250,246,239,0.9)", marginBottom: 6, lineHeight: 2 }}>{header.urduName}</div>
                   <div className="urdu" style={{ fontSize: 13, color: COLORS.goldLight, lineHeight: 1.8, marginBottom: 12 }}>
-                    • صدر فیتھ فاؤنڈیشن <br />
-                    • سابق ڈین کلیہ علوم اسلامیہ جامعہ پنجاب لاہور پاکستان <br />
-                    • ڈائریکٹر ادارہ علوم اسلامیہ جامعہ پنجاب لاہور پاکستان
+                    {header.titles.map((t, i) => (
+                      <div key={i}>• {t}</div>
+                    ))}
                   </div>
                   <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-                    {["پیدائش: 1965، دیپالپور", "پوسٹ ڈاکٹریٹ — گلاسگو", "پی ایچ ڈی — پنجاب یونیورسٹی"].map(b => (
+                    {header.boxes.map(b => (
                       <span key={b} className="urdu" style={{ background: "rgba(184,151,42,0.2)", border: `1px solid ${COLORS.gold}`, color: COLORS.goldLight, padding: "3px 10px", fontSize: 12, borderRadius: 2, lineHeight: 2 }}>{b}</span>
                     ))}
                   </div>

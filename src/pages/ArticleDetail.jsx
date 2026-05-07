@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { COLORS, API_BASE } from "../constants";
+import { COLORS, API_BASE, IMG_BASE } from "../constants";
 import { BackBtn } from "../components/UI";
 
 export default function ArticleDetailPage({ article: initialArticle, onBack }) {
@@ -144,7 +144,7 @@ export default function ArticleDetailPage({ article: initialArticle, onBack }) {
 
                 {article.thumbnail && (
                   <div style={{ marginBottom: 20, borderRadius: 4, overflow: "hidden", border: `1px solid ${COLORS.border}` }}>
-                    <img src={article.thumbnail} alt={article.title} style={{ width: "100%", height: "auto", display: "block" }} />
+                    <img src={article.thumbnail.startsWith('/uploads/') ? `${IMG_BASE}${article.thumbnail}` : article.thumbnail} alt={article.title} style={{ width: "100%", height: "auto", display: "block" }} />
                   </div>
                 )}
 

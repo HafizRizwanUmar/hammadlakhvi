@@ -18,7 +18,7 @@ const STATIC_ROUTES = [
 
 router.get('/', async (req, res) => {
   try {
-    const SITE_URL = process.env.SITE_URL || 'https://drhammadlakhvi.com';
+    const SITE_URL = process.env.SITE_URL || 'https://hammadlakhvi.com';
     
     // Fetch all dynamic content
     const articles = await Article.find({}, 'id updatedAt').lean();

@@ -19,7 +19,7 @@ import ContactPage from "./pages/ContactPage";
 import TVProgramDetailPage from "./pages/TVProgramDetail";
 import PayamSubahPage, { PayamYearPage } from "./pages/PayamSubah";
 
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import AdminLogin from './admin/AdminLogin';
 import AdminLayout from './admin/AdminLayout';
 import AdminDashboard from './admin/AdminDashboard';
@@ -28,10 +28,78 @@ import VideoManager from './admin/VideoManager';
 import SettingsManager from './admin/SettingsManager';
 import InquiryManager from './admin/InquiryManager';
 import BiographyManager from './admin/BiographyManager';
+import EventManager from './admin/EventManager';
+import FatwaManager from './admin/FatwaManager';
 
 import SEO from "./components/SEO";
+import { useParams } from "react-router-dom";
 
+function TVProgramRouteWrapper({ handleVideoClick }) {
+  const { slug } = useParams();
+  const navigate = useNavigate();
+  const program = TV_PROGRAMS_DATA.find(p => p.slug === slug || p.id === slug);
+  const [payamYear, setPayamYear] = useState(null);
+
+  if (!program) return <Navigate to="/tv-programs-and-community" replace />;
+
+  if (slug === 'payam-e-subah') {
+    if (payamYear) {
+        return (
+            <>
+                <NavBar active="community" />
+                <main style={{ minHeight: "100vh" }}>
+                    <PayamYearPage 
+                      year={payamYear} 
+                      onBack={() => setPayamYear(null)} 
+                      onVideoClick={handleVideoClick} 
+                    />
+                </main>
+                <Footer />
+            </>
+        );
+    }
+    return (
+      <>
+        <NavBar active="community" />
+        <main style={{ minHeight: "100vh" }}>
+          <PayamSubahPage onYearSelect={(yr) => setPayamYear(yr)} onBack={() => navigate("/tv-programs-and-community")} />
+        </main>
+        <Footer />
+      </>
+    );
+  }
+
+  return (
+    <>
+      <NavBar active="community" />
+      <main style={{ minHeight: "100vh" }}>
+        <TVProgramDetailPage 
+          program={program} 
+          onBack={() => navigate("/tv-programs-and-community")} 
+          onVideoClick={handleVideoClick}
+          onPayamSubahOpen={() => {}} // Not needed as we handle it above
+        />
+      </main>
+      <Footer />
+    </>
+  );
+}
+
+function PayamYearRouteWrapper({ handleVideoClick }) {
+    const { year } = useParams();
+    const navigate = useNavigate();
+    return (
+        <>
+            <NavBar active="community" />
+            <main style={{ minHeight: "100vh" }}>
+                <PayamYearPage year={year} onBack={() => navigate("/tv/payam-e-subah")} onVideoClick={handleVideoClick} />
+            </main>
+            <Footer />
+        </>
+    );
+}
 export default function App() {
+  const navigate = useNavigate();
   const [selectedVideo, setSelectedVideo] = useState(null);
   const handleVideoClick = (v) => setSelectedVideo(v);
 
@@ -47,7 +115,9 @@ export default function App() {
           <Route path="articles" element={<ArticleManager />} />
           <Route path="videos" element={<VideoManager />} />
           <Route path="inquiries" element={<InquiryManager />} />
+          <Route path="events" element={<EventManager />} />
           <Route path="biography" element={<BiographyManager />} />
+          <Route path="fatwas" element={<FatwaManager />} />
           <Route path="settings" element={<SettingsManager />} />
         </Route>
 
@@ -92,7 +162,7 @@ export default function App() {
           <>
             <NavBar active="articles" />
             <SEO title="Research Articles" description="Explore peer-reviewed publications and research articles on Islamic theology, history, and contemporary issues." />
-            <main style={{ minHeight: "100vh" }}><ArticlesPage onArticleSelect={(a) => window.location.href = `/article/${a.id || a._id}`} /></main>
+            <main style={{ minHeight: "100vh" }}><ArticlesPage onArticleSelect={(a) => navigate(`/article/${a.id || a._id}`)} /></main>
             <Footer />
           </>
         } />
@@ -119,7 +189,7 @@ export default function App() {
           <>
             <NavBar active="community" />
             <SEO title="TV Programs & Community" description="Explore Pegham TV programs and community services provided by the Lakhvi family." />
-            <main style={{ minHeight: "100vh" }}><CommunityPage onProgramClick={(slug) => window.location.href = `/tv/${slug}`} /></main>
+            <main style={{ minHeight: "100vh" }}><CommunityPage onProgramClick={(slug) => navigate(`/tv/${slug}`)} /></main>
             <Footer />
           </>
         } />
@@ -134,21 +204,14 @@ export default function App() {
         } />
         
         {/* Detail Routes */}
-        <Route path="/tv/:slug" element={
-          <>
-            <NavBar active="community" />
-            <main style={{ minHeight: "100vh" }}>
-              <TVProgramDetailPage onBack={() => window.location.href = "/tv-programs-and-community"} onVideoClick={handleVideoClick} />
-            </main>
-            <Footer />
-          </>
-        } />
+        <Route path="/tv/:slug" element={<TVProgramRouteWrapper handleVideoClick={handleVideoClick} />} />
+        <Route path="/tv/payam-e-subah/:year" element={<PayamYearRouteWrapper handleVideoClick={handleVideoClick} />} />
 
         <Route path="/article/:id" element={
           <>
             <NavBar active="articles" />
             <main style={{ minHeight: "100vh" }}>
-              <ArticleDetailPage onBack={() => window.location.href = "/research-articles-by-dr-hammad-lakhvi"} />
+              <ArticleDetailPage onBack={() => navigate("/research-articles-by-dr-hammad-lakhvi")} />
             </main>
             <Footer />
           </>

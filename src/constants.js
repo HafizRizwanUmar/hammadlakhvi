@@ -104,11 +104,4 @@ export const GLOBAL_STYLE = `
 `;
 
 export const FONTS = `@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Noto+Nastaliq+Urdu:wght@400;600;700&family=Aref+Ruqaa:wght@400;700&display=swap');
-@font-face {
-  font-family: 'Jameel Noori Nastaleeq';
-  src: url('https://cdn.jsdelivr.net/gh/naqashali/Jameel-Noori-Nastaleeq-Web-Font@master/JameelNooriNastaleeq.woff2') format('woff2'),
-       url('https://cdn.jsdelivr.net/gh/naqashali/Jameel-Noori-Nastaleeq-Web-Font@master/JameelNooriNastaleeq.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}`;
+@import url('https://db.onlinewebfonts.com/c/0f64bc9fbd20b8f7ddb4ea11756cbbb7?family=Jameel+Noori+Nastaleeq');`;

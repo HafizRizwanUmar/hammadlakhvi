@@ -3,7 +3,7 @@ import { useAuth } from './AuthContext';
 import { useNavigate, Link, Outlet, useLocation } from 'react-router-dom';
 import { 
   LayoutDashboard, BookOpen, Video, Settings, LogOut, 
-  Menu, X, Mail, UserCircle, ShieldCheck, ChevronRight
+  Menu, X, Mail, UserCircle, ShieldCheck, ChevronRight, Calendar
 } from 'lucide-react';
 import { COLORS } from '../constants';
 
@@ -39,6 +39,8 @@ const AdminLayout = () => {
     { label: 'Biography', path: '/admin/biography', icon: UserCircle },
     { label: 'Articles', path: '/admin/articles', icon: BookOpen },
     { label: 'Videos & Clips', path: '/admin/videos', icon: Video },
+    { label: 'Events & Gallery', path: '/admin/events', icon: Calendar },
+    { label: 'Q&A / Fatwa', path: '/admin/fatwas', icon: ShieldCheck },
     { label: 'Inquiries', path: '/admin/inquiries', icon: Mail },
     { label: 'Site Settings', path: '/admin/settings', icon: Settings },
   ];
@@ -97,7 +99,19 @@ const AdminLayout = () => {
           </div>
         </div>
 
-        <nav style={{ flex: 1, padding: '32px 16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+        <nav style={{ 
+          flex: 1, 
+          padding: '32px 16px', 
+          display: 'flex', 
+          flexDirection: 'column', 
+          gap: '8px',
+          overflowY: 'auto',
+          msOverflowStyle: 'none',
+          scrollbarWidth: 'none',
+        }}>
+          <style>{`
+            nav::-webkit-scrollbar { display: none; }
+          `}</style>
           {navItems.map((item) => {
             const isActive = location.pathname === item.path;
             return (

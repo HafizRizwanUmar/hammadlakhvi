@@ -1,13 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:wght@400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
-
-@font-face {
-  font-family: 'Jameel Noori Nastaleeq';
-  src: url('https://cdn.jsdelivr.net/gh/naqashali/Jameel-Noori-Nastaleeq-Web-Font@master/JameelNooriNastaleeq.woff2') format('woff2'),
-       url('https://cdn.jsdelivr.net/gh/naqashali/Jameel-Noori-Nastaleeq-Web-Font@master/JameelNooriNastaleeq.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
+@import url('https://db.onlinewebfonts.com/c/0f64bc9fbd20b8f7ddb4ea11756cbbb7?family=Jameel+Noori+Nastaleeq');
 
 :root {
   --admin-bg: #f8fafc;

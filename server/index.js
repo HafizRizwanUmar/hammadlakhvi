@@ -10,7 +10,9 @@ const articleRoutes = require('./routes/articles');
 const videoRoutes = require('./routes/videos');
 const metaRoutes = require('./routes/meta');
 const inquiryRoutes = require('./routes/inquiries');
+const eventRoutes = require('./routes/events');
 const sitemapRoutes = require('./routes/sitemap');
+const fatwaRoutes = require('./routes/fatwas');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -27,7 +29,9 @@ app.use('/api/auth', authRoutes);
 app.use('/api/articles', articleRoutes);
 app.use('/api/videos', videoRoutes);
 app.use('/api/meta', metaRoutes);
+app.use('/api/events', eventRoutes);
 app.use('/api/inquiries', inquiryRoutes);
+app.use('/api/fatwas', fatwaRoutes);
 app.get('/sitemap.xml', sitemapRoutes);
 
 // --- Serving Frontend Build ---

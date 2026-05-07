@@ -12,7 +12,13 @@ const upload = multer({ storage });
 // GET categorized videos
 router.get('/', async (req, res) => {
   try {
-    const videos = await Video.find();
+    const filter = {};
+    if (req.query.type) filter.type = req.query.type;
+    if (req.query.year) filter.year = req.query.year;
+    if (req.query.slug) filter.slug = req.query.slug;
+    if (req.query.id) filter.id = req.query.id;
+    
+    const videos = await Video.find(filter);
     res.json(videos);
   } catch (err) {
     console.error('Error fetching videos:', err);

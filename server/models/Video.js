@@ -5,6 +5,7 @@ const VideoSchema = new mongoose.Schema({
   title: { type: String, required: true },
   subtitle: { type: String }, // Used as 'en' title for series
   type: { type: String, enum: ['CLIP', 'LONG', 'SERIES', 'TV_PROGRAM', 'PAYAM_SUBAH'], required: true },
+  sequence: { type: Number, default: 0 },
   
   // Fields for clips/long videos
   duration: { type: String },

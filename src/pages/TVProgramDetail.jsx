@@ -1,14 +1,14 @@
+import { useParams, useNavigate } from "react-router-dom";
 import { COLORS } from "../constants";
 import { BackBtn, VideoCard } from "../components/UI";
+import { TV_PROGRAMS_DATA } from "../data/videos";
 
-export default function TVProgramDetailPage({ program, onBack, onVideoClick, onPayamSubahOpen }) {
+export default function TVProgramDetailPage({ program: propProgram, onBack, onVideoClick }) {
+  const { slug } = useParams();
+  const navigate = useNavigate();
+  const program = propProgram || TV_PROGRAMS_DATA.find(p => p.slug === slug || p.id === slug);
+
   if (!program) return null;
-
-  // Payam-e-Subah uses special yearly page
-  if (program.useYearlyFormat) {
-    onPayamSubahOpen();
-    return null;
-  }
 
   return (
     <div style={{ padding: "80px 24px 80px", background: COLORS.cream, minHeight: "100vh" }}>

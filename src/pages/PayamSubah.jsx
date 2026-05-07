@@ -1,6 +1,7 @@
-import { useState } from "react";
-import { COLORS } from "../constants";
-import { PAYAM_SUBAH_YEARS } from "../data/videos";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { COLORS, IMG_BASE, API_BASE } from "../constants";
+import { PAYAM_SUBAH_YEARS as FALLBACK_DATA } from "../data/videos";
 import { BackBtn, SectionHeader } from "../components/UI";
 
 // Groups episodes by month
@@ -81,10 +82,40 @@ function EpisodeCard({ ep, onVideoClick }) {
 }
 
 // Year detail page — shows all episodes organized by month
-export function PayamYearPage({ yearData, onBack, onVideoClick }) {
-  const monthGroups = groupByMonth(yearData.episodes);
+export function PayamYearPage({ year: yearProp, yearData: initialYearData, onBack, onVideoClick }) {
+  const [yearData, setYearData] = useState(initialYearData);
+  const [loading, setLoading] = useState(!initialYearData);
+
+  useEffect(() => {
+    if (!initialYearData && yearProp) {
+      const fetchYearData = async () => {
+        try {
+          const res = await axios.get(`${API_BASE}/videos?type=PAYAM_SUBAH&year=${yearProp}`);
+          if (res.data && res.data.length > 0) {
+            setYearData(res.data[0]);
+          } else {
+            // Fallback to static data
+            const staticData = FALLBACK_DATA.find(y => y.year === yearProp);
+            setYearData(staticData);
+          }
+        } catch (err) {
+          console.error("Error fetching year data:", err);
+          const staticData = FALLBACK_DATA.find(y => y.year === yearProp);
+          setYearData(staticData);
+        } finally {
+          setLoading(false);
+        }
+      };
+      fetchYearData();
+    }
+  }, [yearProp, initialYearData]);
+
+  if (loading) return <div style={{ padding: '100px', textAlign: 'center' }}>Loading Episodes...</div>;
+  if (!yearData) return <div style={{ padding: '100px', textAlign: 'center' }}>Year not found.</div>;
+
+  const monthGroups = groupByMonth(yearData.episodes || []);
   const months = Object.keys(monthGroups);
-  const hasEpisodes = yearData.episodes.length > 0;
+  const hasEpisodes = (yearData.episodes || []).length > 0;
 
   return (
     <div style={{ padding: "100px 24px 80px", background: COLORS.cream, minHeight: "100vh" }}>
@@ -103,7 +134,7 @@ export function PayamYearPage({ yearData, onBack, onVideoClick }) {
             {/* Thumbnail */}
             <div style={{ width: 280, flexShrink: 0, background: "#000", position: "relative", minHeight: 180 }}>
               <img
-                src={yearData.thumbnail}
+                src={yearData.thumbnail && yearData.thumbnail.startsWith('/uploads/') ? `${IMG_BASE}${yearData.thumbnail}` : yearData.thumbnail}
                 alt={`Payam-e-Subah ${yearData.year}`}
                 style={{ width: "100%", height: "100%", objectFit: "contain", display: "block", minHeight: 180 }}
                 onError={e => {
@@ -200,6 +231,34 @@ export function PayamYearPage({ yearData, onBack, onVideoClick }) {
 
 // Main Payam-e-Subah index page — shows year cards
 export default function PayamSubahPage({ onYearSelect, onBack }) {
+  const [years, setYears] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchYears = async () => {
+      try {
+        const res = await axios.get(`${API_BASE}/videos?type=PAYAM_SUBAH`);
+        if (res.data && res.data.length > 0) {
+          // Robust filter: only show items that have a year defined
+          const validYears = res.data.filter(v => v.year);
+          // Sort by year descending
+          const sorted = validYears.sort((a, b) => parseInt(b.year) - parseInt(a.year));
+          setYears(sorted.length > 0 ? sorted : FALLBACK_DATA);
+        } else {
+          setYears(FALLBACK_DATA);
+        }
+      } catch (err) {
+        console.error("Error fetching Payam-e-Subah data:", err);
+        setYears(FALLBACK_DATA);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchYears();
+  }, []);
+
+  if (loading) return <div style={{ padding: '100px', textAlign: 'center' }}>Loading Archive...</div>;
+
   return (
     <div style={{ padding: "100px 24px 80px", background: COLORS.cream, minHeight: "100vh" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
@@ -218,17 +277,16 @@ export default function PayamSubahPage({ onYearSelect, onBack }) {
           </span>
         </div>
 
-        {/* Year cards grid */}
         <div style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))",
           gap: 28,
         }}>
-          {PAYAM_SUBAH_YEARS.map((yr, i) => (
+          {years.map((yr, i) => (
             <div
-              key={yr.year}
+              key={yr.year || yr._id}
               className="payam-year-card"
-              onClick={() => onYearSelect(yr.year)}
+              onClick={() => onYearSelect(yr.year, yr)}
               style={{
                 background: COLORS.white,
                 border: `1px solid ${COLORS.border}`,
@@ -241,7 +299,7 @@ export default function PayamSubahPage({ onYearSelect, onBack }) {
               {/* Thumbnail */}
               <div style={{ position: "relative", paddingBottom: "60%", background: COLORS.darkGreen, overflow: "hidden" }}>
                 <img
-                  src={yr.thumbnail}
+                  src={yr.thumbnail && yr.thumbnail.startsWith('/uploads/') ? `${IMG_BASE}${yr.thumbnail}` : yr.thumbnail}
                   alt={`Payam-e-Subah ${yr.year}`}
                   style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "contain" }}
                   onError={e => {

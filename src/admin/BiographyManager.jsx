@@ -224,9 +224,24 @@ const DEFAULT_BIO_SECTIONS = [
 
 const BiographyManager = () => {
   const [sections, setSections] = useState([]);
+  const [header, setHeader] = useState({
+    name: "Dr. Muhammad Hammad Lakhvi",
+    urduName: "پروفیسر ڈاکٹر محمد حماد لکھوی حفظہ اللّٰہ",
+    titles: [
+      "صدر فیتھ فاؤنڈیشن",
+      "سابق ڈین کلیہ علوم اسلامیہ جامعہ پنجاب لاہور پاکستان",
+      "ڈائریکٹر ادارہ علوم اسلامیہ جامعہ پنجاب لاہور پاکستان"
+    ],
+    boxes: [
+      "پیدائش: 1965، دیپالپور",
+      "پوسٹ ڈاکٹریٹ — گلاسگو",
+      "پی ایچ ڈی — پنجاب یونیورسٹی"
+    ]
+  });
   const [loading, setLoading] = useState(true);
   const [saveStatus, setSaveStatus] = useState('');
   const [expandedIndex, setExpandedIndex] = useState(0);
+  const [showHeaderEdit, setShowHeaderEdit] = useState(false);
 
   useEffect(() => {
     fetchBiography();
@@ -235,12 +250,19 @@ const BiographyManager = () => {
   const fetchBiography = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(`${API_BASE}/meta/biography`);
-      // The website expects an array of sections. If it's not an array, use defaults.
-      if (res.data && Array.isArray(res.data)) {
-        setSections(res.data);
+      const [sectionsRes, headerRes] = await Promise.all([
+        axios.get(`${API_BASE}/meta/biography`),
+        axios.get(`${API_BASE}/meta/biography_header`).catch(() => ({ data: null }))
+      ]);
+
+      if (sectionsRes.data && Array.isArray(sectionsRes.data)) {
+        setSections(sectionsRes.data);
       } else {
         setSections(DEFAULT_BIO_SECTIONS);
+      }
+
+      if (headerRes.data) {
+        setHeader(headerRes.data);
       }
     } catch (err) {
       console.error('Error fetching biography:', err);
@@ -254,10 +276,15 @@ const BiographyManager = () => {
     setSaveStatus('Saving changes...');
     try {
       const token = localStorage.getItem('token');
-      await axios.post(`${API_BASE}/meta/biography`, { value: sections }, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-      setSaveStatus('Biography structure updated successfully!');
+      await Promise.all([
+        axios.post(`${API_BASE}/meta/biography`, { value: sections }, {
+          headers: { Authorization: `Bearer ${token}` }
+        }),
+        axios.post(`${API_BASE}/meta/biography_header`, { value: header }, {
+          headers: { Authorization: `Bearer ${token}` }
+        })
+      ]);
+      setSaveStatus('Biography updated successfully!');
       setTimeout(() => setSaveStatus(''), 4000);
     } catch (err) {
       setSaveStatus('Error saving data. Check network.');
@@ -328,6 +355,66 @@ const BiographyManager = () => {
       )}
 
       <div style={{ display: 'grid', gap: '20px' }}>
+        {/* Header Section Management */}
+        <div className="card" style={{ borderLeft: showHeaderEdit ? '6px solid var(--admin-gold)' : '1px solid var(--admin-border)' }}>
+          <div 
+            onClick={() => setShowHeaderEdit(!showHeaderEdit)}
+            style={{ 
+              padding: '24px 32px', cursor: 'pointer', display: 'flex', 
+              alignItems: 'center', justifyContent: 'space-between', 
+              background: showHeaderEdit ? '#fff' : '#f8fafc'
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+              <div style={{ padding: '10px', background: 'var(--admin-gold)', color: '#fff', borderRadius: '12px' }}>
+                <UserCircle size={24} />
+              </div>
+              <div>
+                <div style={{ fontSize: '18px', fontWeight: '800', color: 'var(--admin-text-main)' }}>Biography Header & Intro</div>
+                <div style={{ fontSize: '12px', color: 'var(--admin-text-light)', fontWeight: '700' }}>MANAGE TOP BANNER INFO</div>
+              </div>
+            </div>
+            {showHeaderEdit ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
+          </div>
+
+          {showHeaderEdit && (
+            <div style={{ padding: '40px', background: '#fff', borderTop: '1px solid var(--admin-border)' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px', marginBottom: '32px' }}>
+                <div>
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: '800', color: 'var(--admin-text-light)', marginBottom: '8px' }}>ENGLISH NAME</label>
+                  <input type="text" value={header.name} onChange={(e) => setHeader({...header, name: e.target.value})} style={{ width: '100%', padding: '12px', borderRadius: '10px', border: '1px solid var(--admin-border)', fontSize: '18px', fontWeight: '700' }} />
+                </div>
+                <div>
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: '800', color: 'var(--admin-text-light)', marginBottom: '8px' }}>URDU NAME (PROFESSIONAL TITLE)</label>
+                  <input type="text" value={header.urduName} onChange={(e) => setHeader({...header, urduName: e.target.value})} className="urdu" style={{ width: '100%', padding: '12px', borderRadius: '10px', border: '1px solid var(--admin-border)', fontSize: '20px' }} />
+                </div>
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px', marginBottom: '32px' }}>
+                <div>
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: '800', color: 'var(--admin-text-light)', marginBottom: '8px' }}>PROFESSIONAL TITLES (ONE PER LINE)</label>
+                  <textarea 
+                    value={header.titles.join('\n')} 
+                    onChange={(e) => setHeader({...header, titles: e.target.value.split('\n')})} 
+                    className="urdu"
+                    style={{ width: '100%', height: '120px', padding: '12px', borderRadius: '10px', border: '1px solid var(--admin-border)', fontSize: '16px', lineHeight: '1.8' }} 
+                  />
+                </div>
+                <div>
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: '800', color: 'var(--admin-text-light)', marginBottom: '8px' }}>SUMMARY BOXES (ONE PER LINE)</label>
+                  <textarea 
+                    value={header.boxes.join('\n')} 
+                    onChange={(e) => setHeader({...header, boxes: e.target.value.split('\n')})} 
+                    className="urdu"
+                    style={{ width: '100%', height: '120px', padding: '12px', borderRadius: '10px', border: '1px solid var(--admin-border)', fontSize: '16px', lineHeight: '1.8' }} 
+                  />
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div style={{ height: '1px', background: 'var(--admin-border)', margin: '20px 0' }}></div>
         {sections.map((section, idx) => (
           <div key={idx} className="card" style={{ overflow: 'hidden', borderLeft: expandedIndex === idx ? '6px solid var(--admin-accent)' : '1px solid var(--admin-border)' }}>
             <div 
